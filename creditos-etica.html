@@ -45,21 +45,24 @@
 
   <!-- ========================================================================
        BARRA DE NAVEGACIÓN FIJA E IDÉNTICA EN TODAS LAS PÁGINAS (NAVBAR)
+       Con el logo de Simunye integrado
        ======================================================================== -->
   <header class="sticky top-0 z-40 bg-[#0F172A]/95 backdrop-blur-md border-b border-slate-800 text-white shadow-lg">
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Navegación Principal">
       <div class="flex items-center justify-between h-20">
         
         <a href="index.html" class="flex items-center gap-3 group focus:outline-none">
-          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-[#003366] to-[#0284C7] border border-[#38BDF8]/40 flex items-center justify-center shadow-md group-hover:border-[#38BDF8] transition">
-            <span class="font-mono font-bold text-lg tracking-tighter text-white">UTN</span>
-          </div>
+          <img
+            src="assets/images/logo_simunye.jpeg"
+            alt="Logo Simunye - Capacidad y Educación · Tecnología Educativa Situada"
+            class="h-11 sm:h-12 w-auto rounded-lg bg-white px-2 py-1 shadow-md border border-[#38BDF8]/40 group-hover:border-[#38BDF8] transition object-contain"
+          />
           <div class="flex flex-col">
             <span class="font-bold text-sm sm:text-base tracking-tight text-white group-hover:text-[#38BDF8] transition">
               e-Portfolios Git &amp; GitHub
             </span>
             <span class="text-[11px] text-slate-300 font-medium">
-              Programación I · UTN-FRGP · Grupo 6
+              Gestión de Recursos Digitales IAG · UTN-BA · Grupo 6
             </span>
           </div>
         </a>
@@ -141,77 +144,113 @@
           Créditos Oficiales de Autoría, Matriz de IA y Marco Ético
         </h1>
         <p class="mt-3 text-slate-300 text-base sm:text-lg max-w-3xl leading-relaxed">
-          Acreditación formal del <strong>Equipo Grupo 6 (UTN-FRGP)</strong>, trazabilidad de las herramientas de Inteligencia Artificial Generativa utilizadas en cada unidad, referencias bibliográficas bajo <strong>Normas APA (7.ª edición)</strong> y reflexión sobre el impacto pedagógico responsable.
+          Acreditación formal del <strong>Equipo Grupo 6 (UTN)</strong>, trazabilidad de las herramientas de Inteligencia Artificial Generativa utilizadas en cada unidad, referencias bibliográficas bajo <strong>Normas APA (7.ª edición)</strong> y reflexión sobre el impacto pedagógico responsable.
         </p>
       </div>
     </section>
 
-    <!-- 1. SECCIÓN OFICIAL DE CRÉDITOS DE AUTORÍA DEL EQUIPO GRUPO 6 (UTN-FRGP) -->
+    <!-- 1. SECCIÓN OFICIAL DE CRÉDITOS DE AUTORÍA DEL EQUIPO GRUPO 6 + LOGO UTN -->
     <section class="py-12 bg-white border-b border-slate-200" aria-labelledby="titulo-autores">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
-          <div>
-            <span class="text-xs font-bold uppercase tracking-wider text-[#0284C7]">
-              Universidad Tecnológica Nacional · Facultad Regional General Pacheco
-            </span>
-            <h2 id="titulo-autores" class="text-2xl sm:text-3xl font-extrabold text-[#0F172A] mt-1">
-              Equipo de Autores Responsables · Grupo 6
-            </h2>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+
+        <!-- Banner Institucional con Logo UTN, Carrera y Materia -->
+        <div class="rounded-2xl bg-gradient-to-r from-slate-50 to-sky-50/60 border border-slate-200 p-6 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
+          <div class="flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
+            <img
+              src="assets/images/logo_utnBA.png"
+              alt="Logo Universidad Tecnológica Nacional (UTN)"
+              class="h-20 w-auto rounded-xl bg-white p-2 border border-slate-200 shadow-sm object-contain shrink-0"
+            />
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-[#0284C7] block">
+                Encuadre Académico Institucional
+              </span>
+              <h2 id="titulo-autores" class="text-xl sm:text-2xl font-extrabold text-[#0F172A] mt-0.5">
+                Licenciatura en Tecnología Educativa
+              </h2>
+              <p class="text-sm text-slate-700 font-medium mt-1">
+                Asignatura: <strong class="text-[#003366]">Gestión de Recursos Digitales con IA Generativa</strong>
+              </p>
+              <p class="text-xs text-slate-500 mt-0.5">
+                Campo de aplicación: Cátedra <em>Programación I</em> (Tecnicatura Universitaria en Programación · UTN-FRGP)
+              </p>
+            </div>
           </div>
-          <div class="text-xs text-slate-600 bg-slate-100 px-3.5 py-2 rounded-xl border border-slate-200">
-            <strong>Carrera:</strong> Licenciatura en Tecnología Educativa · <strong>Materia:</strong> Gestión de Recursos Digitales con IA Generativa
+
+          <div class="shrink-0 px-4 py-2.5 rounded-xl bg-[#003366] text-white text-xs font-bold tracking-wide shadow-sm">
+            Equipo Autor · Grupo 6
           </div>
         </div>
 
-        <!-- Tarjetas de los 4 Integrantes del Grupo 6 -->
+        <!-- Tarjetas de los 4 Integrantes del Grupo 6 con sus Fotos Reales -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-          <article class="resource-card bg-slate-50 rounded-2xl border border-slate-200 p-6 space-y-3">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#003366] to-[#0284C7] text-white font-bold flex items-center justify-center text-base shadow-sm">
-              AGN
+          <!-- Integrante 1: Alejandro Gómez Nieto -->
+          <article class="resource-card bg-slate-50 rounded-2xl border border-slate-200 p-6 flex flex-col items-center text-center space-y-4">
+            <div class="w-28 h-28 rounded-full overflow-hidden border-4 border-[#0284C7] shadow-md bg-white shrink-0">
+              <img
+                src="assets/images/ale.jpeg"
+                alt="Foto de Alejandro Gómez Nieto"
+                class="w-full h-full object-cover object-center"
+              />
             </div>
             <div>
               <h3 class="font-bold text-base text-[#0F172A]">Alejandro Gómez Nieto</h3>
-              <p class="text-xs font-semibold text-[#0284C7]">Coautor · Grupo 6 (UTN-FRGP)</p>
+              <p class="text-xs font-semibold text-[#0284C7] mt-0.5">Coautor · Grupo 6 (UTN)</p>
             </div>
             <p class="text-xs text-slate-600 leading-relaxed">
               Planificación tecno-pedagógica, diseño de prompts iterativos, curaduría conceptual de e-Portfolios en Programación I y validación ética.
             </p>
           </article>
 
-          <article class="resource-card bg-slate-50 rounded-2xl border border-slate-200 p-6 space-y-3">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#003366] to-[#0284C7] text-white font-bold flex items-center justify-center text-base shadow-sm">
-              JAL
+          <!-- Integrante 2: Javier Agustín Larroca -->
+          <article class="resource-card bg-slate-50 rounded-2xl border border-slate-200 p-6 flex flex-col items-center text-center space-y-4">
+            <div class="w-28 h-28 rounded-full overflow-hidden border-4 border-[#0284C7] shadow-md bg-white shrink-0">
+              <img
+                src="assets/images/javier.jpeg"
+                alt="Foto de Javier Agustín Larroca"
+                class="w-full h-full object-cover object-center"
+              />
             </div>
             <div>
               <h3 class="font-bold text-base text-[#0F172A]">Javier Agustín Larroca</h3>
-              <p class="text-xs font-semibold text-[#0284C7]">Coautor · Grupo 6 (UTN-FRGP)</p>
+              <p class="text-xs font-semibold text-[#0284C7] mt-0.5">Coautor · Grupo 6 (UTN)</p>
             </div>
             <p class="text-xs text-slate-600 leading-relaxed">
               Dirección audiovisual, generación de planos con IA (Nano Banana / Google Flow Veo), montaje multipista en Kdenlive y trazabilidad en Git.
             </p>
           </article>
 
-          <article class="resource-card bg-slate-50 rounded-2xl border border-slate-200 p-6 space-y-3">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#003366] to-[#0284C7] text-white font-bold flex items-center justify-center text-base shadow-sm">
-              IO
+          <!-- Integrante 3: Ignacio Olmos -->
+          <article class="resource-card bg-slate-50 rounded-2xl border border-slate-200 p-6 flex flex-col items-center text-center space-y-4">
+            <div class="w-28 h-28 rounded-full overflow-hidden border-4 border-[#0284C7] shadow-md bg-white shrink-0">
+              <img
+                src="assets/images/ignacio.jpeg"
+                alt="Foto de Ignacio Olmos"
+                class="w-full h-full object-cover object-top"
+              />
             </div>
             <div>
               <h3 class="font-bold text-base text-[#0F172A]">Ignacio Olmos</h3>
-              <p class="text-xs font-semibold text-[#0284C7]">Coautor · Grupo 6 (UTN-FRGP)</p>
+              <p class="text-xs font-semibold text-[#0284C7] mt-0.5">Coautor · Grupo 6 (UTN)</p>
             </div>
             <p class="text-xs text-slate-600 leading-relaxed">
               Producción de cápsulas sonoras TTS en ElevenLabs v3, edición de audio en Filmora, diseño de guiones técnico-literarios y enfoque DUA.
             </p>
           </article>
 
-          <article class="resource-card bg-slate-50 rounded-2xl border border-slate-200 p-6 space-y-3">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#003366] to-[#0284C7] text-white font-bold flex items-center justify-center text-base shadow-sm">
-              JAR
+          <!-- Integrante 4: José Alberto Rodríguez -->
+          <article class="resource-card bg-slate-50 rounded-2xl border border-slate-200 p-6 flex flex-col items-center text-center space-y-4">
+            <div class="w-28 h-28 rounded-full overflow-hidden border-4 border-[#0284C7] shadow-md bg-white shrink-0">
+              <img
+                src="assets/images/jose.jpeg"
+                alt="Foto de José Alberto Rodríguez"
+                class="w-full h-full object-cover object-top"
+              />
             </div>
             <div>
               <h3 class="font-bold text-base text-[#0F172A]">José Alberto Rodríguez</h3>
-              <p class="text-xs font-semibold text-[#0284C7]">Coautor · Grupo 6 (UTN-FRGP)</p>
+              <p class="text-xs font-semibold text-[#0284C7] mt-0.5">Coautor · Grupo 6 (UTN)</p>
             </div>
             <p class="text-xs text-slate-600 leading-relaxed">
               Arquitectura del espacio digital multipágina, integración del Asistente Virtual (Unidad 6), sistematización normativa APA 7ma ed. y revisión docente.
@@ -327,130 +366,71 @@
       </div>
     </section>
 
-    <!-- 3. DECLARACIÓN DE USO ÉTICO, TRANSPARENTE Y RESPONSABLE DE LA IA + FORMULARIO DE FEEDBACK -->
+    <!-- 3. DECLARACIÓN DE USO ÉTICO, TRANSPARENTE Y RESPONSABLE DE LA IA -->
     <section class="py-12 bg-white" aria-labelledby="titulo-declaracion-etica">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
 
-          <!-- Columna Izquierda (7 cols): Declaración Ética y Reflexión de Impacto -->
-          <div class="lg:col-span-7 space-y-6">
-            <div>
-              <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
-                Manifiesto Ético · Grupo 6 (UTN-FRGP)
-              </span>
-              <h2 id="titulo-declaracion-etica" class="text-2xl sm:text-3xl font-extrabold text-[#0F172A] mt-3">
-                Declaración de Uso Ético, Transparente y Responsable de la IA
-              </h2>
-            </div>
-
-            <div class="space-y-4 text-sm sm:text-base text-slate-700 leading-relaxed">
-              <p>
-                Incorporar Inteligencia Artificial Generativa en la educación superior tecnológica no alcanza para transformar la enseñanza si no revisamos simultáneamente cómo planificamos las clases y cómo evaluamos. En este espacio digital, el <strong>Equipo Grupo 6</strong> asumió cinco compromisos éticos innegociables:
-              </p>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
-                  <h3 class="font-bold text-sm text-[#003366]">1. Curaduría y Agencia Humana</h3>
-                  <p class="text-xs text-slate-600 mt-1">
-                    La IA funcionó como asistente técnico para optimizar tiempos de producción, pero la intencionalidad pedagógica, la estructura didáctica y la revisión crítica fueron íntegramente humanas.
-                  </p>
-                </div>
-                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
-                  <h3 class="font-bold text-sm text-[#003366]">2. Trazabilidad y Transparencia</h3>
-                  <p class="text-xs text-slate-600 mt-1">
-                    Cada recurso explicita qué modelo se empleó, cuál fue el prompt exacto, qué errores o alucinaciones surgieron y cómo se corrigieron artesanalmente.
-                  </p>
-                </div>
-                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
-                  <h3 class="font-bold text-sm text-[#003366]">3. Equidad e Inclusión (DUA)</h3>
-                  <p class="text-xs text-slate-600 mt-1">
-                    Conscientes de la brecha económica de las suscripciones pagas, priorizamos capas accesibles, software libre (Kdenlive, Git) y formatos multimodales (texto, audio, video).
-                  </p>
-                </div>
-                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
-                  <h3 class="font-bold text-sm text-[#003366]">4. Impacto en la Audiencia</h3>
-                  <p class="text-xs text-slate-600 mt-1">
-                    En los estudiantes de <em>Programación I</em>, el sitio promueve la autonomía, desmitifica el miedo al error y construye identidad profesional desde el primer año universitario.
-                  </p>
-                </div>
-              </div>
-
-              <blockquote class="p-5 rounded-2xl bg-sky-50 border-l-4 border-[#0284C7] text-xs sm:text-sm text-slate-800 italic">
-                "El valor de esta experiencia no está en la estética que devuelve un algoritmo, sino en la capacidad de mirar el recorrido completo. Evaluar hoy implica correr el foco del producto terminado y valorar el camino recorrido, la duda, la corrección del error y el criterio para comunicar una idea con voz propia."
-                <footer class="not-italic font-bold text-[#003366] mt-2">— Grupo 6 (Gómez Nieto, Larroca, Olmos y Rodríguez, 2026)</footer>
-              </blockquote>
-            </div>
-          </div>
-
-          <!-- Columna Derecha (5 cols): Formulario Institucional de Contacto y Feedback -->
-          <div class="lg:col-span-5">
-            <div class="bg-slate-50 rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-5">
-              <div>
-                <span class="text-xs font-bold uppercase tracking-wider text-[#0284C7]">
-                  Vinculación Académica · UTN-FRGP
-                </span>
-                <h2 class="text-xl font-extrabold text-[#0F172A] mt-1">
-                  Formulario de Contacto y Feedback Institucional
-                </h2>
-                <p class="text-xs text-slate-600 mt-1">
-                  Dejanos tus comentarios, sugerencias o consultas sobre la propuesta de e-Portfolios en <strong>Programación I</strong>.
-                </p>
-              </div>
-
-              <!-- Alerta de confirmación oculta por defecto -->
-              <div id="feedback-success-alert" class="hidden p-4 rounded-2xl bg-emerald-50 border border-emerald-300" role="alert"></div>
-
-              <form id="institutional-feedback-form" class="space-y-4">
-                <div>
-                  <label for="fb-nombre" class="block text-xs font-bold text-slate-700 mb-1">Nombre y Apellido *</label>
-                  <input id="fb-nombre" type="text" required placeholder="Ej.: Ing. María López" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm focus:outline-none focus:border-[#0284C7]" />
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label for="fb-email" class="block text-xs font-bold text-slate-700 mb-1">Correo Institucional *</label>
-                    <input id="fb-email" type="email" required placeholder="usuario@frgp.utn.edu.ar" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm focus:outline-none focus:border-[#0284C7]" />
-                  </div>
-                  <div>
-                    <label for="fb-rol" class="block text-xs font-bold text-slate-700 mb-1">Rol en la Comunidad *</label>
-                    <select id="fb-rol" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm focus:outline-none focus:border-[#0284C7]">
-                      <option value="Docente Evaluador">Docente / Evaluador</option>
-                      <option value="Estudiante Programación I">Estudiante Programación I</option>
-                      <option value="Colega LTE">Estudiante / Colega LTE</option>
-                      <option value="Visitante Institucional">Visitante Institucional</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div>
-                  <label for="fb-recurso" class="block text-xs font-bold text-slate-700 mb-1">Recurso o Aspecto a Valorar</label>
-                  <select id="fb-recurso" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm focus:outline-none focus:border-[#0284C7]">
-                    <option value="Propuesta General del Espacio Digital">Propuesta General del Espacio Digital</option>
-                    <option value="Unidad 2: Guía Introductoria (Texto con IA)">Unidad 2: Guía Introductoria (Texto con IA)</option>
-                    <option value="Unidad 3: Animación 2D Coevaluación">Unidad 3: Animación 2D Coevaluación</option>
-                    <option value="Unidad 4: Podcast Sonoro DUA">Unidad 4: Podcast Sonoro DUA</option>
-                    <option value="Unidad 5: Video Trazabilidad Retro 90s">Unidad 5: Video Trazabilidad Retro 90s</option>
-                    <option value="Unidad 6: Asistente Virtual Flotante">Unidad 6: Asistente Virtual Flotante</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label for="fb-mensaje" class="block text-xs font-bold text-slate-700 mb-1">Mensaje o Devolución Pedagógica *</label>
-                  <textarea id="fb-mensaje" rows="4" required placeholder="Escribí tu valoración o consulta para el Grupo 6..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm focus:outline-none focus:border-[#0284C7]"></textarea>
-                </div>
-
-                <button type="submit" class="w-full py-3 px-5 rounded-xl bg-[#0284C7] hover:bg-[#003366] text-white font-bold text-sm shadow-md transition flex items-center justify-center gap-2">
-                  <span>Enviar Feedback al Equipo Grupo 6</span>
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </button>
-              </form>
-            </div>
-          </div>
-
+        <div class="max-w-4xl space-y-3">
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+            Manifiesto Ético · Grupo 6 (UTN-FRGP)
+          </span>
+          <h2 id="titulo-declaracion-etica" class="text-2xl sm:text-3xl font-extrabold text-[#0F172A]">
+            Declaración de Uso Ético, Transparente y Responsable de la IA
+          </h2>
+          <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+            Incorporar Inteligencia Artificial Generativa en la educación superior tecnológica no alcanza para transformar la enseñanza si no revisamos simultáneamente cómo planificamos las clases y cómo evaluamos. En este espacio digital, el <strong>Equipo Grupo 6</strong> asumió cuatro compromisos éticos innegociables:
+          </p>
         </div>
 
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+            <div class="w-10 h-10 rounded-xl bg-[#003366] text-[#38BDF8] font-mono font-bold flex items-center justify-center text-sm">
+              01
+            </div>
+            <h3 class="font-bold text-base text-[#003366]">Curaduría y Agencia Humana</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              La IA funcionó como asistente técnico para optimizar tiempos de producción, pero la intencionalidad pedagógica, la estructura didáctica y la revisión crítica fueron íntegramente humanas.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+            <div class="w-10 h-10 rounded-xl bg-[#003366] text-[#38BDF8] font-mono font-bold flex items-center justify-center text-sm">
+              02
+            </div>
+            <h3 class="font-bold text-base text-[#003366]">Trazabilidad y Transparencia</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Cada recurso explicita qué modelo se empleó, cuál fue el prompt exacto, qué errores o alucinaciones surgieron y cómo se corrigieron artesanalmente.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+            <div class="w-10 h-10 rounded-xl bg-[#003366] text-[#38BDF8] font-mono font-bold flex items-center justify-center text-sm">
+              03
+            </div>
+            <h3 class="font-bold text-base text-[#003366]">Equidad e Inclusión (DUA)</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Conscientes de la brecha económica de las suscripciones pagas, priorizamos capas accesibles, software libre (Kdenlive, Git) y formatos multimodales (texto, audio, video).
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+            <div class="w-10 h-10 rounded-xl bg-[#003366] text-[#38BDF8] font-mono font-bold flex items-center justify-center text-sm">
+              04
+            </div>
+            <h3 class="font-bold text-base text-[#003366]">Impacto en la Audiencia</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              En los estudiantes de <em>Programación I</em>, el sitio promueve la autonomía, desmitifica el miedo al error y construye identidad profesional desde el primer año universitario.
+            </p>
+          </div>
+        </div>
+
+        <blockquote class="p-6 rounded-2xl bg-sky-50 border-l-4 border-[#0284C7] text-sm sm:text-base text-slate-800 italic">
+          "El valor de esta experiencia no está en la estética que devuelve un algoritmo, sino en la capacidad de mirar el recorrido completo. Evaluar hoy implica correr el foco del producto terminado y valorar el camino recorrido, la duda, la corrección del error y el criterio para comunicar una idea con voz propia."
+          <footer class="not-italic font-bold text-[#003366] mt-2 text-xs sm:text-sm">— Grupo 6 (Gómez Nieto, Larroca, Olmos y Rodríguez, 2026)</footer>
+        </blockquote>
+
         <!-- Navegación inferior -->
-        <div class="mt-12 pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
           <a href="video-trazabilidad.html" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-[#003366] transition">
             <span>← Anterior: Unidad 5 · Video Trazabilidad Formativa</span>
           </a>
@@ -464,21 +444,26 @@
   </main>
 
   <!-- ========================================================================
-       PIE DE PÁGINA INSTITUCIONAL UNIFICADO (FOOTER)
+       PIE DE PÁGINA INSTITUCIONAL UNIFICADO (FOOTER) CON LOGO UTN
        ======================================================================== -->
   <footer class="bg-[#0F172A] text-slate-300 border-t border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-8 border-b border-slate-800">
         <div class="md:col-span-5 space-y-3">
-          <div class="flex items-center gap-3">
-            <div class="w-9 h-9 rounded-lg bg-[#003366] border border-[#38BDF8]/40 flex items-center justify-center font-mono font-bold text-white text-sm">UTN</div>
+          <div class="flex items-center gap-3.5">
+            <img
+              src="assets/images/logo_utnBA.png"
+              alt="Logo Universidad Tecnológica Nacional (UTN)"
+              class="h-14 w-auto rounded-xl bg-white p-1.5 shadow-md shrink-0 object-contain"
+            />
             <div>
               <p class="font-bold text-white text-sm">Universidad Tecnológica Nacional</p>
-              <p class="text-xs text-slate-400">Facultad Regional General Pacheco (UTN-FRGP)</p>
+              <p class="text-xs text-[#38BDF8] font-medium">Licenciatura en Tecnología Educativa</p>
+              <p class="text-xs text-slate-400">Gestión de Recursos Digitales con IA Generativa</p>
             </div>
           </div>
           <p class="text-xs text-slate-400 leading-relaxed max-w-md">
-            Espacio digital desarrollado en el marco del Trabajo Integrador Final (TIF) de la asignatura <strong>Gestión de Recursos Digitales con IA Generativa</strong>, aplicado a <strong>Programación I</strong>.
+            Espacio digital desarrollado en el marco del Trabajo Integrador Final (TIF) de la asignatura <strong>Gestión de Recursos Digitales con IA Generativa</strong> (Licenciatura en Tecnología Educativa), aplicado a <strong>Programación I</strong> (UTN-FRGP).
           </p>
         </div>
 
@@ -506,7 +491,7 @@
       </div>
 
       <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
-        <p>© 2026 Grupo 6 · UTN-FRGP. Uso educativo bajo principios de transparencia ética de IA (UNESCO) y Normas APA 7ma edición.</p>
+        <p>© 2026 Grupo 6 · UTN. Uso educativo bajo principios de transparencia ética de IA (UNESCO) y Normas APA 7ma edición.</p>
         <a href="index.html" class="text-[#38BDF8] hover:underline font-medium">Volver al Inicio →</a>
       </div>
     </div>
