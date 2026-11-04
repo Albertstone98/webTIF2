@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Recurso 1 (Unidad 2): Guía Introductoria sobre Git, GitHub y e-Portfolios en Educación Superior generada y refinada con IA (ChatGPT)." />
+  <meta name="author" content="Grupo 6: Alejandro Gómez Nieto, Javier Agustín Larroca, Ignacio Olmos y José Alberto Rodríguez" />
+  <title>Unidad 2 · Texto con IA | Guía Introductoria Git, GitHub y e-Portfolios</title>
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            utn: {
+              navy: '#003366',
+              dark: '#0F172A',
+              blue: '#0284C7',
+              cyan: '#38BDF8',
+              light: '#F8FAFC'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Hoja de estilos personalizada -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="bg-[#F8FAFC] text-[#0F172A] antialiased selection:bg-[#38BDF8] selection:text-[#0F172A] flex flex-col min-h-screen">
+
+  <!-- Salto directo al contenido principal (Accesibilidad DUA) -->
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- ========================================================================
+       BARRA DE NAVEGACIÓN FIJA E IDÉNTICA EN TODAS LAS PÁGINAS (NAVBAR)
+       ======================================================================== -->
+  <header class="sticky top-0 z-40 bg-[#0F172A]/95 backdrop-blur-md border-b border-slate-800 text-white shadow-lg">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Navegación Principal">
+      <div class="flex items-center justify-between h-20">
+        
+        <a href="index.html" class="flex items-center gap-3 group focus:outline-none">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-[#003366] to-[#0284C7] border border-[#38BDF8]/40 flex items-center justify-center shadow-md group-hover:border-[#38BDF8] transition">
+            <span class="font-mono font-bold text-lg tracking-tighter text-white">UTN</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-bold text-sm sm:text-base tracking-tight text-white group-hover:text-[#38BDF8] transition">
+              e-Portfolios Git &amp; GitHub
+            </span>
+            <span class="text-[11px] text-slate-300 font-medium">
+              Programación I · UTN-FRGP · Grupo 6
+            </span>
+          </div>
+        </a>
+
+        <div class="hidden lg:flex items-center space-x-1">
+          <a href="index.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-[#38BDF8] transition">
+            Inicio
+          </a>
+          <a href="texto-introductorio.html" aria-current="page" class="px-3 py-2 rounded-lg text-sm font-semibold bg-[#0284C7] text-white shadow-sm transition">
+            U2 · Texto IA
+          </a>
+          <a href="animacion-coevaluacion.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-[#38BDF8] transition">
+            U3 · Animación 2D
+          </a>
+          <a href="podcast-sonoro.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-[#38BDF8] transition">
+            U4 · Podcast DUA
+          </a>
+          <a href="video-trazabilidad.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-[#38BDF8] transition">
+            U5 · Video Retro
+          </a>
+          <a href="creditos-etica.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-[#38BDF8] transition">
+            Créditos y Ética
+          </a>
+        </div>
+
+        <div class="lg:hidden">
+          <button id="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú de navegación" class="inline-flex items-center justify-center p-2.5 rounded-lg text-slate-200 hover:text-white hover:bg-slate-800 transition">
+            <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="hidden lg:hidden pb-4 pt-2 border-t border-slate-800 space-y-1">
+        <a href="index.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800">
+          1. Inicio (Planteo y Mapa Conceptual)
+        </a>
+        <a href="texto-introductorio.html" aria-current="page" class="block px-3 py-2.5 rounded-lg text-sm font-semibold bg-[#0284C7] text-white">
+          2. Unidad 2: Guía Introductoria (Texto con IA)
+        </a>
+        <a href="animacion-coevaluacion.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800">
+          3. Unidad 3: Animación Coevaluación (2D con IA)
+        </a>
+        <a href="podcast-sonoro.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800">
+          4. Unidad 4: Cápsulas Sonoras (Podcast DUA)
+        </a>
+        <a href="video-trazabilidad.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800">
+          5. Unidad 5: Video Trazabilidad Formativa
+        </a>
+        <a href="creditos-etica.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800">
+          6. Créditos, Normas APA y Marco Ético
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========================================================================
+       CONTENIDO PRINCIPAL (MAIN)
+       ======================================================================== -->
+  <main id="main-content" class="flex-grow">
+
+    <!-- ENCABEZADO TEMÁTICO DEL RECURSO 1 (UNIDAD 2) -->
+    <section class="bg-tech-grid text-white py-14 border-b border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap items-center gap-2 mb-4">
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#0284C7] text-white">
+            Recurso 1 · Unidad 2: Creación de Texto con IAG
+          </span>
+          <span class="px-3 py-1 rounded-full text-xs font-mono bg-slate-800 text-[#38BDF8] border border-slate-700">
+            Herramienta: ChatGPT (OpenAI) · Prompt Engineering Iterativo
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight max-w-4xl">
+          Guía Introductoria: Git, GitHub y e-Portfolios en Educación Superior
+        </h1>
+        <p class="mt-3 text-slate-300 text-base sm:text-lg max-w-3xl leading-relaxed">
+          Material didáctico destinado a estudiantes ingresantes de <strong>Programación I (UTN-FRGP)</strong> con conocimientos básicos de programación. Diseñado mediante un proceso en tres etapas: <em>1. Generación inicial</em>, <em>2. Refinamiento por Prompt Engineering</em> y <em>3. Evaluación crítica docente</em>.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTENEDOR PRINCIPAL: TEXTO EDUCATIVO + FICHA DE METADATOS -->
+    <section class="py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+          <!-- COLUMNA IZQUIERDA (8 cols): Contenedor del Texto Educativo Generado y Refinado -->
+          <div class="lg:col-span-8 space-y-8">
+
+            <!-- Selector de Versión del Texto (Refinado vs. Inicial) -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200">
+                <div>
+                  <span class="text-xs font-bold uppercase tracking-wider text-[#0284C7]">
+                    Material Educativo Curado
+                  </span>
+                  <h2 class="text-xl sm:text-2xl font-extrabold text-[#0F172A] mt-0.5">
+                    Lectura Didáctica para Estudiantes de Programación I
+                  </h2>
+                </div>
+                <!-- Botones de pestañas -->
+                <div class="inline-flex rounded-xl bg-slate-100 p-1 border border-slate-200" role="tablist">
+                  <button type="button" role="tab" aria-selected="true" data-tab-group="texto-u2" data-tab-target="#panel-texto-refinado" class="px-3.5 py-2 rounded-lg text-xs font-bold bg-[#0284C7] text-white shadow-sm transition">
+                    Versión Refinada (Definitiva)
+                  </button>
+                  <button type="button" role="tab" aria-selected="false" data-tab-group="texto-u2" data-tab-target="#panel-texto-inicial" class="px-3.5 py-2 rounded-lg text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
+                    Versión Inicial (1° Prompt)
+                  </button>
+                </div>
+              </div>
+
+              <!-- PANEL 1: TEXTO REFINADO DEFINITIVO (TP1 Unidad 2) -->
+              <article id="panel-texto-refinado" data-tab-panel="texto-u2" class="pt-6 space-y-6">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-semibold">
+                  <span>✓ Resultado validado tras aplicar Prompt Engineering y revisión docente</span>
+                </div>
+
+                <div class="space-y-6 text-slate-800 leading-relaxed">
+                  <header class="border-l-4 border-[#0284C7] pl-4">
+                    <h3 class="text-2xl font-extrabold text-[#003366]">
+                      Git, GitHub y e-Portfolios
+                    </h3>
+                    <p class="text-sm text-slate-500 mt-1">
+                      Guía de lectura rápida · Cátedra Programación I (Tecnicatura Universitaria en Programación - UTN-FRGP)
+                    </p>
+                  </header>
+
+                  <!-- Subsección 1: ¿Qué es Git? -->
+                  <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                    <h4 class="text-lg font-bold text-[#0F172A] flex items-center gap-2">
+                      <span class="w-7 h-7 rounded-lg bg-[#003366] text-white text-xs font-mono flex items-center justify-center">01</span>
+                      <span>¿Qué es Git?</span>
+                    </h4>
+                    <p class="text-sm sm:text-base text-slate-700">
+                      <strong>Git</strong> es un sistema de control de versiones que permite registrar los cambios realizados en un proyecto. Los <strong>commits</strong> permiten guardar cada modificación y conocer cómo evolucionó el trabajo a lo largo del tiempo.
+                    </p>
+                  </div>
+
+                  <!-- Subsección 2: ¿Qué es GitHub? -->
+                  <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                    <h4 class="text-lg font-bold text-[#0F172A] flex items-center gap-2">
+                      <span class="w-7 h-7 rounded-lg bg-[#0284C7] text-white text-xs font-mono flex items-center justify-center">02</span>
+                      <span>¿Qué es GitHub? (Diferencia clave con Git)</span>
+                    </h4>
+                    <p class="text-sm sm:text-base text-slate-700">
+                      <strong>GitHub</strong> es una plataforma que permite almacenar, compartir y colaborar en proyectos gestionados con Git. En síntesis: <strong>Git registra los cambios y GitHub permite alojar y compartir los proyectos.</strong>
+                    </p>
+                  </div>
+
+                  <!-- Subsección 3: Uso educativo y los Commits como Evidencia -->
+                  <div class="p-5 rounded-xl bg-sky-50/70 border border-sky-200 space-y-3">
+                    <h4 class="text-lg font-bold text-[#003366] flex items-center gap-2">
+                      <span class="w-7 h-7 rounded-lg bg-[#003366] text-[#38BDF8] text-xs font-mono flex items-center justify-center">03</span>
+                      <span>Uso educativo: Los Commits como evidencia en tu e-Portfolio</span>
+                    </h4>
+                    <p class="text-sm sm:text-base text-slate-700">
+                      En <strong>Programación I</strong>, los estudiantes pueden utilizar GitHub para crear un <strong>e-portfolio</strong> donde reúnan ejercicios y proyectos. Los <em>commits</em> permiten mostrar el <strong>proceso de aprendizaje</strong> y no solamente el resultado final.
+                    </p>
+                    <div class="bg-[#0F172A] text-slate-100 rounded-xl p-4 font-mono text-xs space-y-2 border border-slate-700">
+                      <div class="text-slate-400 font-sans text-xs font-semibold uppercase tracking-wider">
+                        Ejemplo académico de trazabilidad mediante commits en Programación I:
+                      </div>
+                      <div class="flex items-center gap-2 text-emerald-300">
+                        <span>commit #1 →</span>
+                        <code class="bg-slate-800 px-2 py-0.5 rounded text-white">"Creo el programa inicial"</code>
+                      </div>
+                      <div class="flex items-center gap-2 text-amber-300">
+                        <span>commit #2 →</span>
+                        <code class="bg-slate-800 px-2 py-0.5 rounded text-white">"Corrijo un error"</code>
+                      </div>
+                      <div class="flex items-center gap-2 text-sky-300">
+                        <span>commit #3 →</span>
+                        <code class="bg-slate-800 px-2 py-0.5 rounded text-white">"Agrego una nueva función"</code>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Subsección 4: Conclusión -->
+                  <div class="p-5 rounded-xl bg-[#003366] text-white space-y-1.5">
+                    <h4 class="text-base font-bold text-[#38BDF8] uppercase tracking-wider">
+                      Conclusión Didáctica
+                    </h4>
+                    <p class="text-sm sm:text-base text-slate-100">
+                      Git y GitHub pueden convertirse en herramientas útiles para <strong>organizar, documentar y visibilizar el aprendizaje</strong> durante una asignatura de programación, superando la entrega aislada de código sin contexto.
+                    </p>
+                  </div>
+                </div>
+              </article>
+
+              <!-- PANEL 2: TEXTO INICIAL (1° Prompt sin refinamiento estructural) -->
+              <article id="panel-texto-inicial" data-tab-panel="texto-u2" class="hidden pt-6 space-y-4">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-50 text-amber-900 border border-amber-200 text-xs font-semibold">
+                  <span>Primera salida de ChatGPT (antes del refinamiento por subtítulos y ejemplos puntuales)</span>
+                </div>
+
+                <div class="p-6 rounded-xl bg-slate-50 border border-slate-200 space-y-4 text-sm sm:text-base text-slate-700 leading-relaxed">
+                  <h3 class="text-xl font-bold text-slate-900">Introducción a Git, GitHub y los e-portfolios</h3>
+                  <p>
+                    En el aprendizaje de programación, <strong>Git y GitHub</strong> son herramientas que permiten organizar, guardar y compartir los proyectos desarrollados durante una materia.
+                  </p>
+                  <p>
+                    <strong>Git</strong> es un sistema de control de versiones que registra los cambios realizados en los archivos de un proyecto. Por ejemplo, un estudiante puede guardar diferentes versiones de un programa y consultar qué modificaciones realizó a lo largo del tiempo.
+                  </p>
+                  <p>
+                    <strong>GitHub</strong> es una plataforma que permite almacenar proyectos gestionados con Git en repositorios en línea. Además, facilita compartir los trabajos, colaborar con otras personas y mostrar proyectos realizados.
+                  </p>
+                  <p>
+                    Estas herramientas también pueden utilizarse para construir un <strong>e-portfolio académico</strong>. Un estudiante puede crear un repositorio donde reúna sus ejercicios, proyectos y actividades de Programación I. Los diferentes cambios registrados mediante <em>commits</em> permiten observar cómo evolucionó su trabajo.
+                  </p>
+                  <p>
+                    Por ejemplo, un estudiante puede comenzar subiendo un programa sencillo, luego corregir errores y posteriormente agregar nuevas funciones. Cada etapa queda registrada, permitiendo visualizar parte del proceso de aprendizaje y no solamente el resultado final.
+                  </p>
+                  <p>
+                    De esta manera, Git y GitHub pueden convertirse no solo en herramientas utilizadas para programar, sino también en recursos para <strong>documentar, organizar y mostrar el aprendizaje desarrollado durante una asignatura</strong>.
+                  </p>
+                </div>
+              </article>
+            </div>
+
+            <!-- Evaluación Comparativa del Contenido (Escala 1 a 5 del TP1) -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-[#0284C7]">
+                  Curaduría y Evaluación Crítica del Resultado
+                </span>
+                <h2 class="text-xl font-extrabold text-[#0F172A] mt-1">
+                  Comparación entre Resultado Inicial y Resultado Refinado (Escala 1 a 5)
+                </h2>
+                <p class="text-sm text-slate-600 mt-1">
+                  La reformulación del prompt mediante <em>Prompt Engineering</em> permitió elevar la claridad, organización y adecuación al perfil de ingresantes de Programación I.
+                </p>
+              </div>
+
+              <div class="space-y-4">
+                <!-- Criterio 1: Claridad -->
+                <div>
+                  <div class="flex justify-between text-xs font-semibold mb-1">
+                    <span>Claridad expositiva y diferenciación Git / GitHub</span>
+                    <span class="text-slate-600">Inicial: 3.5/5 · <strong class="text-emerald-700">Refinado: 5.0/5</strong></span>
+                  </div>
+                  <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden flex">
+                    <div class="bg-sky-400 h-full" style="width: 70%" title="Inicial: 3.5"></div>
+                    <div class="bg-emerald-500 h-full" style="width: 30%" title="Mejora Refinado: 5.0"></div>
+                  </div>
+                </div>
+
+                <!-- Criterio 2: Adecuación al público -->
+                <div>
+                  <div class="flex justify-between text-xs font-semibold mb-1">
+                    <span>Adecuación al público objetivo (Ingresantes 1° año UTN)</span>
+                    <span class="text-slate-600">Inicial: 3.5/5 · <strong class="text-emerald-700">Refinado: 5.0/5</strong></span>
+                  </div>
+                  <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden flex">
+                    <div class="bg-sky-400 h-full" style="width: 70%"></div>
+                    <div class="bg-emerald-500 h-full" style="width: 30%"></div>
+                  </div>
+                </div>
+
+                <!-- Criterio 3: Estructura y subtítulos -->
+                <div>
+                  <div class="flex justify-between text-xs font-semibold mb-1">
+                    <span>Organización visual (Subtítulos y párrafos breves DUA)</span>
+                    <span class="text-slate-600">Inicial: 3.5/5 · <strong class="text-emerald-700">Refinado: 5.0/5</strong></span>
+                  </div>
+                  <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden flex">
+                    <div class="bg-sky-400 h-full" style="width: 70%"></div>
+                    <div class="bg-emerald-500 h-full" style="width: 30%"></div>
+                  </div>
+                </div>
+
+                <!-- Criterio 4: Utilidad pedagógica -->
+                <div>
+                  <div class="flex justify-between text-xs font-semibold mb-1">
+                    <span>Utilidad pedagógica y ejemplificación de commits</span>
+                    <span class="text-slate-600">Inicial: 3.5/5 · <strong class="text-emerald-700">Refinado: 4.5/5</strong></span>
+                  </div>
+                  <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden flex">
+                    <div class="bg-sky-400 h-full" style="width: 70%"></div>
+                    <div class="bg-emerald-500 h-full" style="width: 20%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- COLUMNA DERECHA (4 cols): FICHA DE METADATOS DEL RECURSO Y PROMPTS -->
+          <aside class="lg:col-span-4 space-y-6">
+
+            <!-- Tarjeta de Ficha Técnica y Autoría -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+              <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <h2 class="font-extrabold text-base text-[#0F172A]">Ficha de Metadatos (U2)</h2>
+                <span class="px-2.5 py-0.5 rounded text-xs font-bold bg-sky-100 text-[#003366]">TP N°1</span>
+              </div>
+
+              <dl class="space-y-3 text-xs">
+                <div>
+                  <dt class="font-bold text-slate-500 uppercase">Título del Trabajo Original</dt>
+                  <dd class="text-slate-800 font-medium mt-0.5">
+                    Inteligencia Artificial y e-Portfolios Educativos: Generación de Contenidos para Programación I
+                  </dd>
+                </div>
+                <div>
+                  <dt class="font-bold text-slate-500 uppercase">Herramienta de IA Empleada</dt>
+                  <dd class="text-slate-800 font-medium mt-0.5">
+                    ChatGPT (OpenAI) · Modelo de lenguaje generativo
+                  </dd>
+                </div>
+                <div>
+                  <dt class="font-bold text-slate-500 uppercase">Público Destinatario</dt>
+                  <dd class="text-slate-800 mt-0.5">
+                    Estudiantes universitarios ingresantes de Programación I (UTN-FRGP) que comienzan a utilizar control de versiones.
+                  </dd>
+                </div>
+                <div>
+                  <dt class="font-bold text-slate-500 uppercase">Declaración de Autoría y Curaduría</dt>
+                  <dd class="text-slate-800 mt-0.5">
+                    <strong>Grupo 6:</strong> Alejandro Gómez Nieto, Javier Agustín Larroca, Ignacio Olmos y José Alberto Rodríguez. Diseño de prompts, iteración crítica y validación docente.
+                  </dd>
+                </div>
+              </dl>
+            </div>
+
+            <!-- Tarjeta Oscura: Prompt Inicial y Prompt Refinado -->
+            <div class="bg-[#0F172A] text-white rounded-2xl border border-slate-800 p-6 shadow-lg space-y-5">
+              <div>
+                <span class="text-[11px] font-mono uppercase tracking-wider text-[#38BDF8]">
+                  Trazabilidad de Prompts
+                </span>
+                <h3 class="font-bold text-base mt-0.5">Prompts Utilizados en ChatGPT</h3>
+              </div>
+
+              <!-- Prompt 1 -->
+              <div class="space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-mono font-semibold text-amber-300">1. Prompt Inicial</span>
+                  <button type="button" data-copy-target="prompt-u2-inicial" class="text-[11px] font-mono px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition">
+                    Copiar
+                  </button>
+                </div>
+                <pre id="prompt-u2-inicial" class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 whitespace-pre-wrap leading-relaxed font-mono">Actúa como docente universitario de Programación I. Genera un texto introductorio sobre Git y GitHub dirigido a estudiantes con conocimientos básicos de programación. Explica qué son, para qué sirven y cómo pueden utilizarse para construir un e-portfolio académico. Utiliza lenguaje claro, ejemplos sencillos y evita terminología técnica innecesaria.</pre>
+              </div>
+
+              <!-- Prompt 2 -->
+              <div class="space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-mono font-semibold text-emerald-300">2. Prompt de Refinamiento</span>
+                  <button type="button" data-copy-target="prompt-u2-refinado" class="text-[11px] font-mono px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition">
+                    Copiar
+                  </button>
+                </div>
+                <pre id="prompt-u2-refinado" class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 whitespace-pre-wrap leading-relaxed font-mono">Revisa el texto anterior y mejóralo. Diferencia claramente Git de GitHub, explica cómo los commits permiten documentar el proceso de aprendizaje y relaciona GitHub con la construcción de un e-portfolio. Utiliza lenguaje accesible para estudiantes universitarios de Programación I, incorpora un ejemplo académico y organiza el contenido mediante subtítulos y párrafos breves.</pre>
+              </div>
+            </div>
+
+            <!-- Dimensiones Éticas del Uso de IA en Educación (UNESCO, 2023) -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-3">
+              <h3 class="font-bold text-sm text-[#003366] uppercase tracking-wider">
+                Principios de Uso Responsable (UNESCO)
+              </h3>
+              <ul class="space-y-2 text-xs text-slate-700">
+                <li><strong>• Transparencia:</strong> Se informa explícitamente cuándo un contenido fue generado o asistido con IA.</li>
+                <li><strong>• Responsabilidad:</strong> El equipo docente revisa y valida la exactitud conceptual antes de su publicación.</li>
+                <li><strong>• Mitigación de Sesgos:</strong> Evaluación crítica para evitar imprecisiones o generalizaciones.</li>
+                <li><strong>• Equidad y Privacidad:</strong> Sin inclusión de datos personales o sensibles de estudiantes en los prompts.</li>
+              </ul>
+            </div>
+
+          </aside>
+
+        </div>
+
+        <!-- Navegación secuencial entre recursos -->
+        <div class="mt-12 pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <a href="index.html" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-[#003366] transition">
+            <span>← Volver al Inicio y Mapa Conceptual</span>
+          </a>
+          <a href="animacion-coevaluacion.html" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#0284C7] hover:bg-[#003366] text-white text-sm font-bold shadow-sm transition">
+            <span>Siguiente Recurso: Unidad 3 · Animación 2D Coevaluación →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       PIE DE PÁGINA INSTITUCIONAL UNIFICADO (FOOTER)
+       ======================================================================== -->
+  <footer class="bg-[#0F172A] text-slate-300 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-8 border-b border-slate-800">
+        <div class="md:col-span-5 space-y-3">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-lg bg-[#003366] border border-[#38BDF8]/40 flex items-center justify-center font-mono font-bold text-white text-sm">UTN</div>
+            <div>
+              <p class="font-bold text-white text-sm">Universidad Tecnológica Nacional</p>
+              <p class="text-xs text-slate-400">Facultad Regional General Pacheco (UTN-FRGP)</p>
+            </div>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed max-w-md">
+            Espacio digital desarrollado en el marco del Trabajo Integrador Final (TIF) de la asignatura <strong>Gestión de Recursos Digitales con IA Generativa</strong>, aplicado a <strong>Programación I</strong>.
+          </p>
+        </div>
+
+        <div class="md:col-span-4 space-y-2">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-[#38BDF8]">Accesos Rápidos (Sitemap)</h3>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs">
+            <li><a href="index.html" class="hover:text-[#38BDF8] transition">1. Inicio / Planteo</a></li>
+            <li><a href="texto-introductorio.html" class="hover:text-[#38BDF8] transition">2. Texto con IA (U2)</a></li>
+            <li><a href="animacion-coevaluacion.html" class="hover:text-[#38BDF8] transition">3. Animación 2D (U3)</a></li>
+            <li><a href="podcast-sonoro.html" class="hover:text-[#38BDF8] transition">4. Podcast DUA (U4)</a></li>
+            <li><a href="video-trazabilidad.html" class="hover:text-[#38BDF8] transition">5. Video Retro (U5)</a></li>
+            <li><a href="creditos-etica.html" class="hover:text-[#38BDF8] transition">6. Créditos y Ética</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-3 space-y-2">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-[#38BDF8]">Equipo Autor · Grupo 6</h3>
+          <ul class="text-xs space-y-1 text-slate-300">
+            <li>• Alejandro Gómez Nieto</li>
+            <li>• Javier Agustín Larroca</li>
+            <li>• Ignacio Olmos</li>
+            <li>• José Alberto Rodríguez</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+        <p>© 2026 Grupo 6 · UTN-FRGP. Uso educativo bajo principios de transparencia ética de IA (UNESCO) y Normas APA 7ma edición.</p>
+        <a href="creditos-etica.html" class="text-[#38BDF8] hover:underline font-medium">Ver Declaración Ética y Créditos APA →</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       COMPONENTE TRANSVERSAL OBLIGATORIO: WIDGET CHATBOT FLOTANTE (UNIDAD 6)
+       ======================================================================== -->
+  <div class="fixed bottom-5 right-5 z-50 flex flex-col items-end">
+    <section id="chatbot-window" aria-label="Asistente Virtual Programación I - UTN" class="chatbot-window hidden-chat mb-3 w-[340px] sm:w-[380px] bg-slate-50 rounded-2xl shadow-2xl border border-slate-300 overflow-hidden flex flex-col max-h-[540px]">
+      <header class="bg-gradient-to-r from-[#003366] to-[#0F172A] text-white px-4 py-3.5 flex items-center justify-between border-b border-slate-700">
+        <div class="flex items-center gap-2.5">
+          <div class="relative">
+            <div class="w-9 h-9 rounded-full bg-[#0284C7] flex items-center justify-center font-bold text-xs border border-[#38BDF8]">BOT</div>
+            <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-[#0F172A]"></span>
+          </div>
+          <div>
+            <h2 class="font-bold text-xs sm:text-sm leading-tight">Asistente Virtual Programación I - UTN</h2>
+            <p class="text-[11px] text-sky-300">Tutor de e-Portfolios Git/GitHub · Unidad 6</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-1">
+          <button id="chatbot-reset" type="button" title="Reiniciar conversación" aria-label="Reiniciar conversación" class="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+          </button>
+          <button id="chatbot-close" type="button" title="Cerrar asistente" aria-label="Cerrar ventana de chat" class="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+        </div>
+      </header>
+
+      <div id="chatbot-messages" class="p-3.5 space-y-3 overflow-y-auto custom-scrollbar flex-1 min-h-[260px] max-h-[320px] bg-slate-100/80" aria-live="polite"></div>
+
+      <div class="px-3 py-2 bg-white border-t border-slate-200 flex items-center gap-1.5 overflow-x-auto custom-scrollbar">
+        <button type="button" data-question="¿Cuál es la diferencia entre Git y GitHub?" class="chatbot-chip shrink-0 text-[11px] font-medium px-2.5 py-1 rounded-full bg-sky-50 text-[#0284C7] hover:bg-[#0284C7] hover:text-white border border-sky-200 transition">
+          ¿Git vs GitHub?
+        </button>
+        <button type="button" data-question="¿Por qué los commits son evidencia de aprendizaje?" class="chatbot-chip shrink-0 text-[11px] font-medium px-2.5 py-1 rounded-full bg-sky-50 text-[#0284C7] hover:bg-[#0284C7] hover:text-white border border-sky-200 transition">
+          Commits y README
+        </button>
+        <button type="button" data-question="¿Cómo se evalúan las entregas en Programación I?" class="chatbot-chip shrink-0 text-[11px] font-medium px-2.5 py-1 rounded-full bg-sky-50 text-[#0284C7] hover:bg-[#0284C7] hover:text-white border border-sky-200 transition">
+          Evaluación
+        </button>
+      </div>
+
+      <form id="chatbot-form" class="p-2.5 bg-white border-t border-slate-200 flex items-center gap-2">
+        <label for="chatbot-input" class="sr-only">Escribí tu consulta</label>
+        <input id="chatbot-input" type="text" placeholder="Consultá sobre Git, commits, entregas..." autocomplete="off" class="flex-1 text-xs sm:text-sm px-3 py-2 rounded-xl border border-slate-300 focus:outline-none focus:border-[#0284C7] bg-slate-50 text-slate-900" />
+        <button type="submit" aria-label="Enviar consulta" class="px-3.5 py-2 rounded-xl bg-[#0284C7] hover:bg-[#003366] text-white font-semibold text-xs sm:text-sm transition flex items-center gap-1 shadow-sm">
+          <span>Enviar</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+        </button>
+      </form>
+    </section>
+
+    <button id="chatbot-toggle" type="button" aria-expanded="false" aria-controls="chatbot-window" aria-label="Abrir Asistente Virtual de Programación I" class="chatbot-pulse relative w-14 h-14 rounded-full bg-gradient-to-br from-[#003366] to-[#0284C7] text-white shadow-xl hover:scale-105 transition flex items-center justify-center border-2 border-[#38BDF8]">
+      <span id="chatbot-badge" class="absolute -top-1 -right-1 px-1.5 py-0.5 text-[10px] font-extrabold bg-rose-500 text-white rounded-full border-2 border-white shadow">1</span>
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+      </svg>
+    </button>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

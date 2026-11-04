@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Recurso 4 (Unidad 5): Trazabilidad Formativa: El proceso como evidencia de aprendizaje. Video digital con IA (Google Flow / Veo) y estética retroinformática de los 90." />
+  <meta name="author" content="Grupo 6: Alejandro Gómez Nieto, Javier Agustín Larroca, Ignacio Olmos y José Alberto Rodríguez" />
+  <title>Unidad 5 · Video Digital con IA | Trazabilidad Formativa en Git/GitHub</title>
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            utn: {
+              navy: '#003366',
+              dark: '#0F172A',
+              blue: '#0284C7',
+              cyan: '#38BDF8',
+              light: '#F8FAFC'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Hoja de estilos personalizada -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="bg-[#F8FAFC] text-[#0F172A] antialiased selection:bg-[#38BDF8] selection:text-[#0F172A] flex flex-col min-h-screen">
+
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- ========================================================================
+       BARRA DE NAVEGACIÓN FIJA E IDÉNTICA EN TODAS LAS PÁGINAS (NAVBAR)
+       ======================================================================== -->
+  <header class="sticky top-0 z-40 bg-[#0F172A]/95 backdrop-blur-md border-b border-slate-800 text-white shadow-lg">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Navegación Principal">
+      <div class="flex items-center justify-between h-20">
+        
+        <a href="index.html" class="flex items-center gap-3 group focus:outline-none">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-[#003366] to-[#0284C7] border border-[#38BDF8]/40 flex items-center justify-center shadow-md group-hover:border-[#38BDF8] transition">
+            <span class="font-mono font-bold text-lg tracking-tighter text-white">UTN</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-bold text-sm sm:text-base tracking-tight text-white group-hover:text-[#38BDF8] transition">
+              e-Portfolios Git &amp; GitHub
+            </span>
+            <span class="text-[11px] text-slate-300 font-medium">
+              Programación I · UTN-FRGP · Grupo 6
+            </span>
+          </div>
+        </a>
+
+        <div class="hidden lg:flex items-center space-x-1">
+          <a href="index.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-[#38BDF8] transition">
+            Inicio
+          </a>
+          <a href="texto-introductorio.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-[#38BDF8] transition">
+            U2 · Texto IA
+          </a>
+          <a href="animacion-coevaluacion.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-[#38BDF8] transition">
+            U3 · Animación 2D
+          </a>
+          <a href="podcast-sonoro.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-[#38BDF8] transition">
+            U4 · Podcast DUA
+          </a>
+          <a href="video-trazabilidad.html" aria-current="page" class="px-3 py-2 rounded-lg text-sm font-semibold bg-[#0284C7] text-white shadow-sm transition">
+            U5 · Video Retro
+          </a>
+          <a href="creditos-etica.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-[#38BDF8] transition">
+            Créditos y Ética
+          </a>
+        </div>
+
+        <div class="lg:hidden">
+          <button id="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú de navegación" class="inline-flex items-center justify-center p-2.5 rounded-lg text-slate-200 hover:text-white hover:bg-slate-800 transition">
+            <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="hidden lg:hidden pb-4 pt-2 border-t border-slate-800 space-y-1">
+        <a href="index.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800">
+          1. Inicio (Planteo y Mapa Conceptual)
+        </a>
+        <a href="texto-introductorio.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800">
+          2. Unidad 2: Guía Introductoria (Texto con IA)
+        </a>
+        <a href="animacion-coevaluacion.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800">
+          3. Unidad 3: Animación Coevaluación (2D con IA)
+        </a>
+        <a href="podcast-sonoro.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800">
+          4. Unidad 4: Cápsulas Sonoras (Podcast DUA)
+        </a>
+        <a href="video-trazabilidad.html" aria-current="page" class="block px-3 py-2.5 rounded-lg text-sm font-semibold bg-[#0284C7] text-white">
+          5. Unidad 5: Video Trazabilidad Formativa
+        </a>
+        <a href="creditos-etica.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800">
+          6. Créditos, Normas APA y Marco Ético
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========================================================================
+       CONTENIDO PRINCIPAL (MAIN)
+       ======================================================================== -->
+  <main id="main-content" class="flex-grow">
+
+    <!-- ENCABEZADO TEMÁTICO DEL RECURSO 4 (UNIDAD 5) -->
+    <section class="bg-tech-grid text-white py-14 border-b border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap items-center gap-2 mb-4">
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#0284C7] text-white">
+            Recurso 4 · Unidad 5: Video Digital con IA
+          </span>
+          <span class="px-3 py-1 rounded-full text-xs font-mono bg-purple-500/20 text-purple-300 border border-purple-400/30">
+            Estética Retroinformática 90s (CRT / Windows 95) · Google Flow (Veo) + Kdenlive
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight max-w-4xl">
+          Trazabilidad Formativa: El proceso como evidencia de aprendizaje
+        </h1>
+        <p class="mt-3 text-slate-300 text-base sm:text-lg max-w-3xl leading-relaxed">
+          Recurso audiovisual narrativo e institucional (14 planos en relación de aspecto 16:9) que expone la transición metodológica desde el modelo tradicional de entrega de archivos estáticos <code>.ZIP</code> hacia la adopción de <strong>Git y GitHub como e-Portfolios</strong> en <em>Programación I (UTN-FRGP)</em>.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 1: REPRODUCTOR DE VIDEO PANORÁMICO (16:9) CON ESTÉTICA RETRO 90s -->
+    <section class="py-12 bg-white border-b border-slate-200" aria-labelledby="titulo-video-retro">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+          <!-- Contenedor Retro Windows 95 / Monitor CRT (8 columnas) -->
+          <div class="lg:col-span-8">
+            <div class="win95-window p-2 sm:p-3 rounded-sm">
+              <!-- Barra de título estilo Windows 95 / Herramienta CASE años 90 -->
+              <div class="win95-titlebar px-3 py-1.5 flex items-center justify-between text-xs font-bold mb-2">
+                <div class="flex items-center gap-2">
+                  <span class="inline-block w-3 h-3 bg-emerald-400 border border-black"></span>
+                  <span id="titulo-video-retro">CASE_UTN_95.EXE - Trazabilidad formativa: el proceso como evidencia de aprendizaje</span>
+                </div>
+                <div class="flex items-center gap-1 font-mono text-[10px]">
+                  <span class="px-1.5 py-0.5 bg-[#C0C0C0] text-black border border-black">_</span>
+                  <span class="px-1.5 py-0.5 bg-[#C0C0C0] text-black border border-black">□</span>
+                  <span class="px-1.5 py-0.5 bg-[#C0C0C0] text-black border border-black">X</span>
+                </div>
+              </div>
+
+              <!-- ==============================================================
+                   INTEGRACIÓN DEL VIDEO DE YOUTUBE (UNIDAD 5)
+                   Enlace oficial del proyecto: https://youtu.be/LVCDtot_QMc
+                   Para cambiar el video, reemplazar el ID después de /embed/
+                   ============================================================== -->
+              <div class="crt-frame rounded bg-black aspect-video relative">
+                <iframe
+                  class="w-full h-full relative z-20"
+                  src="https://www.youtube.com/embed/LVCDtot_QMc"
+                  title="Git y GitHub como E-Portfolios: visibilización de la trayectoria formativa (Unidad 5)"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen>
+                </iframe>
+              </div>
+
+              <!-- Barra de estado inferior estilo retro -->
+              <div class="mt-2 px-3 py-2 bg-[#B0B0B0] border border-slate-600 flex flex-wrap items-center justify-between gap-2 text-xs font-mono text-slate-900">
+                <span>ESTADO: 14 PLANOS ENSAMBLADOS · AUDIO FOLEY DIEGÉTICO (CRT / RELÉ / TECLADO MECÁNICO)</span>
+                <a href="https://youtu.be/LVCDtot_QMc" target="_blank" rel="noopener noreferrer" class="px-3 py-1 bg-[#000080] hover:bg-blue-900 text-white font-bold rounded-sm transition">
+                  Ver en YouTube (https://youtu.be/LVCDtot_QMc) ↗
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Columna Derecha (4 cols): Contraste Pedagógico del Video (Estudiante vs Docente con IA) -->
+          <aside class="lg:col-span-4 space-y-6">
+            <div class="bg-[#0F172A] text-white rounded-2xl border border-slate-800 p-6 shadow-xl space-y-4">
+              <span class="text-xs font-mono uppercase tracking-wider text-[#38BDF8]">
+                Tesis Audiovisual del Recurso
+              </span>
+              <h2 class="text-lg font-extrabold">
+                Problematizar los Atajos de IA frente al Proceso Cognitivo
+              </h2>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                El video contrapone en pantalla dividida dos modos de relación con la Inteligencia Artificial en <em>Programación I</em>:
+              </p>
+
+              <!-- Panel Izquierdo Simulado: Cruz Roja -->
+              <div class="p-3.5 rounded-xl bg-rose-950/50 border border-rose-500/40 space-y-1">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-mono font-bold text-rose-300">[✕] Estudiante usa IA para resolver</span>
+                  <span class="text-[10px] font-mono bg-rose-600 text-white px-1.5 py-0.5 rounded">INVÁLIDO</span>
+                </div>
+                <p class="text-xs text-slate-300">
+                  Entrega de un producto cerrado (<code>.ZIP</code>) generado automáticamente sin comprender la lógica ni dejar rastro de elaboración.
+                </p>
+              </div>
+
+              <!-- Panel Derecho Simulado: Tilde Verde -->
+              <div class="p-3.5 rounded-xl bg-emerald-950/50 border border-emerald-500/40 space-y-1">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-mono font-bold text-emerald-300">[✓] Docente usa IA para diseñar el desafío</span>
+                  <span class="text-[10px] font-mono bg-emerald-600 text-white px-1.5 py-0.5 rounded">VALIDADO</span>
+                </div>
+                <p class="text-xs text-slate-300">
+                  Evaluación apoyada en el árbol cronológico de Git donde el estudiante demuestra cómo detectó errores, iteró y defendió su código.
+                </p>
+              </div>
+            </div>
+
+            <!-- los 5 Ejes del Prompt Engineering Sistemático -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-3">
+              <h3 class="font-bold text-sm text-[#003366] uppercase tracking-wider">
+                Arquitectura del Prompt en 5 Ejes
+              </h3>
+              <ol class="space-y-2 text-xs text-slate-700 list-decimal list-inside">
+                <li><strong>Parámetros técnicos fijos:</strong> Formato 16:9, movimiento continuo, cámara fija y bloqueada.</li>
+                <li><strong>Anchor Visual (Años 90):</strong> Monitor CRT curvo, <em>scanlines</em>, interfaz Windows 95 (<code>#C0C0C0</code>), brillo de fósforo.</li>
+                <li><strong>Microacciones por segundos:</strong> Segmentación temporal (<code>0–3s</code>, <code>3–6s</code>, <code>6–8s</code>) para evitar imágenes congeladas.</li>
+                <li><strong>Negative Prompting explícito:</strong> Bloqueo estricto de voces, diálogos o música ambiental genérica.</li>
+                <li><strong>Diseño sonoro diegético (Foley):</strong> Clics de teclado mecánico, relés secos, sello mecánico y zumbido CRT.</li>
+              </ol>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: EXPLICACIÓN DEL FLUJO PEDAGÓGICO (1. ISSUE -> 2. COMMITS -> 3. PR -> 4. MERGE) -->
+    <section class="py-12 bg-[#F8FAFC] border-b border-slate-200" aria-labelledby="titulo-flujo">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div class="max-w-3xl">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#0284C7]">
+            Placa Esquemática Institucional (Plano 12 del Video)
+          </span>
+          <h2 id="titulo-flujo" class="text-2xl sm:text-3xl font-extrabold text-[#0F172A] mt-1">
+            Flujo Pedagógico de Trazabilidad en 4 Etapas
+          </h2>
+          <p class="text-sm text-slate-600 mt-1">
+            Cada etapa del aprendizaje en <strong>Programación I</strong> queda anclada a un nodo cronológico auditable dentro del árbol de Git del estudiante:
+          </p>
+        </div>
+
+        <!-- Las 4 Tarjetas del Flujo conectadas al Árbol de Git -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
+
+          <!-- Etapa 1: Issue -->
+          <article class="bg-white rounded-2xl border-2 border-amber-400 p-6 shadow-sm flex flex-col justify-between relative">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-2.5 py-1 rounded bg-amber-100 text-amber-900 font-mono font-bold text-xs">PASO 01</span>
+                <span class="font-mono text-xs text-slate-400">#2B0D</span>
+              </div>
+              <h3 class="font-extrabold text-base text-[#0F172A] mb-2">
+                1. Detecta y documenta el error (Issue)
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                El estudiante identifica una falla lógica o requerimiento en su programa y abre un <strong>Issue</strong> describiendo el síntoma, las entradas probadas y el comportamiento esperado.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-mono text-amber-700">
+              ● Nodo inicial de diagnóstico
+            </div>
+          </article>
+
+          <!-- Etapa 2: Commits -->
+          <article class="bg-white rounded-2xl border-2 border-[#0284C7] p-6 shadow-sm flex flex-col justify-between relative">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-2.5 py-1 rounded bg-sky-100 text-[#003366] font-mono font-bold text-xs">PASO 02</span>
+                <span class="font-mono text-xs text-slate-400">#2BC0</span>
+              </div>
+              <h3 class="font-extrabold text-base text-[#0F172A] mb-2">
+                2. Corrige de forma atómica y modular (Commits)
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                En lugar de reescribir todo de golpe, registra avances incrementales mediante <strong>Commits</strong> con mensajes claros que evidencian su razonamiento algorítmico paso a paso.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-mono text-[#0284C7]">
+              ● Rama de desarrollo (#10001 → #06051)
+            </div>
+          </article>
+
+          <!-- Etapa 3: Pull Request -->
+          <article class="bg-white rounded-2xl border-2 border-purple-500 p-6 shadow-sm flex flex-col justify-between relative">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-2.5 py-1 rounded bg-purple-100 text-purple-900 font-mono font-bold text-xs">PASO 03</span>
+                <span class="font-mono text-xs text-slate-400">#7BC1</span>
+              </div>
+              <h3 class="font-extrabold text-base text-[#0F172A] mb-2">
+                3. Argumenta la solución alcanzada (Pull Request)
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Abre un <strong>Pull Request</strong> vinculando el Issue original, fundamentando por qué su solución funciona y documentando el aprendizaje en el archivo <code>README.md</code>.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-mono text-purple-700">
+              ● Defensa técnica y metacognición
+            </div>
+          </article>
+
+          <!-- Etapa 4: Merge Docente -->
+          <article class="bg-emerald-950 text-white rounded-2xl border-2 border-emerald-400 p-6 shadow-md flex flex-col justify-between relative">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-2.5 py-1 rounded bg-emerald-400 text-slate-950 font-mono font-bold text-xs">PASO 04 ✓</span>
+                <span class="font-mono text-xs text-emerald-300">#2MT1</span>
+              </div>
+              <h3 class="font-extrabold text-base text-white mb-2">
+                4. Validación y cierre docente (Aprobado / Merge)
+              </h3>
+              <p class="text-xs sm:text-sm text-emerald-100 leading-relaxed">
+                El docente audita el recorrido completo, brinda retroalimentación formativa y aprueba el <strong>Merge</strong> hacia la rama principal del e-Portfolio del estudiante.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-emerald-800 text-[11px] font-mono text-emerald-300 font-bold">
+              ✓ SELLO DE APROBACIÓN DOCENTE
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: DOCUMENTACIÓN DE PROMPTS, AJUSTES DE ITERACIÓN Y TABLA COMPARATIVA -->
+    <section class="py-12 bg-white" aria-labelledby="titulo-iteraciones">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+
+        <!-- Ajustes Críticos de Iteración durante la Producción -->
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-[#003366] bg-sky-100 px-3 py-1 rounded-full">
+            Interacción Humana con el Modelo Generativo
+          </span>
+          <h2 id="titulo-iteraciones" class="text-2xl sm:text-3xl font-extrabold text-[#0F172A] mt-3">
+            Desvíos Técnicos Detectados y Ajustes de Iteración
+          </h2>
+          <p class="text-sm text-slate-600 mt-1 max-w-3xl">
+            Durante la generación clip a clip en <strong>Google Flow (Veo)</strong> y el montaje en <strong>Kdenlive</strong>, el equipo identificó tres limitaciones del modelo de IA y aplicó ajustes de ingeniería de prompts:
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+              <span class="px-2.5 py-1 rounded text-xs font-bold bg-rose-100 text-rose-800">Desvío 1 · Alucinación Tipográfica</span>
+              <h3 class="font-bold text-base text-slate-900">Saturación de texto en diagramas</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                En planos densos (como el Plano 12), el modelo colapsaba al intentar renderizar explicaciones extensas y ramas de Git simultáneas, deformando caracteres.
+              </p>
+              <div class="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-900">
+                <strong>Ajuste aplicado:</strong> Se simplificó la carga textual a palabras clave de alto contraste y jerarquía visual directa (<code>1. ISSUE</code>, <code>2. COMMITS</code>, <code>3. PULL REQUEST</code>, <code>4. MERGE DOCENTE</code>).
+              </div>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+              <span class="px-2.5 py-1 rounded text-xs font-bold bg-amber-100 text-amber-900">Desvío 2 · Ritmo Visual</span>
+              <h3 class="font-bold text-base text-slate-900">Ruptura de la monotonía técnica</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                La secuencia original acumulaba tres pantallas consecutivas de interfaces de código y terminal (Planos 10, 11 y 12), generando un ritmo visual plano.
+              </p>
+              <div class="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-900">
+                <strong>Ajuste aplicado:</strong> Se intervino el Plano 12 para transformarlo en una placa esquemática estilo herramienta CASE institucional de Windows 95, elevando el discurso pedagógico.
+              </div>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+              <span class="px-2.5 py-1 rounded text-xs font-bold bg-purple-100 text-purple-900">Desvío 3 · Coherencia Estética</span>
+              <h3 class="font-bold text-base text-slate-900">Consistencia de iluminación y cámara</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                El modelo tendía a introducir iluminación moderna o paneos cinemáticos innecesarios entre tomas sucesivas.
+              </p>
+              <div class="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-900">
+                <strong>Ajuste aplicado:</strong> Se forzó en cada prompt el encuadre fijo bloqueado y el contraste lumínico específico (brillo frío del monitor CRT frente a la penumbra).
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Documentación de los Prompts Exactos Utilizados (Unidad 5) -->
+        <div class="bg-[#0F172A] text-white rounded-3xl p-6 sm:p-8 border border-slate-800 space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-4">
+            <div>
+              <span class="text-xs font-mono uppercase tracking-wider text-[#38BDF8]">
+                Prompts Técnicos de Generación de Video (Google Flow / Veo)
+              </span>
+              <h3 class="text-lg sm:text-xl font-bold mt-0.5">
+                Especificación de Encuadre, Estética CRT 90s y Sonido Foley Diegético
+              </h3>
+            </div>
+            <span class="text-xs text-slate-400">Hacé clic en "Copiar" para reutilizar la estructura</span>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Prompt 1: Placa CASE Windows 95 -->
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-semibold text-emerald-300">1. Prompt Plano 12: Herramienta CASE Windows 95</span>
+                <button type="button" data-copy-target="prompt-u5-case" class="text-[11px] font-mono px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition">
+                  Copiar
+                </button>
+              </div>
+              <pre id="prompt-u5-case" class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 whitespace-pre-wrap leading-relaxed font-mono max-h-72 overflow-y-auto custom-scrollbar">Video en formato panorámico 16:9, animación continua y fluida. Interfaz de software institucional estilo herramienta CASE auténtica de los años 90, estética clásica de Windows 95 (#C0C0C0) con barra de título en azul marino oscuro. En la parte superior, un banner nítido muestra el texto: "Trazabilidad formativa: el proceso como evidencia de aprendizaje". A lo largo del centro, cuatro tarjetas de flujo rectangulares con bordes biselados se animan en secuencia de izquierda a derecha: "1. Detecta y documenta el error (Issue)", "2. Corrige de forma atómica y modular (Commits)", "3. Argumenta la solución alcanzada (Pull Request)" y "4. Validación y cierre docente (Aprobado / Merge)". Recorriendo toda la base inferior de las cuatro tarjetas, una línea de tiempo pixelada de árbol de Git (línea de rama con nodos interconectados y hashes de commit) se ilumina en sincronía, anclando de forma directa cada etapa a un registro cronológico auditable. En el paso 4, un sello pixelado verde con tilde de verificación se estampa con firmeza sobre la tarjeta. Cámara fija y bloqueada, sutiles líneas de barrido de monitor CRT y bordes de ventana perfectamente definidos. Estrictamente sin voces, sin diálogos, sin locución y sin música. Únicamente efectos de sonido foley: cuatro clics mecánicos secos de relé al conectarse cada tarjeta, un zumbido tenue y continuo al trazarse la línea de tiempo inferior, un golpe mecánico nítido de sello en la confirmación verde final y el zumbido eléctrico bajo y constante del monitor CRT.</pre>
+            </div>
+
+            <!-- Prompt 2: Pantalla Dividida Estudiante vs Docente -->
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-semibold text-sky-300">2. Prompt Pantalla Dividida: Estudiante vs. Docente</span>
+                <button type="button" data-copy-target="prompt-u5-split" class="text-[11px] font-mono px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition">
+                  Copiar
+                </button>
+              </div>
+              <pre id="prompt-u5-split" class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 whitespace-pre-wrap leading-relaxed font-mono max-h-72 overflow-y-auto custom-scrollbar">Video panorámico en relación de aspecto 16:9, composición de pantalla dividida con auténtica estética de los años 90 y sutiles líneas de barrido (scanlines) de monitor CRT. El cuadro está dividido al medio por una fina línea de interfaz gris biselada. En el lado izquierdo, una toma inversa por encima del monitor muestra a un joven estudiante con aspecto cansado y desconectado en una habitación en penumbra; una tarjeta institucional retro se superpone con el texto: "Estudiante usa IA para resolver". A los 3-4 s, una cruz (X) roja pixelada y en negrita se estampa con firmeza sobre el panel izquierdo, desaturándolo ligeramente. En el lado derecho, desde atrás de otro monitor CRT beige, un profesor mira concentrado y asiente con tranquila aprobación en una oficina académica bien iluminada. A los 4-7 s, se activa una tarjeta superpuesta con el texto: "Docente usa IA para diseñar el desafío", enmarcada por un borde nítido de resaltado en verde fósforo y un ícono retro de tilde de verificación verde. Cámara fija y bloqueada, etalonaje de color apagado propio de los 90, sin posprocesamiento moderno. Estrictamente sin voces, sin diálogos, sin locución y sin música. Únicamente efectos de sonido foley: un golpe mecánico seco de sello para la X roja, una sutil transición de barrido digital entre ambos lados y un clic mecánico limpio cuando se resalta la tarjeta verde.</pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabla Comparativa: Google Vids / Flow (Veo) vs Runway (Gen-2 / Gen-3 Alpha) -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-4">
+          <h3 class="text-xl font-extrabold text-[#0F172A]">
+            Tabla Comparativa de Herramientas de IA para Video Digital (TP5)
+          </h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs sm:text-sm border-collapse">
+              <thead>
+                <tr class="bg-slate-100 text-slate-800 border-b border-slate-200">
+                  <th class="py-3 px-4 font-bold">Criterio</th>
+                  <th class="py-3 px-4 font-bold text-[#0284C7]">Google Vids / Flow (Veo) · Seleccionada</th>
+                  <th class="py-3 px-4 font-bold">Runway (Gen-2 / Gen-3 Alpha)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 text-slate-600">
+                <tr>
+                  <td class="py-3 px-4 font-semibold text-slate-900">Enfoque principal</td>
+                  <td class="py-3 px-4">Generación orientada a flujos educativos, institucionales y narrativas estructuradas.</td>
+                  <td class="py-3 px-4">Generación avanzada de video puramente cinemático (<em>Text-to-Video / Image-to-Video</em>).</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 font-semibold text-slate-900">Disponibilidad y capa gratuita</td>
+                  <td class="py-3 px-4">Integración accesible con cuotas iniciales funcionales para iterar y ensamblar escenas secuenciales.</td>
+                  <td class="py-3 px-4">Capa gratuita muy restrictiva (paquete fijo no renovable de ~100-125 segundos totales).</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 font-semibold text-slate-900">Ventajas observadas</td>
+                  <td class="py-3 px-4">Renderizado consistente de interfaces gráficas, esquemas de software y tipografías retro de los años 90.</td>
+                  <td class="py-3 px-4">Alta calidad fotorrealista, fidelidad en simulación física y control detallado de cámara.</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 font-semibold text-slate-900">Desventajas</td>
+                  <td class="py-3 px-4">Menor flexibilidad en movimientos cinemáticos complejos; requiere ensamblaje posterior en Kdenlive.</td>
+                  <td class="py-3 px-4">Alucinaciones frecuentes al intentar renderizar interfaces de código o textos técnicos densos.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Navegación secuencial -->
+        <div class="pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <a href="podcast-sonoro.html" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-[#003366] transition">
+            <span>← Anterior: Unidad 4 · Podcast Sonoro DUA</span>
+          </a>
+          <a href="creditos-etica.html" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#0284C7] hover:bg-[#003366] text-white text-sm font-bold shadow-sm transition">
+            <span>Siguiente Sección: Créditos, Normas APA y Marco Ético →</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       PIE DE PÁGINA INSTITUCIONAL UNIFICADO (FOOTER)
+       ======================================================================== -->
+  <footer class="bg-[#0F172A] text-slate-300 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-8 border-b border-slate-800">
+        <div class="md:col-span-5 space-y-3">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-lg bg-[#003366] border border-[#38BDF8]/40 flex items-center justify-center font-mono font-bold text-white text-sm">UTN</div>
+            <div>
+              <p class="font-bold text-white text-sm">Universidad Tecnológica Nacional</p>
+              <p class="text-xs text-slate-400">Facultad Regional General Pacheco (UTN-FRGP)</p>
+            </div>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed max-w-md">
+            Espacio digital desarrollado en el marco del Trabajo Integrador Final (TIF) de la asignatura <strong>Gestión de Recursos Digitales con IA Generativa</strong>, aplicado a <strong>Programación I</strong>.
+          </p>
+        </div>
+
+        <div class="md:col-span-4 space-y-2">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-[#38BDF8]">Accesos Rápidos (Sitemap)</h3>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs">
+            <li><a href="index.html" class="hover:text-[#38BDF8] transition">1. Inicio / Planteo</a></li>
+            <li><a href="texto-introductorio.html" class="hover:text-[#38BDF8] transition">2. Texto con IA (U2)</a></li>
+            <li><a href="animacion-coevaluacion.html" class="hover:text-[#38BDF8] transition">3. Animación 2D (U3)</a></li>
+            <li><a href="podcast-sonoro.html" class="hover:text-[#38BDF8] transition">4. Podcast DUA (U4)</a></li>
+            <li><a href="video-trazabilidad.html" class="hover:text-[#38BDF8] transition">5. Video Retro (U5)</a></li>
+            <li><a href="creditos-etica.html" class="hover:text-[#38BDF8] transition">6. Créditos y Ética</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-3 space-y-2">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-[#38BDF8]">Equipo Autor · Grupo 6</h3>
+          <ul class="text-xs space-y-1 text-slate-300">
+            <li>• Alejandro Gómez Nieto</li>
+            <li>• Javier Agustín Larroca</li>
+            <li>• Ignacio Olmos</li>
+            <li>• José Alberto Rodríguez</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+        <p>© 2026 Grupo 6 · UTN-FRGP. Uso educativo bajo principios de transparencia ética de IA (UNESCO) y Normas APA 7ma edición.</p>
+        <a href="creditos-etica.html" class="text-[#38BDF8] hover:underline font-medium">Ver Declaración Ética y Créditos APA →</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       COMPONENTE TRANSVERSAL OBLIGATORIO: WIDGET CHATBOT FLOTANTE (UNIDAD 6)
+       ======================================================================== -->
+  <div class="fixed bottom-5 right-5 z-50 flex flex-col items-end">
+    <section id="chatbot-window" aria-label="Asistente Virtual Programación I - UTN" class="chatbot-window hidden-chat mb-3 w-[340px] sm:w-[380px] bg-slate-50 rounded-2xl shadow-2xl border border-slate-300 overflow-hidden flex flex-col max-h-[540px]">
+      <header class="bg-gradient-to-r from-[#003366] to-[#0F172A] text-white px-4 py-3.5 flex items-center justify-between border-b border-slate-700">
+        <div class="flex items-center gap-2.5">
+          <div class="relative">
+            <div class="w-9 h-9 rounded-full bg-[#0284C7] flex items-center justify-center font-bold text-xs border border-[#38BDF8]">BOT</div>
+            <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-[#0F172A]"></span>
+          </div>
+          <div>
+            <h2 class="font-bold text-xs sm:text-sm leading-tight">Asistente Virtual Programación I - UTN</h2>
+            <p class="text-[11px] text-sky-300">Tutor de e-Portfolios Git/GitHub · Unidad 6</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-1">
+          <button id="chatbot-reset" type="button" title="Reiniciar conversación" aria-label="Reiniciar conversación" class="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+          </button>
+          <button id="chatbot-close" type="button" title="Cerrar asistente" aria-label="Cerrar ventana de chat" class="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+        </div>
+      </header>
+
+      <div id="chatbot-messages" class="p-3.5 space-y-3 overflow-y-auto custom-scrollbar flex-1 min-h-[260px] max-h-[320px] bg-slate-100/80" aria-live="polite"></div>
+
+      <div class="px-3 py-2 bg-white border-t border-slate-200 flex items-center gap-1.5 overflow-x-auto custom-scrollbar">
+        <button type="button" data-question="¿Cómo es el flujo 1. Issue -> 2. Commits -> 3. Pull Request -> 4. Merge?" class="chatbot-chip shrink-0 text-[11px] font-medium px-2.5 py-1 rounded-full bg-sky-50 text-[#0284C7] hover:bg-[#0284C7] hover:text-white border border-sky-200 transition">
+          Flujo de 4 pasos
+        </button>
+        <button type="button" data-question="¿Cómo se produjo el video con estética de los años 90?" class="chatbot-chip shrink-0 text-[11px] font-medium px-2.5 py-1 rounded-full bg-sky-50 text-[#0284C7] hover:bg-[#0284C7] hover:text-white border border-sky-200 transition">
+          Video Retro 90s
+        </button>
+        <button type="button" data-question="¿Qué herramientas de IA y normas APA usó el Grupo 6?" class="chatbot-chip shrink-0 text-[11px] font-medium px-2.5 py-1 rounded-full bg-sky-50 text-[#0284C7] hover:bg-[#0284C7] hover:text-white border border-sky-200 transition">
+          Créditos y APA
+        </button>
+      </div>
+
+      <form id="chatbot-form" class="p-2.5 bg-white border-t border-slate-200 flex items-center gap-2">
+        <label for="chatbot-input" class="sr-only">Escribí tu consulta</label>
+        <input id="chatbot-input" type="text" placeholder="Consultá sobre trazabilidad, commits, PR..." autocomplete="off" class="flex-1 text-xs sm:text-sm px-3 py-2 rounded-xl border border-slate-300 focus:outline-none focus:border-[#0284C7] bg-slate-50 text-slate-900" />
+        <button type="submit" aria-label="Enviar consulta" class="px-3.5 py-2 rounded-xl bg-[#0284C7] hover:bg-[#003366] text-white font-semibold text-xs sm:text-sm transition flex items-center gap-1 shadow-sm">
+          <span>Enviar</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+        </button>
+      </form>
+    </section>
+
+    <button id="chatbot-toggle" type="button" aria-expanded="false" aria-controls="chatbot-window" aria-label="Abrir Asistente Virtual de Programación I" class="chatbot-pulse relative w-14 h-14 rounded-full bg-gradient-to-br from-[#003366] to-[#0284C7] text-white shadow-xl hover:scale-105 transition flex items-center justify-center border-2 border-[#38BDF8]">
+      <span id="chatbot-badge" class="absolute -top-1 -right-1 px-1.5 py-0.5 text-[10px] font-extrabold bg-rose-500 text-white rounded-full border-2 border-white shadow">1</span>
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+      </svg>
+    </button>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

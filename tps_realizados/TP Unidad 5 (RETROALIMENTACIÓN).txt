@@ -1,0 +1,13 @@
+Hola, Javier, José Alberto, Ignacio y Alejandro:
+
+La propuesta aborda una problemática educativa relevante: cómo utilizar Git y GitHub como e-portfolios para visibilizar el proceso de aprendizaje en programación, superando una evaluación centrada exclusivamente en el producto final. Valoramos la relación que establecen entre el registro de errores, las correcciones, la argumentación de soluciones y la intervención docente, así como la elección de una estética audiovisual retro para comunicar estas ideas.
+
+Reconocemos también las correcciones realizadas en la segunda entrega, particularmente en la identificación institucional y los créditos del video. La documentación incorpora ejemplos de prompts y describe dificultades encontradas durante la generación, como los problemas de representación de textos, la monotonía visual y la consistencia de las escenas.
+
+No obstante, el aspecto que requiere mayor fortalecimiento es la documentación del proceso de producción con inteligencia artificial generativa. Si bien explican las técnicas utilizadas y mencionan diferentes ajustes, las evidencias presentadas no permiten reconstruir con suficiente precisión las sucesivas versiones, los resultados obtenidos ni los criterios empleados para seleccionar o descartar las generaciones. Para una actividad centrada en la producción con IA, esta trazabilidad resulta fundamental.
+
+Asimismo, la comparación de herramientas podría profundizarse incorporando aspectos específicos de accesibilidad y personalización. El análisis crítico plantea reflexiones interesantes sobre la enseñanza y la evaluación, pero necesita mayor respaldo bibliográfico y una vinculación más explícita con las condiciones concretas de implementación educativa. También recomendamos completar y normalizar las referencias según las normas APA.
+
+La propuesta tiene valor pedagógico y presenta decisiones creativas reconocibles. Como desafío para futuras producciones, los alentamos a documentar el recorrido de trabajo con el mismo cuidado que dedican al resultado audiovisual, de modo que las decisiones, dificultades y mejoras puedan analizarse y verificarse.
+
+Equipo de GRDIA - Carolina y Alfredo

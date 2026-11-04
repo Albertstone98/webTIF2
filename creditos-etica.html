@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Créditos Oficiales de Autoría del Equipo Grupo 6 (UTN-FRGP), Matriz de Herramientas de IA Generativa en Normas APA 7ma edición y Declaración Ética." />
+  <meta name="author" content="Grupo 6: Alejandro Gómez Nieto, Javier Agustín Larroca, Ignacio Olmos y José Alberto Rodríguez" />
+  <title>Créditos, Normas APA y Marco Ético | Grupo 6 · UTN-FRGP</title>
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            utn: {
+              navy: '#003366',
+              dark: '#0F172A',
+              blue: '#0284C7',
+              cyan: '#38BDF8',
+              light: '#F8FAFC'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Hoja de estilos personalizada -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="bg-[#F8FAFC] text-[#0F172A] antialiased selection:bg-[#38BDF8] selection:text-[#0F172A] flex flex-col min-h-screen">
+
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- ========================================================================
+       BARRA DE NAVEGACIÓN FIJA E IDÉNTICA EN TODAS LAS PÁGINAS (NAVBAR)
+       ======================================================================== -->
+  <header class="sticky top-0 z-40 bg-[#0F172A]/95 backdrop-blur-md border-b border-slate-800 text-white shadow-lg">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Navegación Principal">
+      <div class="flex items-center justify-between h-20">
+        
+        <a href="index.html" class="flex items-center gap-3 group focus:outline-none">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-[#003366] to-[#0284C7] border border-[#38BDF8]/40 flex items-center justify-center shadow-md group-hover:border-[#38BDF8] transition">
+            <span class="font-mono font-bold text-lg tracking-tighter text-white">UTN</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-bold text-sm sm:text-base tracking-tight text-white group-hover:text-[#38BDF8] transition">
+              e-Portfolios Git &amp; GitHub
+            </span>
+            <span class="text-[11px] text-slate-300 font-medium">
+              Programación I · UTN-FRGP · Grupo 6
+            </span>
+          </div>
+        </a>
+
+        <div class="hidden lg:flex items-center space-x-1">
+          <a href="index.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-[#38BDF8] transition">
+            Inicio
+          </a>
+          <a href="texto-introductorio.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-[#38BDF8] transition">
+            U2 · Texto IA
+          </a>
+          <a href="animacion-coevaluacion.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-[#38BDF8] transition">
+            U3 · Animación 2D
+          </a>
+          <a href="podcast-sonoro.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-[#38BDF8] transition">
+            U4 · Podcast DUA
+          </a>
+          <a href="video-trazabilidad.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-[#38BDF8] transition">
+            U5 · Video Retro
+          </a>
+          <a href="creditos-etica.html" aria-current="page" class="px-3 py-2 rounded-lg text-sm font-semibold bg-[#0284C7] text-white shadow-sm transition">
+            Créditos y Ética
+          </a>
+        </div>
+
+        <div class="lg:hidden">
+          <button id="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú de navegación" class="inline-flex items-center justify-center p-2.5 rounded-lg text-slate-200 hover:text-white hover:bg-slate-800 transition">
+            <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="hidden lg:hidden pb-4 pt-2 border-t border-slate-800 space-y-1">
+        <a href="index.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800">
+          1. Inicio (Planteo y Mapa Conceptual)
+        </a>
+        <a href="texto-introductorio.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800">
+          2. Unidad 2: Guía Introductoria (Texto con IA)
+        </a>
+        <a href="animacion-coevaluacion.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800">
+          3. Unidad 3: Animación Coevaluación (2D con IA)
+        </a>
+        <a href="podcast-sonoro.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800">
+          4. Unidad 4: Cápsulas Sonoras (Podcast DUA)
+        </a>
+        <a href="video-trazabilidad.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800">
+          5. Unidad 5: Video Trazabilidad Formativa
+        </a>
+        <a href="creditos-etica.html" aria-current="page" class="block px-3 py-2.5 rounded-lg text-sm font-semibold bg-[#0284C7] text-white">
+          6. Créditos, Normas APA y Marco Ético
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========================================================================
+       CONTENIDO PRINCIPAL (MAIN)
+       ======================================================================== -->
+  <main id="main-content" class="flex-grow">
+
+    <!-- ENCABEZADO TEMÁTICO DE CRÉDITOS Y MARCO ÉTICO -->
+    <section class="bg-tech-grid text-white py-14 border-b border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap items-center gap-2 mb-4">
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#0284C7] text-white">
+            Trabajo Integrador Final (TIF) · Unidades 2 a 7
+          </span>
+          <span class="px-3 py-1 rounded-full text-xs font-mono bg-slate-800 text-[#38BDF8] border border-slate-700">
+            Normas APA 7ma Edición · Recomendación Ética UNESCO
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight max-w-4xl">
+          Créditos Oficiales de Autoría, Matriz de IA y Marco Ético
+        </h1>
+        <p class="mt-3 text-slate-300 text-base sm:text-lg max-w-3xl leading-relaxed">
+          Acreditación formal del <strong>Equipo Grupo 6 (UTN-FRGP)</strong>, trazabilidad de las herramientas de Inteligencia Artificial Generativa utilizadas en cada unidad, referencias bibliográficas bajo <strong>Normas APA (7.ª edición)</strong> y reflexión sobre el impacto pedagógico responsable.
+        </p>
+      </div>
+    </section>
+
+    <!-- 1. SECCIÓN OFICIAL DE CRÉDITOS DE AUTORÍA DEL EQUIPO GRUPO 6 (UTN-FRGP) -->
+    <section class="py-12 bg-white border-b border-slate-200" aria-labelledby="titulo-autores">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#0284C7]">
+              Universidad Tecnológica Nacional · Facultad Regional General Pacheco
+            </span>
+            <h2 id="titulo-autores" class="text-2xl sm:text-3xl font-extrabold text-[#0F172A] mt-1">
+              Equipo de Autores Responsables · Grupo 6
+            </h2>
+          </div>
+          <div class="text-xs text-slate-600 bg-slate-100 px-3.5 py-2 rounded-xl border border-slate-200">
+            <strong>Carrera:</strong> Licenciatura en Tecnología Educativa · <strong>Materia:</strong> Gestión de Recursos Digitales con IA Generativa
+          </div>
+        </div>
+
+        <!-- Tarjetas de los 4 Integrantes del Grupo 6 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          <article class="resource-card bg-slate-50 rounded-2xl border border-slate-200 p-6 space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#003366] to-[#0284C7] text-white font-bold flex items-center justify-center text-base shadow-sm">
+              AGN
+            </div>
+            <div>
+              <h3 class="font-bold text-base text-[#0F172A]">Alejandro Gómez Nieto</h3>
+              <p class="text-xs font-semibold text-[#0284C7]">Coautor · Grupo 6 (UTN-FRGP)</p>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Planificación tecno-pedagógica, diseño de prompts iterativos, curaduría conceptual de e-Portfolios en Programación I y validación ética.
+            </p>
+          </article>
+
+          <article class="resource-card bg-slate-50 rounded-2xl border border-slate-200 p-6 space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#003366] to-[#0284C7] text-white font-bold flex items-center justify-center text-base shadow-sm">
+              JAL
+            </div>
+            <div>
+              <h3 class="font-bold text-base text-[#0F172A]">Javier Agustín Larroca</h3>
+              <p class="text-xs font-semibold text-[#0284C7]">Coautor · Grupo 6 (UTN-FRGP)</p>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Dirección audiovisual, generación de planos con IA (Nano Banana / Google Flow Veo), montaje multipista en Kdenlive y trazabilidad en Git.
+            </p>
+          </article>
+
+          <article class="resource-card bg-slate-50 rounded-2xl border border-slate-200 p-6 space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#003366] to-[#0284C7] text-white font-bold flex items-center justify-center text-base shadow-sm">
+              IO
+            </div>
+            <div>
+              <h3 class="font-bold text-base text-[#0F172A]">Ignacio Olmos</h3>
+              <p class="text-xs font-semibold text-[#0284C7]">Coautor · Grupo 6 (UTN-FRGP)</p>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Producción de cápsulas sonoras TTS en ElevenLabs v3, edición de audio en Filmora, diseño de guiones técnico-literarios y enfoque DUA.
+            </p>
+          </article>
+
+          <article class="resource-card bg-slate-50 rounded-2xl border border-slate-200 p-6 space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#003366] to-[#0284C7] text-white font-bold flex items-center justify-center text-base shadow-sm">
+              JAR
+            </div>
+            <div>
+              <h3 class="font-bold text-base text-[#0F172A]">José Alberto Rodríguez</h3>
+              <p class="text-xs font-semibold text-[#0284C7]">Coautor · Grupo 6 (UTN-FRGP)</p>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Arquitectura del espacio digital multipágina, integración del Asistente Virtual (Unidad 6), sistematización normativa APA 7ma ed. y revisión docente.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. MATRIZ DE HERRAMIENTAS DE IA GENERATIVA Y ACREDITACIÓN FORMAL (NORMAS APA 7ma EDICIÓN) -->
+    <section class="py-12 bg-[#F8FAFC] border-b border-slate-200" aria-labelledby="titulo-matriz-ia">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-[#003366] bg-sky-100 px-3 py-1 rounded-full">
+            Transparencia Tecnológica y Citación Académica
+          </span>
+          <h2 id="titulo-matriz-ia" class="text-2xl sm:text-3xl font-extrabold text-[#0F172A] mt-3">
+            Matriz de Herramientas de IA Generativa Utilizadas por Unidad
+          </h2>
+          <p class="text-sm text-slate-600 mt-1 max-w-3xl">
+            De acuerdo con los criterios de evaluación de la cátedra, se detallan todas las herramientas de Inteligencia Artificial Generativa y software complementario empleados en los 5 recursos del sitio:
+          </p>
+        </div>
+
+        <!-- Tabla Matriz de Herramientas de IA -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs sm:text-sm border-collapse">
+              <thead>
+                <tr class="bg-[#0F172A] text-white">
+                  <th class="py-3.5 px-4 font-bold">Recurso / Unidad</th>
+                  <th class="py-3.5 px-4 font-bold">Herramienta de IA / Software</th>
+                  <th class="py-3.5 px-4 font-bold">Función Específica en el Proyecto</th>
+                  <th class="py-3.5 px-4 font-bold">Citación / Acreditación (APA 7.ª ed.)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 text-slate-700">
+                <tr>
+                  <td class="py-3.5 px-4 font-bold text-[#003366]">Unidad 2 · Texto con IA</td>
+                  <td class="py-3.5 px-4 font-semibold">ChatGPT (OpenAI)</td>
+                  <td class="py-3.5 px-4">Generación inicial y refinamiento iterativo de la guía introductoria sobre Git, GitHub y commits.</td>
+                  <td class="py-3.5 px-4 font-mono text-xs">OpenAI. (2026). ChatGPT (Versión GPT-4o) [Modelo de lenguaje grande]. https://chat.openai.com/</td>
+                </tr>
+                <tr>
+                  <td class="py-3.5 px-4 font-bold text-[#003366]">Unidad 3 · Animación 2D</td>
+                  <td class="py-3.5 px-4 font-semibold">ChatGPT + Nano Banana (Pro UTN) + Google Flow + ElevenLabs + Kdenlive</td>
+                  <td class="py-3.5 px-4">Diseño de personajes estilo <em>Night in the Woods</em>, generación de 15 planos, animación de clips de 10s, voz sintética (<em>Kate</em>) y montaje.</td>
+                  <td class="py-3.5 px-4 font-mono text-xs">Google. (2026). Nano Banana Pro &amp; Google Flow [Modelos generativos de imagen y animación]. https://labs.google/fx/es/tools/flow</td>
+                </tr>
+                <tr>
+                  <td class="py-3.5 px-4 font-bold text-[#003366]">Unidad 4 · Podcast Sonoro</td>
+                  <td class="py-3.5 px-4 font-semibold">ElevenLabs (Modelo IA v3) + ChatGPT + Filmora</td>
+                  <td class="py-3.5 px-4">Guion técnico-literario dialógico y síntesis de voz neuronal multi-hablante (voces <em>Yair</em> y <em>Oscar</em>) con enfoque DUA.</td>
+                  <td class="py-3.5 px-4 font-mono text-xs">ElevenLabs. (2026). ElevenLabs Text-to-Speech (Modelo Eleven v3 / Multilingual v2) [Software de síntesis de voz con IA]. https://elevenlabs.io/</td>
+                </tr>
+                <tr>
+                  <td class="py-3.5 px-4 font-bold text-[#003366]">Unidad 5 · Video Retro 90s</td>
+                  <td class="py-3.5 px-4 font-semibold">Google Flow (Modelo Veo) + Kdenlive</td>
+                  <td class="py-3.5 px-4">Generación clip a clip en formato 16:9 con estética CRT / Windows 95 y efectos sonoros diegéticos foley.</td>
+                  <td class="py-3.5 px-4 font-mono text-xs">Google DeepMind. (2026). Google Flow / Veo [Modelo generativo de texto a video]. https://labs.google/</td>
+                </tr>
+                <tr>
+                  <td class="py-3.5 px-4 font-bold text-[#003366]">Unidades 6 y 7 · Espacio Web y Chatbot</td>
+                  <td class="py-3.5 px-4 font-semibold">Google Antigravity + HTML5 / Tailwind CSS / JS</td>
+                  <td class="py-3.5 px-4">Desarrollo de la arquitectura web multipágina accesible y del Asistente Virtual Flotante de Programación I.</td>
+                  <td class="py-3.5 px-4 font-mono text-xs">Google DeepMind. (2026). Google Antigravity [Asistente de desarrollo web con IA generativa].</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Bloque de Referencias Bibliográficas y de IA bajo Normas APA 7ma Edición -->
+        <div class="bg-[#0F172A] text-white rounded-3xl p-6 sm:p-8 border border-slate-800 space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4">
+            <div>
+              <span class="text-xs font-mono uppercase tracking-wider text-[#38BDF8]">
+                Bibliografía Oficial Consolidada
+              </span>
+              <h3 class="text-lg sm:text-xl font-bold mt-0.5">
+                Referencias Bibliográficas y Acreditación de IA (Normas APA 7.ª Edición)
+              </h3>
+            </div>
+            <button type="button" data-copy-target="apa-references-list" class="self-start sm:self-auto text-xs font-mono px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sky-300 border border-slate-700 transition">
+              Copiar Bibliografía APA
+            </button>
+          </div>
+
+          <div id="apa-references-list" class="space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed font-sans pl-4 border-l-2 border-[#0284C7]">
+            <p>• Artiga, R. (2023, 9 de agosto). <em>Redes Adversarias Generativas (GANs): Una guía completa</em>.</p>
+            <p>• Cortés, F. (2023, 22 de septiembre). <em>La estructura de un prompt: cómo obtener respuestas precisas</em>.</p>
+            <p>• Cruzado, N. (2024). <em>Estructura y técnicas de prompt engineering para modelos de lenguaje</em>.</p>
+            <p>• Duoc UC. (2023). <em>Biblioteca: Recursos IA para docentes: Creación y edición de imágenes</em>.</p>
+            <p>• ElevenLabs. (2026). <em>ElevenLabs Text-to-Speech (Modelos Eleven Multilingual v2 y Eleven v3)</em> [Software de síntesis de voz por inteligencia artificial]. https://elevenlabs.io/</p>
+            <p>• Fundación Telefónica Argentina. (s. f.). <em>El rol de la inteligencia artificial en la producción musical</em>.</p>
+            <p>• GitHub. (s. f.). <em>GitHub Docs: Acerca de Git y los repositorios de control de versiones</em>. https://docs.github.com/es</p>
+            <p>• Google. (2026). <em>Google Flow / Veo y Nano Banana Pro</em> [Modelos generativos multimodales de imagen y video]. https://labs.google/</p>
+            <p>• Licenciatura en Tecnología Educativa. (2026a). <em>Material obligatorio Unidad 1: Introducción a la Inteligencia Artificial</em>. Universidad Tecnológica Nacional.</p>
+            <p>• Licenciatura en Tecnología Educativa. (2026b). <em>Material obligatorio Unidad 2: Creación de texto con IAG</em>. Universidad Tecnológica Nacional.</p>
+            <p>• Licenciatura en Tecnología Educativa. (2026c). <em>Material obligatorio Unidad 3: Creación de imágenes con IAG</em>. Universidad Tecnológica Nacional.</p>
+            <p>• Licenciatura en Tecnología Educativa. (2026d). <em>Material obligatorio Unidad 4: Producción de audio con IAG - Podcasting</em>. Universidad Tecnológica Nacional.</p>
+            <p>• Licenciatura en Tecnología Educativa. (2026e). <em>Material obligatorio Unidad 5: Producción de video digital con IAG</em>. Universidad Tecnológica Nacional.</p>
+            <p>• Licenciatura en Tecnología Educativa. (2026f). <em>Material obligatorio Unidad 6: Espacios digitales enriquecidos con IAG</em>. Universidad Tecnológica Nacional.</p>
+            <p>• OpenAI. (2026). <em>ChatGPT</em> (Versión GPT-4o) [Modelo de lenguaje grande]. https://chat.openai.com/</p>
+            <p>• Organización de las Naciones Unidas para la Educación, la Ciencia y la Cultura [UNESCO]. (2021). <em>Recomendación sobre la ética de la inteligencia artificial</em>. UNESCO.</p>
+            <p>• Organización de las Naciones Unidas para la Educación, la Ciencia y la Cultura [UNESCO]. (2023). <em>Guía para el uso de IA generativa en educación e investigación</em>. UNESCO.</p>
+            <p>• Torres Toukoumidis, Á. L., &amp; León Alberca, T. B. (s. f.). <em>ComunicAI. La revolución de la inteligencia artificial en la comunicación</em>.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. DECLARACIÓN DE USO ÉTICO, TRANSPARENTE Y RESPONSABLE DE LA IA + FORMULARIO DE FEEDBACK -->
+    <section class="py-12 bg-white" aria-labelledby="titulo-declaracion-etica">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+
+          <!-- Columna Izquierda (7 cols): Declaración Ética y Reflexión de Impacto -->
+          <div class="lg:col-span-7 space-y-6">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+                Manifiesto Ético · Grupo 6 (UTN-FRGP)
+              </span>
+              <h2 id="titulo-declaracion-etica" class="text-2xl sm:text-3xl font-extrabold text-[#0F172A] mt-3">
+                Declaración de Uso Ético, Transparente y Responsable de la IA
+              </h2>
+            </div>
+
+            <div class="space-y-4 text-sm sm:text-base text-slate-700 leading-relaxed">
+              <p>
+                Incorporar Inteligencia Artificial Generativa en la educación superior tecnológica no alcanza para transformar la enseñanza si no revisamos simultáneamente cómo planificamos las clases y cómo evaluamos. En este espacio digital, el <strong>Equipo Grupo 6</strong> asumió cinco compromisos éticos innegociables:
+              </p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                  <h3 class="font-bold text-sm text-[#003366]">1. Curaduría y Agencia Humana</h3>
+                  <p class="text-xs text-slate-600 mt-1">
+                    La IA funcionó como asistente técnico para optimizar tiempos de producción, pero la intencionalidad pedagógica, la estructura didáctica y la revisión crítica fueron íntegramente humanas.
+                  </p>
+                </div>
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                  <h3 class="font-bold text-sm text-[#003366]">2. Trazabilidad y Transparencia</h3>
+                  <p class="text-xs text-slate-600 mt-1">
+                    Cada recurso explicita qué modelo se empleó, cuál fue el prompt exacto, qué errores o alucinaciones surgieron y cómo se corrigieron artesanalmente.
+                  </p>
+                </div>
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                  <h3 class="font-bold text-sm text-[#003366]">3. Equidad e Inclusión (DUA)</h3>
+                  <p class="text-xs text-slate-600 mt-1">
+                    Conscientes de la brecha económica de las suscripciones pagas, priorizamos capas accesibles, software libre (Kdenlive, Git) y formatos multimodales (texto, audio, video).
+                  </p>
+                </div>
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                  <h3 class="font-bold text-sm text-[#003366]">4. Impacto en la Audiencia</h3>
+                  <p class="text-xs text-slate-600 mt-1">
+                    En los estudiantes de <em>Programación I</em>, el sitio promueve la autonomía, desmitifica el miedo al error y construye identidad profesional desde el primer año universitario.
+                  </p>
+                </div>
+              </div>
+
+              <blockquote class="p-5 rounded-2xl bg-sky-50 border-l-4 border-[#0284C7] text-xs sm:text-sm text-slate-800 italic">
+                "El valor de esta experiencia no está en la estética que devuelve un algoritmo, sino en la capacidad de mirar el recorrido completo. Evaluar hoy implica correr el foco del producto terminado y valorar el camino recorrido, la duda, la corrección del error y el criterio para comunicar una idea con voz propia."
+                <footer class="not-italic font-bold text-[#003366] mt-2">— Grupo 6 (Gómez Nieto, Larroca, Olmos y Rodríguez, 2026)</footer>
+              </blockquote>
+            </div>
+          </div>
+
+          <!-- Columna Derecha (5 cols): Formulario Institucional de Contacto y Feedback -->
+          <div class="lg:col-span-5">
+            <div class="bg-slate-50 rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-5">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-[#0284C7]">
+                  Vinculación Académica · UTN-FRGP
+                </span>
+                <h2 class="text-xl font-extrabold text-[#0F172A] mt-1">
+                  Formulario de Contacto y Feedback Institucional
+                </h2>
+                <p class="text-xs text-slate-600 mt-1">
+                  Dejanos tus comentarios, sugerencias o consultas sobre la propuesta de e-Portfolios en <strong>Programación I</strong>.
+                </p>
+              </div>
+
+              <!-- Alerta de confirmación oculta por defecto -->
+              <div id="feedback-success-alert" class="hidden p-4 rounded-2xl bg-emerald-50 border border-emerald-300" role="alert"></div>
+
+              <form id="institutional-feedback-form" class="space-y-4">
+                <div>
+                  <label for="fb-nombre" class="block text-xs font-bold text-slate-700 mb-1">Nombre y Apellido *</label>
+                  <input id="fb-nombre" type="text" required placeholder="Ej.: Ing. María López" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm focus:outline-none focus:border-[#0284C7]" />
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="fb-email" class="block text-xs font-bold text-slate-700 mb-1">Correo Institucional *</label>
+                    <input id="fb-email" type="email" required placeholder="usuario@frgp.utn.edu.ar" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm focus:outline-none focus:border-[#0284C7]" />
+                  </div>
+                  <div>
+                    <label for="fb-rol" class="block text-xs font-bold text-slate-700 mb-1">Rol en la Comunidad *</label>
+                    <select id="fb-rol" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm focus:outline-none focus:border-[#0284C7]">
+                      <option value="Docente Evaluador">Docente / Evaluador</option>
+                      <option value="Estudiante Programación I">Estudiante Programación I</option>
+                      <option value="Colega LTE">Estudiante / Colega LTE</option>
+                      <option value="Visitante Institucional">Visitante Institucional</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label for="fb-recurso" class="block text-xs font-bold text-slate-700 mb-1">Recurso o Aspecto a Valorar</label>
+                  <select id="fb-recurso" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm focus:outline-none focus:border-[#0284C7]">
+                    <option value="Propuesta General del Espacio Digital">Propuesta General del Espacio Digital</option>
+                    <option value="Unidad 2: Guía Introductoria (Texto con IA)">Unidad 2: Guía Introductoria (Texto con IA)</option>
+                    <option value="Unidad 3: Animación 2D Coevaluación">Unidad 3: Animación 2D Coevaluación</option>
+                    <option value="Unidad 4: Podcast Sonoro DUA">Unidad 4: Podcast Sonoro DUA</option>
+                    <option value="Unidad 5: Video Trazabilidad Retro 90s">Unidad 5: Video Trazabilidad Retro 90s</option>
+                    <option value="Unidad 6: Asistente Virtual Flotante">Unidad 6: Asistente Virtual Flotante</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="fb-mensaje" class="block text-xs font-bold text-slate-700 mb-1">Mensaje o Devolución Pedagógica *</label>
+                  <textarea id="fb-mensaje" rows="4" required placeholder="Escribí tu valoración o consulta para el Grupo 6..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm focus:outline-none focus:border-[#0284C7]"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-3 px-5 rounded-xl bg-[#0284C7] hover:bg-[#003366] text-white font-bold text-sm shadow-md transition flex items-center justify-center gap-2">
+                  <span>Enviar Feedback al Equipo Grupo 6</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Navegación inferior -->
+        <div class="mt-12 pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <a href="video-trazabilidad.html" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-[#003366] transition">
+            <span>← Anterior: Unidad 5 · Video Trazabilidad Formativa</span>
+          </a>
+          <a href="index.html" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#003366] hover:bg-[#0284C7] text-white text-sm font-bold shadow-sm transition">
+            <span>Volver a la Página de Inicio (Homepage) ↺</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       PIE DE PÁGINA INSTITUCIONAL UNIFICADO (FOOTER)
+       ======================================================================== -->
+  <footer class="bg-[#0F172A] text-slate-300 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-8 border-b border-slate-800">
+        <div class="md:col-span-5 space-y-3">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-lg bg-[#003366] border border-[#38BDF8]/40 flex items-center justify-center font-mono font-bold text-white text-sm">UTN</div>
+            <div>
+              <p class="font-bold text-white text-sm">Universidad Tecnológica Nacional</p>
+              <p class="text-xs text-slate-400">Facultad Regional General Pacheco (UTN-FRGP)</p>
+            </div>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed max-w-md">
+            Espacio digital desarrollado en el marco del Trabajo Integrador Final (TIF) de la asignatura <strong>Gestión de Recursos Digitales con IA Generativa</strong>, aplicado a <strong>Programación I</strong>.
+          </p>
+        </div>
+
+        <div class="md:col-span-4 space-y-2">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-[#38BDF8]">Accesos Rápidos (Sitemap)</h3>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs">
+            <li><a href="index.html" class="hover:text-[#38BDF8] transition">1. Inicio / Planteo</a></li>
+            <li><a href="texto-introductorio.html" class="hover:text-[#38BDF8] transition">2. Texto con IA (U2)</a></li>
+            <li><a href="animacion-coevaluacion.html" class="hover:text-[#38BDF8] transition">3. Animación 2D (U3)</a></li>
+            <li><a href="podcast-sonoro.html" class="hover:text-[#38BDF8] transition">4. Podcast DUA (U4)</a></li>
+            <li><a href="video-trazabilidad.html" class="hover:text-[#38BDF8] transition">5. Video Retro (U5)</a></li>
+            <li><a href="creditos-etica.html" class="hover:text-[#38BDF8] transition">6. Créditos y Ética</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-3 space-y-2">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-[#38BDF8]">Equipo Autor · Grupo 6</h3>
+          <ul class="text-xs space-y-1 text-slate-300">
+            <li>• Alejandro Gómez Nieto</li>
+            <li>• Javier Agustín Larroca</li>
+            <li>• Ignacio Olmos</li>
+            <li>• José Alberto Rodríguez</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+        <p>© 2026 Grupo 6 · UTN-FRGP. Uso educativo bajo principios de transparencia ética de IA (UNESCO) y Normas APA 7ma edición.</p>
+        <a href="index.html" class="text-[#38BDF8] hover:underline font-medium">Volver al Inicio →</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       COMPONENTE TRANSVERSAL OBLIGATORIO: WIDGET CHATBOT FLOTANTE (UNIDAD 6)
+       ======================================================================== -->
+  <div class="fixed bottom-5 right-5 z-50 flex flex-col items-end">
+    <section id="chatbot-window" aria-label="Asistente Virtual Programación I - UTN" class="chatbot-window hidden-chat mb-3 w-[340px] sm:w-[380px] bg-slate-50 rounded-2xl shadow-2xl border border-slate-300 overflow-hidden flex flex-col max-h-[540px]">
+      <header class="bg-gradient-to-r from-[#003366] to-[#0F172A] text-white px-4 py-3.5 flex items-center justify-between border-b border-slate-700">
+        <div class="flex items-center gap-2.5">
+          <div class="relative">
+            <div class="w-9 h-9 rounded-full bg-[#0284C7] flex items-center justify-center font-bold text-xs border border-[#38BDF8]">BOT</div>
+            <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-[#0F172A]"></span>
+          </div>
+          <div>
+            <h2 class="font-bold text-xs sm:text-sm leading-tight">Asistente Virtual Programación I - UTN</h2>
+            <p class="text-[11px] text-sky-300">Tutor de e-Portfolios Git/GitHub · Unidad 6</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-1">
+          <button id="chatbot-reset" type="button" title="Reiniciar conversación" aria-label="Reiniciar conversación" class="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+          </button>
+          <button id="chatbot-close" type="button" title="Cerrar asistente" aria-label="Cerrar ventana de chat" class="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+        </div>
+      </header>
+
+      <div id="chatbot-messages" class="p-3.5 space-y-3 overflow-y-auto custom-scrollbar flex-1 min-h-[260px] max-h-[320px] bg-slate-100/80" aria-live="polite"></div>
+
+      <div class="px-3 py-2 bg-white border-t border-slate-200 flex items-center gap-1.5 overflow-x-auto custom-scrollbar">
+        <button type="button" data-question="¿Quiénes integran el Equipo Grupo 6?" class="chatbot-chip shrink-0 text-[11px] font-medium px-2.5 py-1 rounded-full bg-sky-50 text-[#0284C7] hover:bg-[#0284C7] hover:text-white border border-sky-200 transition">
+          Autores Grupo 6
+        </button>
+        <button type="button" data-question="¿Qué herramientas de IA y normas APA se utilizaron?" class="chatbot-chip shrink-0 text-[11px] font-medium px-2.5 py-1 rounded-full bg-sky-50 text-[#0284C7] hover:bg-[#0284C7] hover:text-white border border-sky-200 transition">
+          IA y Normas APA
+        </button>
+        <button type="button" data-question="¿Cómo está estructurado este sitio web?" class="chatbot-chip shrink-0 text-[11px] font-medium px-2.5 py-1 rounded-full bg-sky-50 text-[#0284C7] hover:bg-[#0284C7] hover:text-white border border-sky-200 transition">
+          Mapa del Sitio
+        </button>
+      </div>
+
+      <form id="chatbot-form" class="p-2.5 bg-white border-t border-slate-200 flex items-center gap-2">
+        <label for="chatbot-input" class="sr-only">Escribí tu consulta</label>
+        <input id="chatbot-input" type="text" placeholder="Consultá sobre créditos, ética, Git..." autocomplete="off" class="flex-1 text-xs sm:text-sm px-3 py-2 rounded-xl border border-slate-300 focus:outline-none focus:border-[#0284C7] bg-slate-50 text-slate-900" />
+        <button type="submit" aria-label="Enviar consulta" class="px-3.5 py-2 rounded-xl bg-[#0284C7] hover:bg-[#003366] text-white font-semibold text-xs sm:text-sm transition flex items-center gap-1 shadow-sm">
+          <span>Enviar</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+        </button>
+      </form>
+    </section>
+
+    <button id="chatbot-toggle" type="button" aria-expanded="false" aria-controls="chatbot-window" aria-label="Abrir Asistente Virtual de Programación I" class="chatbot-pulse relative w-14 h-14 rounded-full bg-gradient-to-br from-[#003366] to-[#0284C7] text-white shadow-xl hover:scale-105 transition flex items-center justify-center border-2 border-[#38BDF8]">
+      <span id="chatbot-badge" class="absolute -top-1 -right-1 px-1.5 py-0.5 text-[10px] font-extrabold bg-rose-500 text-white rounded-full border-2 border-white shadow">1</span>
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+      </svg>
+    </button>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

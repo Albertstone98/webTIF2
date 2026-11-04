@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Recurso 3 (Unidad 4): Cápsulas Sonoras: La voz de la conciencia académica. Podcast educativo con síntesis de voz IA (ElevenLabs v3) y accesibilidad DUA." />
+  <meta name="author" content="Grupo 6: Alejandro Gómez Nieto, Javier Agustín Larroca, Ignacio Olmos y José Alberto Rodríguez" />
+  <title>Unidad 4 · Podcast Sonoro con IA | Cápsulas Sonoras y Accesibilidad DUA</title>
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            utn: {
+              navy: '#003366',
+              dark: '#0F172A',
+              blue: '#0284C7',
+              cyan: '#38BDF8',
+              light: '#F8FAFC'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Hoja de estilos personalizada -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="bg-[#F8FAFC] text-[#0F172A] antialiased selection:bg-[#38BDF8] selection:text-[#0F172A] flex flex-col min-h-screen">
+
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- ========================================================================
+       BARRA DE NAVEGACIÓN FIJA E IDÉNTICA EN TODAS LAS PÁGINAS (NAVBAR)
+       ======================================================================== -->
+  <header class="sticky top-0 z-40 bg-[#0F172A]/95 backdrop-blur-md border-b border-slate-800 text-white shadow-lg">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Navegación Principal">
+      <div class="flex items-center justify-between h-20">
+        
+        <a href="index.html" class="flex items-center gap-3 group focus:outline-none">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-[#003366] to-[#0284C7] border border-[#38BDF8]/40 flex items-center justify-center shadow-md group-hover:border-[#38BDF8] transition">
+            <span class="font-mono font-bold text-lg tracking-tighter text-white">UTN</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-bold text-sm sm:text-base tracking-tight text-white group-hover:text-[#38BDF8] transition">
+              e-Portfolios Git &amp; GitHub
+            </span>
+            <span class="text-[11px] text-slate-300 font-medium">
+              Programación I · UTN-FRGP · Grupo 6
+            </span>
+          </div>
+        </a>
+
+        <div class="hidden lg:flex items-center space-x-1">
+          <a href="index.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-[#38BDF8] transition">
+            Inicio
+          </a>
+          <a href="texto-introductorio.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-[#38BDF8] transition">
+            U2 · Texto IA
+          </a>
+          <a href="animacion-coevaluacion.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-[#38BDF8] transition">
+            U3 · Animación 2D
+          </a>
+          <a href="podcast-sonoro.html" aria-current="page" class="px-3 py-2 rounded-lg text-sm font-semibold bg-[#0284C7] text-white shadow-sm transition">
+            U4 · Podcast DUA
+          </a>
+          <a href="video-trazabilidad.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-[#38BDF8] transition">
+            U5 · Video Retro
+          </a>
+          <a href="creditos-etica.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-[#38BDF8] transition">
+            Créditos y Ética
+          </a>
+        </div>
+
+        <div class="lg:hidden">
+          <button id="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú de navegación" class="inline-flex items-center justify-center p-2.5 rounded-lg text-slate-200 hover:text-white hover:bg-slate-800 transition">
+            <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="hidden lg:hidden pb-4 pt-2 border-t border-slate-800 space-y-1">
+        <a href="index.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800">
+          1. Inicio (Planteo y Mapa Conceptual)
+        </a>
+        <a href="texto-introductorio.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800">
+          2. Unidad 2: Guía Introductoria (Texto con IA)
+        </a>
+        <a href="animacion-coevaluacion.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800">
+          3. Unidad 3: Animación Coevaluación (2D con IA)
+        </a>
+        <a href="podcast-sonoro.html" aria-current="page" class="block px-3 py-2.5 rounded-lg text-sm font-semibold bg-[#0284C7] text-white">
+          4. Unidad 4: Cápsulas Sonoras (Podcast DUA)
+        </a>
+        <a href="video-trazabilidad.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800">
+          5. Unidad 5: Video Trazabilidad Formativa
+        </a>
+        <a href="creditos-etica.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800">
+          6. Créditos, Normas APA y Marco Ético
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========================================================================
+       CONTENIDO PRINCIPAL (MAIN)
+       ======================================================================== -->
+  <main id="main-content" class="flex-grow">
+
+    <!-- ENCABEZADO TEMÁTICO DEL RECURSO 3 (UNIDAD 4) -->
+    <section class="bg-tech-grid text-white py-14 border-b border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap items-center gap-2 mb-4">
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#0284C7] text-white">
+            Recurso 3 · Unidad 4: Audio Digital y Podcasting con IA
+          </span>
+          <span class="px-3 py-1 rounded-full text-xs font-mono bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
+            ElevenLabs Modelo v3 (Multi-voz TTS) · Filmora · DUA
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight max-w-4xl">
+          Cápsulas Sonoras: La voz de la conciencia académica
+        </h1>
+        <p class="mt-3 text-slate-300 text-base sm:text-lg max-w-3xl leading-relaxed">
+          Episodio de podcast educativo conversacional (&lt; 3 minutos) producido con síntesis de voz neuronal (<em>Text-to-Speech</em>) para ofrecer explicaciones auditivas que acompañen la lectura del código, la fundamentación del archivo <code>README.md</code> y la retroalimentación docente en <strong>Programación I (UTN-FRGP)</strong>.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 1: REPRODUCTOR DE AUDIO HTML5 PERSONALIZADO -->
+    <section id="reproductor-podcast" class="py-12 bg-white border-b border-slate-200" aria-labelledby="titulo-player">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="bg-gradient-to-br from-[#0F172A] via-[#003366] to-[#0F172A] text-white rounded-3xl p-6 sm:p-10 border border-[#38BDF8]/40 shadow-2xl">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+
+            <!-- Información del Episodio y Visualizador de Ondas (5 columnas) -->
+            <div class="lg:col-span-5 space-y-4">
+              <div class="flex items-center gap-2">
+                <span id="audio-status-badge" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-sky-500/20 text-sky-300 border border-sky-500/30">
+                  Listo para reproducir
+                </span>
+                <span class="text-xs font-mono text-slate-300">Duración: &lt; 3 min</span>
+              </div>
+
+              <h2 id="titulo-player" class="text-xl sm:text-2xl font-extrabold tracking-tight">
+                Episodio: "El uso de Git y GitHub para e-Portfolios en Programación I"
+              </h2>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Locución dialógica generada en <strong>ElevenLabs v3</strong> con dos perfiles vocales: <strong>Hablante A</strong> (<em>Yair - Clear, Friendly, Expressive</em>) y <strong>Hablante B</strong> (<em>Oscar - Fluid pitch, easy to listen</em>), masterizado con cortina musical en <strong>Wondershare Filmora</strong>.
+              </p>
+
+              <!-- Visualizador Dinámico de Ondas Sonoras -->
+              <div id="audio-visualizer" class="h-12 flex items-end gap-1.5 pt-2" aria-hidden="true">
+                <span class="wave-bar w-2 bg-[#38BDF8] rounded-full h-4"></span>
+                <span class="wave-bar w-2 bg-sky-400 rounded-full h-8"></span>
+                <span class="wave-bar w-2 bg-[#0284C7] rounded-full h-6"></span>
+                <span class="wave-bar w-2 bg-[#38BDF8] rounded-full h-10"></span>
+                <span class="wave-bar w-2 bg-sky-300 rounded-full h-5"></span>
+                <span class="wave-bar w-2 bg-[#38BDF8] rounded-full h-9"></span>
+                <span class="wave-bar w-2 bg-[#0284C7] rounded-full h-4"></span>
+                <span class="wave-bar w-2 bg-sky-400 rounded-full h-11"></span>
+                <span class="wave-bar w-2 bg-[#38BDF8] rounded-full h-7"></span>
+                <span class="wave-bar w-2 bg-sky-300 rounded-full h-5"></span>
+                <span class="wave-bar w-2 bg-[#0284C7] rounded-full h-9"></span>
+                <span class="wave-bar w-2 bg-[#38BDF8] rounded-full h-6"></span>
+                <span class="wave-bar w-2 bg-sky-400 rounded-full h-10"></span>
+                <span class="wave-bar w-2 bg-sky-300 rounded-full h-4"></span>
+              </div>
+            </div>
+
+            <!-- Controles Personalizados del Reproductor HTML5 (7 columnas) -->
+            <div class="lg:col-span-7 bg-slate-900/90 rounded-2xl p-5 sm:p-6 border border-slate-700/80 space-y-5">
+
+              <!-- ==============================================================
+                   ELEMENTO DE AUDIO HTML5 NATIVO + ENLACE A GOOGLE DRIVE
+                   Archivo local integrado: assets/audio/podcast-grupo6.mp3
+                   Enlace externo oficial: https://drive.google.com/file/d/1KPYPS_iKnlCajZR05kAaQGbzInxLnorn/view
+                   ============================================================== -->
+              <audio id="podcast-audio" preload="metadata" src="assets/audio/podcast-grupo6.mp3">
+                Tu navegador no soporta el elemento de audio HTML5.
+              </audio>
+
+              <!-- Barra de progreso interactiva -->
+              <div class="space-y-2">
+                <label for="audio-progress" class="sr-only">Progreso del episodio</label>
+                <input id="audio-progress" type="range" min="0" max="175" value="0" class="audio-slider" />
+                <div class="flex justify-between text-xs font-mono text-slate-400">
+                  <span id="audio-current-time">0:00</span>
+                  <span id="audio-duration">2:55</span>
+                </div>
+              </div>
+
+              <!-- Botonera Principal de Control -->
+              <div class="flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                  <!-- Retroceder 10s -->
+                  <button id="audio-rewind-btn" type="button" title="Retroceder 10 segundos" aria-label="Retroceder 10 segundos" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-mono border border-slate-700 transition">
+                    -10s
+                  </button>
+
+                  <!-- Botón Play / Pause Principal -->
+                  <button id="audio-play-btn" type="button" aria-label="Reproducir o pausar episodio" class="w-14 h-14 rounded-2xl bg-[#0284C7] hover:bg-sky-500 text-white flex items-center justify-center shadow-lg shadow-sky-950 transition">
+                    <svg id="audio-icon-play" class="w-7 h-7 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"></path>
+                    </svg>
+                    <svg id="audio-icon-pause" class="w-7 h-7 hidden" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path>
+                    </svg>
+                  </button>
+
+                  <!-- Adelantar 10s -->
+                  <button id="audio-forward-btn" type="button" title="Adelantar 10 segundos" aria-label="Adelantar 10 segundos" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-mono border border-slate-700 transition">
+                    +10s
+                  </button>
+                </div>
+
+                <!-- Velocidad, Silencio y Enlace a Google Drive -->
+                <div class="flex items-center gap-2">
+                  <button id="audio-speed-btn" type="button" title="Cambiar velocidad de reproducción" aria-label="Cambiar velocidad de reproducción" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-[#38BDF8] font-mono text-xs font-bold border border-slate-700 transition">
+                    1x
+                  </button>
+                  <button id="audio-mute-btn" type="button" title="Silenciar / Activar sonido" aria-label="Silenciar o activar sonido" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path>
+                    </svg>
+                  </button>
+                  <a href="https://drive.google.com/file/d/1KPYPS_iKnlCajZR05kAaQGbzInxLnorn/view" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition">
+                    <span>Abrir en Google Drive</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Marcadores de Capítulos Interactivos -->
+              <div class="pt-3 border-t border-slate-800 flex flex-wrap items-center gap-2">
+                <span class="text-[11px] font-mono text-slate-400">Saltar a sección:</span>
+                <button type="button" data-audio-seek="0" class="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-[#0284C7] text-sky-300 hover:text-white transition">
+                  [0:00] Parte 1: Introducción
+                </button>
+                <button type="button" data-audio-seek="50" class="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-[#0284C7] text-sky-300 hover:text-white transition">
+                  [0:50] Parte 2: Desarrollo TTS/DUA
+                </button>
+                <button type="button" data-audio-seek="110" class="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-[#0284C7] text-sky-300 hover:text-white transition">
+                  [1:50] Parte 3: Cierre Ético
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: GUION TÉCNICO-LITERARIO Y REFLEXIÓN SOBRE DUA -->
+    <section class="py-12 bg-[#F8FAFC] border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+          <!-- COLUMNA IZQUIERDA (7 cols): Guion Técnico-Literario Completo -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 pb-4">
+                <div>
+                  <span class="text-xs font-bold uppercase tracking-wider text-[#0284C7]">
+                    Transcripción y Escaleta Radiofónica
+                  </span>
+                  <h2 class="text-xl sm:text-2xl font-extrabold text-[#0F172A] mt-0.5">
+                    Guion Técnico-Literario del Episodio
+                  </h2>
+                </div>
+                <span class="text-xs font-mono bg-slate-100 text-slate-600 px-2.5 py-1 rounded">
+                  380 palabras · 2 Hablantes
+                </span>
+              </div>
+
+              <!-- Parte 1 -->
+              <article class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-xs font-mono font-bold uppercase tracking-wider text-white bg-[#003366] px-3 py-1 rounded-md">
+                    [0:00] PARTE 1 — INTRODUCCIÓN CONTEXTUAL
+                  </h3>
+                  <button type="button" data-audio-seek="0" class="text-xs font-semibold text-[#0284C7] hover:underline">
+                    ▶ Escuchar sección
+                  </button>
+                </div>
+                <div class="space-y-3 text-sm text-slate-700 leading-relaxed pl-3 border-l-2 border-slate-200">
+                  <p>
+                    <strong class="text-[#003366]">Hablante A (Yair):</strong> Bienvenidos. Presentamos nuestro Plan de Tesina: <em>"El uso de Git y GitHub para e-portfolios en Programación I"</em>. <span class="text-xs font-mono text-slate-400">[pausa corta]</span> La propuesta parte de una situación concreta: el ingreso universitario implica nuevas formas de aprender y demostrar lo aprendido.
+                  </p>
+                  <p>
+                    <strong class="text-[#0284C7]">Hablante B (Oscar):</strong> Buscamos superar una evaluación centrada en el producto final, como si el código apareciera terminado y sin historia. Con Git y GitHub podemos recuperar esa historia: cada <em>commit</em> permite observar avances, errores, correcciones y decisiones. Así, la evaluación de producto se complementa con una <strong>evaluación de proceso basada en la trazabilidad</strong>.
+                  </p>
+                </div>
+              </article>
+
+              <!-- Parte 2 -->
+              <article class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-xs font-mono font-bold uppercase tracking-wider text-white bg-[#0284C7] px-3 py-1 rounded-md">
+                    [0:50] PARTE 2 — DESARROLLO TECNO-PEDAGÓGICO
+                  </h3>
+                  <button type="button" data-audio-seek="50" class="text-xs font-semibold text-[#0284C7] hover:underline">
+                    ▶ Escuchar sección
+                  </button>
+                </div>
+                <div class="space-y-3 text-sm text-slate-700 leading-relaxed pl-3 border-l-2 border-sky-200">
+                  <p>
+                    <strong class="text-[#003366]">Hablante A (Yair):</strong> Y acá aparece un componente: la Inteligencia Artificial aplicada a la creación de contenidos educativos. Las herramientas de Inteligencia Artificial sonora y las tecnologías <em>Text-to-Speech</em>, o TTS, permiten transformar explicaciones escritas en recursos auditivos.
+                  </p>
+                  <p>
+                    <strong class="text-[#0284C7]">Hablante B (Oscar):</strong> Un docente puede generar una explicación sonora sobre un fragmento de código, producir un podcast para acompañar una práctica o crear materiales multimodales. Esto amplía las posibilidades de acceso al contenido, en línea con el <strong>Diseño Universal para el Aprendizaje (DUA)</strong>, y favorece la autonomía.
+                  </p>
+                  <p>
+                    <strong class="text-[#003366]">Hablante A (Yair):</strong> Además, podemos combinar producciones con GitHub. La <strong>"cultura del error documentado"</strong> puede aparecer en el <code>README</code>: explicar qué falló, qué se modificó y por qué. <span class="text-xs font-mono text-slate-400">[pausa corta]</span>
+                  </p>
+                  <p>
+                    <strong class="text-[#0284C7]">Hablante B (Oscar):</strong> Y el aprendizaje colaborativo se potencia mediante <em>Issues</em> y <em>Pull Requests</em>, donde los estudiantes plantean problemas, revisan propuestas y construyen conocimiento. La IA de voz puede acompañar ese recorrido con explicaciones accesibles.
+                  </p>
+                </div>
+              </article>
+
+              <!-- Parte 3 -->
+              <article class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-xs font-mono font-bold uppercase tracking-wider text-white bg-emerald-700 px-3 py-1 rounded-md">
+                    [2:00] PARTE 3 — CIERRE REFLEXIVO Y CRÉDITOS
+                  </h3>
+                  <button type="button" data-audio-seek="110" class="text-xs font-semibold text-[#0284C7] hover:underline">
+                    ▶ Escuchar sección
+                  </button>
+                </div>
+                <div class="space-y-3 text-sm text-slate-700 leading-relaxed pl-3 border-l-2 border-emerald-200">
+                  <p>
+                    <strong class="text-[#003366]">Hablante A (Yair):</strong> Herramientas como ElevenLabs o Kits.AI aportan naturalidad, rapidez y posibilidades a la producción de estos recursos.
+                  </p>
+                  <p>
+                    <strong class="text-[#0284C7]">Hablante B (Oscar):</strong> Pero hay algo fundamental: <strong>la tecnología no define una propuesta educativa. La intencionalidad pedagógica y el sentido ético siguen siendo responsabilidad del docente.</strong>
+                  </p>
+                  <p>
+                    <strong class="text-[#003366]">Hablante A (Yair):</strong> Integrar Git, GitHub e Inteligencia Artificial no significa automatizar la enseñanza, sino ampliar las formas de acompañar, documentar y evaluar el aprendizaje.
+                  </p>
+                  <p>
+                    <strong class="text-[#0284C7]">Hablante B (Oscar):</strong> Esa es la idea central de nuestra tesina: valorar qué entrega el estudiante, pero también cómo aprende, revisa sus errores y construye su recorrido.
+                  </p>
+                  <p class="text-xs font-mono bg-slate-100 p-3 rounded-lg text-slate-600">
+                    <strong>[2:50] CRÉDITOS SONOROS:</strong> "Este podcast fue realizado por el Grupo 6: Gómez Nieto Alejandro, Larroca Javier, Olmos Ignacio y Rodríguez José Alberto. Gracias por escucharnos."
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <!-- COLUMNA DERECHA (5 cols): Reflexión DUA, Tabla Comparativa y Prompt -->
+          <aside class="lg:col-span-5 space-y-6">
+
+            <!-- Reflexión sobre el Diseño Universal para el Aprendizaje (DUA) -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+              <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200">
+                Accesibilidad e Inclusión Digital
+              </span>
+              <h2 class="text-lg font-extrabold text-[#0F172A]">
+                Reflexión sobre el Diseño Universal para el Aprendizaje (DUA)
+              </h2>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Las tecnologías <em>Text-to-Speech (TTS)</em> transforman la accesibilidad en carreras de programación al convertir guías densas de código y documentación de repositorios en cápsulas auditivas de alta fidelidad:
+              </p>
+              <ul class="space-y-2.5 text-xs text-slate-700">
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-600 font-bold">✓</span>
+                  <span><strong>Múltiples formas de representación:</strong> Beneficia a estudiantes con dislexia, fatiga o discapacidad visual y preferencias por el canal auditivo.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-600 font-bold">✓</span>
+                  <span><strong>Ubicuidad y autonomía:</strong> Permite repasar conceptos de Git, commits y retroalimentación docente en cualquier momento y dispositivo.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-600 font-bold">✓</span>
+                  <span><strong>Curaduría humana indispensable:</strong> Al observar que la IA lee un 20% más rápido que la locución humana estimada, el equipo intervino las pausas prosódicas y la edición multipista en <em>Filmora</em>.</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Tabla Comparativa: ElevenLabs vs Kits.AI (TP3 Unidad 4) -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+              <h3 class="font-extrabold text-base text-[#0F172A]">
+                Comparativa Técnica: ElevenLabs vs. Kits.AI
+              </h3>
+              <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs border-collapse">
+                  <thead>
+                    <tr class="border-b border-slate-200 bg-slate-50 text-slate-700">
+                      <th class="py-2.5 px-3 font-bold">Criterio</th>
+                      <th class="py-2.5 px-3 font-bold text-[#0284C7]">ElevenLabs (Elegida)</th>
+                      <th class="py-2.5 px-3 font-bold">Kits.AI</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-slate-200 text-slate-600">
+                    <tr>
+                      <td class="py-2.5 px-3 font-semibold text-slate-800">Enfoque</td>
+                      <td class="py-2.5 px-3">Síntesis TTS multilingüe de alta fidelidad y multi-voz (Modelo v3).</td>
+                      <td class="py-2.5 px-3">Conversión <em>Voice-to-Voice</em>, timbres vocales y edición musical.</td>
+                    </tr>
+                    <tr>
+                      <td class="py-2.5 px-3 font-semibold text-slate-800">Ventajas</td>
+                      <td class="py-2.5 px-3">Excepcional naturalidad prosódica y diálogo entre dos voces en un mismo proyecto.</td>
+                      <td class="py-2.5 px-3">Excelente integración con flujos musicales (DAW) y filtros avanzados.</td>
+                    </tr>
+                    <tr>
+                      <td class="py-2.5 px-3 font-semibold text-slate-800">Limitaciones</td>
+                      <td class="py-2.5 px-3">Plan gratuito acotado en caracteres; requiere editor externo (Filmora) para mezcla musical.</td>
+                      <td class="py-2.5 px-3">Curva de aprendizaje superior y menor optimización para lectura extensa de guiones.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Prompt Utilizado en ChatGPT para el Guion del Podcast -->
+            <div class="bg-[#0F172A] text-white rounded-2xl border border-slate-800 p-6 shadow-lg space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-semibold text-[#38BDF8]">Prompt del Guion Radiofónico (U4)</span>
+                <button type="button" data-copy-target="prompt-u4-podcast" class="text-[11px] font-mono px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition">
+                  Copiar Prompt
+                </button>
+              </div>
+              <pre id="prompt-u4-podcast" class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 whitespace-pre-wrap leading-relaxed font-mono max-h-60 overflow-y-auto custom-scrollbar">Actúa como un Licenciado en Tecnología Educativa y locutor experto en innovación didáctica universitaria de la UTN-FRGP.
+Diseña un guión técnico y literario para un podcast conversacional de dos locutores (Hablante A y Hablante B). El tema central del episodio es nuestro Plan de Tesina ("El uso de Git y GitHub para e-portfolios en Programación I"), analizando dentro de este proyecto cómo la Inteligencia Artificial puede ser utilizada en la creación de contenido educativo.
+Datos de Entrada: 1. Transición secundaria-universidad y evaluación de proceso por commits. 2. IA sonora TTS y accesibilidad DUA. 3. Cultura del error documentado en README, Issues y Pull Requests. 4. Supervisión crítica docente sobre ElevenLabs/Kits.AI.
+Indicador de Salida: Diálogo fluido en 3 partes, marcas de tiempo (0:00 a 2:55 min), pausas prosódicas [pausa corta], créditos explícitos del Grupo 6 y extensión estricta de 380 palabras.</pre>
+            </div>
+
+          </aside>
+
+        </div>
+
+        <!-- Navegación secuencial -->
+        <div class="mt-12 pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <a href="animacion-coevaluacion.html" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-[#003366] transition">
+            <span>← Anterior: Unidad 3 · Animación 2D Coevaluación</span>
+          </a>
+          <a href="video-trazabilidad.html" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#0284C7] hover:bg-[#003366] text-white text-sm font-bold shadow-sm transition">
+            <span>Siguiente Recurso: Unidad 5 · Video Trazabilidad Formativa →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       PIE DE PÁGINA INSTITUCIONAL UNIFICADO (FOOTER)
+       ======================================================================== -->
+  <footer class="bg-[#0F172A] text-slate-300 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-8 border-b border-slate-800">
+        <div class="md:col-span-5 space-y-3">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-lg bg-[#003366] border border-[#38BDF8]/40 flex items-center justify-center font-mono font-bold text-white text-sm">UTN</div>
+            <div>
+              <p class="font-bold text-white text-sm">Universidad Tecnológica Nacional</p>
+              <p class="text-xs text-slate-400">Facultad Regional General Pacheco (UTN-FRGP)</p>
+            </div>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed max-w-md">
+            Espacio digital desarrollado en el marco del Trabajo Integrador Final (TIF) de la asignatura <strong>Gestión de Recursos Digitales con IA Generativa</strong>, aplicado a <strong>Programación I</strong>.
+          </p>
+        </div>
+
+        <div class="md:col-span-4 space-y-2">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-[#38BDF8]">Accesos Rápidos (Sitemap)</h3>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs">
+            <li><a href="index.html" class="hover:text-[#38BDF8] transition">1. Inicio / Planteo</a></li>
+            <li><a href="texto-introductorio.html" class="hover:text-[#38BDF8] transition">2. Texto con IA (U2)</a></li>
+            <li><a href="animacion-coevaluacion.html" class="hover:text-[#38BDF8] transition">3. Animación 2D (U3)</a></li>
+            <li><a href="podcast-sonoro.html" class="hover:text-[#38BDF8] transition">4. Podcast DUA (U4)</a></li>
+            <li><a href="video-trazabilidad.html" class="hover:text-[#38BDF8] transition">5. Video Retro (U5)</a></li>
+            <li><a href="creditos-etica.html" class="hover:text-[#38BDF8] transition">6. Créditos y Ética</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-3 space-y-2">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-[#38BDF8]">Equipo Autor · Grupo 6</h3>
+          <ul class="text-xs space-y-1 text-slate-300">
+            <li>• Alejandro Gómez Nieto</li>
+            <li>• Javier Agustín Larroca</li>
+            <li>• Ignacio Olmos</li>
+            <li>• José Alberto Rodríguez</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+        <p>© 2026 Grupo 6 · UTN-FRGP. Uso educativo bajo principios de transparencia ética de IA (UNESCO) y Normas APA 7ma edición.</p>
+        <a href="creditos-etica.html" class="text-[#38BDF8] hover:underline font-medium">Ver Declaración Ética y Créditos APA →</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       COMPONENTE TRANSVERSAL OBLIGATORIO: WIDGET CHATBOT FLOTANTE (UNIDAD 6)
+       ======================================================================== -->
+  <div class="fixed bottom-5 right-5 z-50 flex flex-col items-end">
+    <section id="chatbot-window" aria-label="Asistente Virtual Programación I - UTN" class="chatbot-window hidden-chat mb-3 w-[340px] sm:w-[380px] bg-slate-50 rounded-2xl shadow-2xl border border-slate-300 overflow-hidden flex flex-col max-h-[540px]">
+      <header class="bg-gradient-to-r from-[#003366] to-[#0F172A] text-white px-4 py-3.5 flex items-center justify-between border-b border-slate-700">
+        <div class="flex items-center gap-2.5">
+          <div class="relative">
+            <div class="w-9 h-9 rounded-full bg-[#0284C7] flex items-center justify-center font-bold text-xs border border-[#38BDF8]">BOT</div>
+            <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-[#0F172A]"></span>
+          </div>
+          <div>
+            <h2 class="font-bold text-xs sm:text-sm leading-tight">Asistente Virtual Programación I - UTN</h2>
+            <p class="text-[11px] text-sky-300">Tutor de e-Portfolios Git/GitHub · Unidad 6</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-1">
+          <button id="chatbot-reset" type="button" title="Reiniciar conversación" aria-label="Reiniciar conversación" class="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+          </button>
+          <button id="chatbot-close" type="button" title="Cerrar asistente" aria-label="Cerrar ventana de chat" class="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+        </div>
+      </header>
+
+      <div id="chatbot-messages" class="p-3.5 space-y-3 overflow-y-auto custom-scrollbar flex-1 min-h-[260px] max-h-[320px] bg-slate-100/80" aria-live="polite"></div>
+
+      <div class="px-3 py-2 bg-white border-t border-slate-200 flex items-center gap-1.5 overflow-x-auto custom-scrollbar">
+        <button type="button" data-question="¿Cómo aporta el podcast al Diseño Universal para el Aprendizaje (DUA)?" class="chatbot-chip shrink-0 text-[11px] font-medium px-2.5 py-1 rounded-full bg-sky-50 text-[#0284C7] hover:bg-[#0284C7] hover:text-white border border-sky-200 transition">
+          Podcast y DUA
+        </button>
+        <button type="button" data-question="¿Qué es la cultura del error documentado en el README?" class="chatbot-chip shrink-0 text-[11px] font-medium px-2.5 py-1 rounded-full bg-sky-50 text-[#0284C7] hover:bg-[#0284C7] hover:text-white border border-sky-200 transition">
+          Error en README
+        </button>
+        <button type="button" data-question="¿Qué diferencia hay entre Git y GitHub?" class="chatbot-chip shrink-0 text-[11px] font-medium px-2.5 py-1 rounded-full bg-sky-50 text-[#0284C7] hover:bg-[#0284C7] hover:text-white border border-sky-200 transition">
+          ¿Git vs GitHub?
+        </button>
+      </div>
+
+      <form id="chatbot-form" class="p-2.5 bg-white border-t border-slate-200 flex items-center gap-2">
+        <label for="chatbot-input" class="sr-only">Escribí tu consulta</label>
+        <input id="chatbot-input" type="text" placeholder="Consultá sobre el podcast, DUA, README..." autocomplete="off" class="flex-1 text-xs sm:text-sm px-3 py-2 rounded-xl border border-slate-300 focus:outline-none focus:border-[#0284C7] bg-slate-50 text-slate-900" />
+        <button type="submit" aria-label="Enviar consulta" class="px-3.5 py-2 rounded-xl bg-[#0284C7] hover:bg-[#003366] text-white font-semibold text-xs sm:text-sm transition flex items-center gap-1 shadow-sm">
+          <span>Enviar</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+        </button>
+      </form>
+    </section>
+
+    <button id="chatbot-toggle" type="button" aria-expanded="false" aria-controls="chatbot-window" aria-label="Abrir Asistente Virtual de Programación I" class="chatbot-pulse relative w-14 h-14 rounded-full bg-gradient-to-br from-[#003366] to-[#0284C7] text-white shadow-xl hover:scale-105 transition flex items-center justify-center border-2 border-[#38BDF8]">
+      <span id="chatbot-badge" class="absolute -top-1 -right-1 px-1.5 py-0.5 text-[10px] font-extrabold bg-rose-500 text-white rounded-full border-2 border-white shadow">1</span>
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+      </svg>
+    </button>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

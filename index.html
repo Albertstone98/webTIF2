@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Espacio Digital Educativo: Git y GitHub como e-Portfolios: Trazabilidad y Evaluación de Proceso en Programación I (UTN-FRGP). Grupo 6." />
+  <meta name="author" content="Grupo 6: Alejandro Gómez Nieto, Javier Agustín Larroca, Ignacio Olmos y José Alberto Rodríguez" />
+  <title>Inicio | Git y GitHub como e-Portfolios en Programación I (UTN-FRGP)</title>
+
+  <!-- Google Fonts: Inter (Alta legibilidad DUA) & JetBrains Mono (Código) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS via CDN con configuración de paleta institucional UTN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            utn: {
+              navy: '#003366',
+              dark: '#0F172A',
+              blue: '#0284C7',
+              cyan: '#38BDF8',
+              light: '#F8FAFC'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Hoja de estilos personalizada -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="bg-[#F8FAFC] text-[#0F172A] antialiased selection:bg-[#38BDF8] selection:text-[#0F172A] flex flex-col min-h-screen">
+
+  <!-- Enlace de salto directo al contenido principal (Accesibilidad DUA) -->
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- ========================================================================
+       BARRA DE NAVEGACIÓN FIJA E IDÉNTICA EN TODAS LAS PÁGINAS (NAVBAR)
+       ======================================================================== -->
+  <header class="sticky top-0 z-40 bg-[#0F172A]/95 backdrop-blur-md border-b border-slate-800 text-white shadow-lg">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Navegación Principal">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Identidad Institucional UTN-FRGP -->
+        <a href="index.html" class="flex items-center gap-3 group focus:outline-none">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-[#003366] to-[#0284C7] border border-[#38BDF8]/40 flex items-center justify-center shadow-md group-hover:border-[#38BDF8] transition">
+            <span class="font-mono font-bold text-lg tracking-tighter text-white">UTN</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-bold text-sm sm:text-base tracking-tight text-white group-hover:text-[#38BDF8] transition">
+              e-Portfolios Git &amp; GitHub
+            </span>
+            <span class="text-[11px] text-slate-300 font-medium">
+              Programación I · UTN-FRGP · Grupo 6
+            </span>
+          </div>
+        </a>
+
+        <!-- Enlaces de Navegación en Escritorio -->
+        <div class="hidden lg:flex items-center space-x-1">
+          <a href="index.html" aria-current="page" class="px-3 py-2 rounded-lg text-sm font-semibold bg-[#0284C7] text-white shadow-sm transition">
+            Inicio
+          </a>
+          <a href="texto-introductorio.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-[#38BDF8] transition">
+            U2 · Texto IA
+          </a>
+          <a href="animacion-coevaluacion.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-[#38BDF8] transition">
+            U3 · Animación 2D
+          </a>
+          <a href="podcast-sonoro.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-[#38BDF8] transition">
+            U4 · Podcast DUA
+          </a>
+          <a href="video-trazabilidad.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-[#38BDF8] transition">
+            U5 · Video Retro
+          </a>
+          <a href="creditos-etica.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-[#38BDF8] transition">
+            Créditos y Ética
+          </a>
+        </div>
+
+        <!-- Botón de Menú Hamburguesa (Dispositivos Móviles) -->
+        <div class="lg:hidden">
+          <button id="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú de navegación" class="inline-flex items-center justify-center p-2.5 rounded-lg text-slate-200 hover:text-white hover:bg-slate-800 transition">
+            <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Menú Desplegable Móvil -->
+      <div id="mobile-menu" class="hidden lg:hidden pb-4 pt-2 border-t border-slate-800 space-y-1">
+        <a href="index.html" aria-current="page" class="block px-3 py-2.5 rounded-lg text-sm font-semibold bg-[#0284C7] text-white">
+          1. Inicio (Planteo y Mapa Conceptual)
+        </a>
+        <a href="texto-introductorio.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800">
+          2. Unidad 2: Guía Introductoria (Texto con IA)
+        </a>
+        <a href="animacion-coevaluacion.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800">
+          3. Unidad 3: Animación Coevaluación (2D con IA)
+        </a>
+        <a href="podcast-sonoro.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800">
+          4. Unidad 4: Cápsulas Sonoras (Podcast DUA)
+        </a>
+        <a href="video-trazabilidad.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800">
+          5. Unidad 5: Video Trazabilidad Formativa
+        </a>
+        <a href="creditos-etica.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800">
+          6. Créditos, Normas APA y Marco Ético
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========================================================================
+       CONTENIDO PRINCIPAL (MAIN)
+       ======================================================================== -->
+  <main id="main-content" class="flex-grow">
+
+    <!-- 1. HERO SECTION CON ESTÉTICA TECNOLÓGICA -->
+    <section class="bg-tech-grid text-white py-16 lg:py-24 border-b border-slate-800 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Columna Izquierda: Título Impactante, Subtítulo y CTAs -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#003366] text-[#38BDF8] border border-[#38BDF8]/40">
+                <span class="w-2 h-2 rounded-full bg-[#38BDF8]"></span>
+                UTN · Facultad Regional General Pacheco (FRGP)
+              </span>
+              <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-slate-800/90 text-slate-300 border border-slate-700">
+                Tecnicatura Universitaria en Programación
+              </span>
+            </div>
+
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+              Git y GitHub como <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#38BDF8] to-sky-200">e-Portfolios</span>: Trazabilidad y Evaluación de Proceso en Programación I
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl">
+              Propuesta tecno-pedagógica que transforma la evaluación tradicional estática (entrega de archivos <code class="text-[#38BDF8] bg-slate-900/80 px-1.5 py-0.5 rounded">.ZIP</code> al cierre del cuatrimestre) en una <strong>evaluación de proceso transparente</strong> mediante repositorios en GitHub, visibilizando el historial de <em>commits</em>, la resolución atómica de <em>Issues</em>, la revisión entre pares (<em>Pull Requests</em>) y el aprendizaje a través del error documentado.
+            </p>
+
+            <!-- Botones de Llamada a la Acción (CTA) -->
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+              <a href="#recursos-multimedia" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold bg-[#0284C7] hover:bg-sky-500 text-white shadow-lg shadow-sky-900/40 transition">
+                <span>Explorar Recursos Multimedia</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                </svg>
+              </a>
+              <a href="#mapa-conceptual" class="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl font-semibold bg-slate-800/90 hover:bg-slate-700 text-slate-100 border border-slate-700 transition">
+                <svg class="w-5 h-5 text-[#38BDF8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+                </svg>
+                <span>Ver Mapa Conceptual y Sitemap</span>
+              </a>
+            </div>
+
+            <!-- Metadatos breves de autoría -->
+            <div class="pt-4 border-t border-slate-800/80 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-slate-400">
+              <div><strong class="text-slate-200">Asignatura origen:</strong> Gestión de Recursos Digitales con IA Generativa</div>
+              <div><strong class="text-slate-200">Autores (Grupo 6):</strong> Gómez Nieto · Larroca · Olmos · Rodríguez</div>
+            </div>
+          </div>
+
+          <!-- Columna Derecha: Tarjeta Oscura Interactiva de Simulación de e-Portfolio Git -->
+          <div class="lg:col-span-5">
+            <div class="bg-slate-900/95 border border-slate-700/80 rounded-2xl shadow-2xl overflow-hidden">
+              <!-- Barra superior de terminal -->
+              <div class="bg-slate-800/90 px-4 py-3 border-b border-slate-700 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                  <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                  <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                  <span class="ml-2 font-mono text-xs text-slate-300">utn-frgp / prog1-eportfolio-alumno</span>
+                </div>
+                <span class="px-2 py-0.5 text-[11px] font-mono bg-emerald-500/20 text-emerald-300 rounded border border-emerald-500/30">
+                  main ✓
+                </span>
+              </div>
+
+              <!-- Historial simulado de trazabilidad formativa -->
+              <div class="p-5 space-y-4 font-mono text-xs">
+                <div class="text-slate-400">
+                  <span class="text-[#38BDF8]">$</span> git log --oneline --graph --decorate
+                </div>
+
+                <!-- Paso 1: Issue -->
+                <div class="p-3 rounded-xl bg-slate-800/70 border-l-4 border-amber-400 space-y-1">
+                  <div class="flex items-center justify-between">
+                    <span class="text-amber-300 font-semibold">1. ISSUE #12 · Detección del Problema</span>
+                    <span class="text-[10px] text-slate-400">hace 3 días</span>
+                  </div>
+                  <p class="text-slate-300 font-sans text-xs">
+                    "Bucle infinito al validar ingreso de notas fuera de rango [1..10]."
+                  </p>
+                </div>
+
+                <!-- Paso 2: Commits Atómicos -->
+                <div class="p-3 rounded-xl bg-slate-800/70 border-l-4 border-[#38BDF8] space-y-1.5">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[#38BDF8] font-semibold">2. COMMITS · Resolución Atómica</span>
+                    <span class="text-[10px] text-slate-400">3 commits</span>
+                  </div>
+                  <div class="text-slate-300 space-y-1 text-[11px]">
+                    <div><span class="text-sky-400">a1b204f</span> feat: estructura inicial función validarNota()</div>
+                    <div><span class="text-sky-400">c4d891e</span> fix: corrijo condición lógica en ciclo while</div>
+                    <div><span class="text-sky-400">e9f312b</span> docs(README): documento error y solución aprendida</div>
+                  </div>
+                </div>
+
+                <!-- Paso 3: Pull Request & Coevaluación -->
+                <div class="p-3 rounded-xl bg-slate-800/70 border-l-4 border-purple-400 space-y-1">
+                  <div class="flex items-center justify-between">
+                    <span class="text-purple-300 font-semibold">3. PULL REQUEST #15 · Defensa y Pares</span>
+                    <span class="text-[10px] text-slate-400">Revisado</span>
+                  </div>
+                  <p class="text-slate-300 font-sans text-xs">
+                    Argumentación técnica del estudiante + feedback constructivo entre compañeros.
+                  </p>
+                </div>
+
+                <!-- Paso 4: Merge Docente -->
+                <div class="p-3 rounded-xl bg-emerald-950/50 border border-emerald-500/40 flex items-center justify-between">
+                  <div>
+                    <span class="text-emerald-300 font-semibold block">4. MERGE DOCENTE · Validación</span>
+                    <span class="text-slate-300 font-sans text-xs">Proceso auditado y aprobado en e-Portfolio</span>
+                  </div>
+                  <span class="px-2.5 py-1 rounded-lg bg-emerald-500 text-slate-950 font-bold text-xs">
+                    APROBADO ✓
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. PLANTEO DEL PROBLEMA: TRANSICIÓN SECUNDARIA-UNIVERSIDAD EN PROGRAMACIÓN I -->
+    <section class="py-16 bg-white border-b border-slate-200" aria-labelledby="titulo-planteo">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center space-y-3 mb-12">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#0284C7] bg-sky-50 px-3 py-1 rounded-full border border-sky-200">
+            Diagnóstico Pedagógico · UTN-FRGP
+          </span>
+          <h2 id="titulo-planteo" class="text-2xl sm:text-3xl font-extrabold text-[#0F172A]">
+            De la Entrega Estática (<code class="text-rose-600">.ZIP</code>) a la Trazabilidad del Aprendizaje
+          </h2>
+          <p class="text-slate-600 text-base leading-relaxed">
+            En la transición desde la escuela secundaria hacia el primer año universitario en <strong>Programación I</strong>, los estudiantes ingresantes enfrentan dificultades de autonomía y autorregulación. Frente a la irrupción de la IA generativa, evaluar únicamente el archivo final invisibiliza el proceso cognitivo real.
+          </p>
+        </div>
+
+        <!-- Comparativa Visual: Modelo Tradicional vs Propuesta Superadora -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          <!-- Tarjeta 1: Modelo Tradicional de Producto -->
+          <article class="rounded-2xl bg-slate-50 border border-slate-200 p-6 sm:p-8 flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-rose-100 text-rose-800 text-xs font-bold">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+                <span>Modelo Tradicional: Evaluación Estática de "Producto"</span>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900">
+                El código como caja negra sin historia
+              </h3>
+              <ul class="space-y-3 text-sm text-slate-700">
+                <li class="flex items-start gap-2.5">
+                  <span class="text-rose-600 font-bold mt-0.5">✕</span>
+                  <span><strong>Entrega aislada de archivos <code>.ZIP</code>:</strong> El docente recibe un único paquete final sin conocer cómo se gestó la solución.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-rose-600 font-bold mt-0.5">✕</span>
+                  <span><strong>Vulnerabilidad ante atajos de IA sin comprensión:</strong> Fomenta la resolución automática mediante código copiado sin reflexión algorítmica.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-rose-600 font-bold mt-0.5">✕</span>
+                  <span><strong>Penalización del error:</strong> El estudiante oculta sus dudas y ensayos fallidos en lugar de capitalizarlos como instancia de aprendizaje.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-rose-600 font-bold mt-0.5">✕</span>
+                  <span><strong>Trabajo individual desconectado:</strong> Ausencia de cultura colaborativa y de herramientas reales de la industria del software.</span>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-200 text-xs text-slate-500 font-medium">
+              Resultado: Baja autonomía estudiantil y escasa identidad profesional temprana.
+            </div>
+          </article>
+
+          <!-- Tarjeta 2: Propuesta de e-Portfolios en Git y GitHub -->
+          <article class="rounded-2xl bg-gradient-to-br from-[#003366] to-[#0F172A] text-white border border-[#0284C7]/50 p-6 sm:p-8 shadow-xl flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-xs font-bold">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Propuesta Grupo 6: Evaluación Transparente de "Proceso"</span>
+              </div>
+              <h3 class="text-xl font-bold text-white">
+                El e-Portfolio en GitHub como evidencia viva de evolución
+              </h3>
+              <ul class="space-y-3 text-sm text-slate-200">
+                <li class="flex items-start gap-2.5">
+                  <span class="text-[#38BDF8] font-bold mt-0.5">✓</span>
+                  <span><strong>Trazabilidad mediante <em>Commits</em>:</strong> Cada modificación atómica documenta qué se intentó, cómo evolucionó el algoritmo y qué decisiones se tomaron.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-[#38BDF8] font-bold mt-0.5">✓</span>
+                  <span><strong>Cultura del Error Documentado en <code>README.md</code>:</strong> El error deja de ocultarse; se analiza qué falló, por qué y cómo se superó.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-[#38BDF8] font-bold mt-0.5">✓</span>
+                  <span><strong>Pedagogía del Estudiante Contribuyente:</strong> Uso ético de <em>Fork</em>, <em>Issues</em> y <em>Pull Requests</em> para la coevaluación empática entre pares.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-[#38BDF8] font-bold mt-0.5">✓</span>
+                  <span><strong>Multimodalidad y Accesibilidad (DUA):</strong> Integración de guías textuales, animación 2D, cápsulas sonoras TTS y video formativo.</span>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-700/80 text-xs text-[#38BDF8] font-semibold">
+              Resultado: Construcción temprana de identidad profesional, pensamiento crítico y autonomía universitaria.
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. TARJETAS INFORMATIVAS DE LOS 5 RECURSOS MULTIMEDIALES PRODUCIDOS -->
+    <section id="recursos-multimedia" class="py-16 bg-[#F8FAFC] border-b border-slate-200" aria-labelledby="titulo-recursos">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#003366] bg-sky-100 px-3 py-1 rounded-full">
+              Producción Propia Validada y Acreditada
+            </span>
+            <h2 id="titulo-recursos" class="text-2xl sm:text-3xl font-extrabold text-[#0F172A] mt-3">
+              Los 5 Recursos Multimediales con IA Generativa
+            </h2>
+          </div>
+          <p class="text-sm text-slate-600 max-w-md">
+            Cada recurso articula herramientas de IA Generativa con curaduría docente humana, documentando sus prompts, iteraciones y créditos bajo Normas APA 7ma edición.
+          </p>
+        </div>
+
+        <!-- Grilla de los 5 Recursos -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <!-- Recurso 1: Texto con IA (Unidad 2) -->
+          <article class="resource-card bg-white rounded-2xl border border-slate-200 p-6 flex flex-col justify-between shadow-sm">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#003366] text-white">
+                  Recurso 1 · Unidad 2
+                </span>
+                <span class="text-xs font-mono text-slate-500 bg-slate-100 px-2.5 py-1 rounded">
+                  ChatGPT · Prompting
+                </span>
+              </div>
+              <h3 class="text-lg font-bold text-[#0F172A] mb-2">
+                Guía Introductoria: Git, GitHub y e-Portfolios
+              </h3>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                Material didáctico generado y refinado iterativamente mediante <em>Prompt Engineering</em> para diferenciar Git de GitHub, explicar el valor de los commits como evidencia y ejemplificar su uso en Programación I.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-xs font-medium text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">
+                ✓ Texto + Prompts Validados
+              </span>
+              <a href="texto-introductorio.html" class="inline-flex items-center gap-1 text-sm font-bold text-[#0284C7] hover:text-[#003366] transition">
+                <span>Acceder</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Recurso 2: Animación Digital con IA (Unidad 3) -->
+          <article class="resource-card bg-white rounded-2xl border border-slate-200 p-6 flex flex-col justify-between shadow-sm">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#003366] text-white">
+                  Recurso 2 · Unidad 3
+                </span>
+                <span class="text-xs font-mono text-slate-500 bg-slate-100 px-2.5 py-1 rounded">
+                  Nano Banana · Flow
+                </span>
+              </div>
+              <h3 class="text-lg font-bold text-[#0F172A] mb-2">
+                Animación 2D: Coevaluación y Ética Colaborativa
+              </h3>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                Corto animado con estética vectorial <em>Night in the Woods</em> sobre <em>Social Coding</em> y la Pedagogía del Estudiante Contribuyente: uso empático de <em>Fork</em>, <em>Issues</em> y <em>Pull Requests</em>.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-xs font-medium text-amber-800 bg-amber-50 px-2.5 py-1 rounded-md border border-amber-200">
+                ▶ Video YouTube + Storyboard
+              </span>
+              <a href="animacion-coevaluacion.html" class="inline-flex items-center gap-1 text-sm font-bold text-[#0284C7] hover:text-[#003366] transition">
+                <span>Ver animación</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Recurso 3: Podcast Sonoro con IA (Unidad 4) -->
+          <article class="resource-card bg-white rounded-2xl border border-slate-200 p-6 flex flex-col justify-between shadow-sm">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#003366] text-white">
+                  Recurso 3 · Unidad 4
+                </span>
+                <span class="text-xs font-mono text-slate-500 bg-slate-100 px-2.5 py-1 rounded">
+                  ElevenLabs v3 · TTS
+                </span>
+              </div>
+              <h3 class="text-lg font-bold text-[#0F172A] mb-2">
+                Cápsulas Sonoras: Conciencia Académica y DUA
+              </h3>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                Episodio de podcast conversacional (&lt; 3 min) con dos voces neuronales que acompaña la lectura del código y el archivo <code>README.md</code>, garantizando accesibilidad multimodal (DUA).
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-xs font-medium text-sky-800 bg-sky-50 px-2.5 py-1 rounded-md border border-sky-200">
+                🎧 Reproductor HTML5 + Guion
+              </span>
+              <a href="podcast-sonoro.html" class="inline-flex items-center gap-1 text-sm font-bold text-[#0284C7] hover:text-[#003366] transition">
+                <span>Escuchar</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Recurso 4: Video Digital Trazabilidad (Unidad 5) -->
+          <article class="resource-card bg-white rounded-2xl border border-slate-200 p-6 flex flex-col justify-between shadow-sm">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#003366] text-white">
+                  Recurso 4 · Unidad 5
+                </span>
+                <span class="text-xs font-mono text-slate-500 bg-slate-100 px-2.5 py-1 rounded">
+                  Google Flow (Veo)
+                </span>
+              </div>
+              <h3 class="text-lg font-bold text-[#0F172A] mb-2">
+                Video: Trazabilidad Formativa (Estética Retro 90s)
+              </h3>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                Producción audiovisual panorámica (16:9) con estética CRT / Windows 95 que visibiliza el flujo <em>1. Issue → 2. Commits → 3. Pull Request → 4. Merge Docente</em> frente al uso acrítico de la IA.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-xs font-medium text-purple-800 bg-purple-50 px-2.5 py-1 rounded-md border border-purple-200">
+                📺 Video 16:9 + Iteraciones
+              </span>
+              <a href="video-trazabilidad.html" class="inline-flex items-center gap-1 text-sm font-bold text-[#0284C7] hover:text-[#003366] transition">
+                <span>Ver video</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Recurso 5: Chatbot Funcional Transversal (Unidad 6) -->
+          <article class="resource-card bg-gradient-to-br from-[#0F172A] to-[#003366] text-white rounded-2xl border border-[#38BDF8]/40 p-6 flex flex-col justify-between shadow-md">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#38BDF8] text-[#0F172A]">
+                  Recurso 5 · Unidad 6
+                </span>
+                <span class="text-xs font-mono text-sky-200 bg-slate-800/80 px-2.5 py-1 rounded border border-sky-400/30">
+                  Widget Transversal
+                </span>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2">
+                Asistente Virtual Programación I - UTN
+              </h3>
+              <p class="text-sm text-slate-200 leading-relaxed mb-4">
+                Chatbot interactivo flotante disponible en las 6 páginas del sitio para acompañar a los ingresantes las 24 hs con dudas sobre Git, GitHub, commits, entregas y navegación.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-700/80 flex items-center justify-between">
+              <span class="text-xs font-medium text-emerald-300">
+                ● Activo en esquina inferior derecha
+              </span>
+              <button type="button" onclick="document.getElementById('chatbot-toggle').click()" class="inline-flex items-center gap-1 text-sm font-bold text-[#38BDF8] hover:text-white transition">
+                <span>Abrir Asistente</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- Tarjeta 6: Créditos, Matriz APA 7ma Ed. y Ética IA -->
+          <article class="resource-card bg-white rounded-2xl border border-slate-200 p-6 flex flex-col justify-between shadow-sm">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-800 text-white">
+                  Marco Ético y Normativo
+                </span>
+                <span class="text-xs font-mono text-slate-500 bg-slate-100 px-2.5 py-1 rounded">
+                  APA 7ma · UNESCO
+                </span>
+              </div>
+              <h3 class="text-lg font-bold text-[#0F172A] mb-2">
+                Créditos Oficiales, Matriz de IA y Ética Responsable
+              </h3>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                Acreditación de autoría del Equipo Grupo 6 (UTN-FRGP), matriz completa de herramientas de IA citadas en formato APA 7ma edición y reflexión sobre supervisión docente.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-xs font-medium text-slate-600 bg-slate-100 px-2.5 py-1 rounded-md">
+                📋 Créditos + Formulario
+              </span>
+              <a href="creditos-etica.html" class="inline-flex items-center gap-1 text-sm font-bold text-[#0284C7] hover:text-[#003366] transition">
+                <span>Ver Créditos</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. OBJETIVOS PEDAGÓGICOS Y MAPA CONCEPTUAL / SITEMAP NAVEGABLE -->
+    <section id="mapa-conceptual" class="py-16 bg-white" aria-labelledby="titulo-mapa">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+
+        <!-- Resumen de Objetivos Pedagógicos -->
+        <div>
+          <div class="max-w-3xl mb-8">
+            <span class="text-xs font-bold uppercase tracking-wider text-[#0284C7]">
+              Propósitos Formativos
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0F172A] mt-1">
+              Objetivos Pedagógicos del Espacio Digital
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
+              <div class="w-10 h-10 rounded-lg bg-[#003366] text-[#38BDF8] flex items-center justify-center font-bold mb-3">01</div>
+              <h3 class="font-bold text-slate-900 text-sm mb-1.5">Visibilizar el Proceso Cognitivo</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Reemplazar la entrega opaca de archivos finales por la lectura pedagógica del historial de commits y evolución del código.
+              </p>
+            </div>
+            <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
+              <div class="w-10 h-10 rounded-lg bg-[#003366] text-[#38BDF8] flex items-center justify-center font-bold mb-3">02</div>
+              <h3 class="font-bold text-slate-900 text-sm mb-1.5">Revalorizar el Error Documentado</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Promover la metacognición en el archivo <code>README.md</code>, donde documentar un bug corregido constituye evidencia genuina de aprendizaje.
+              </p>
+            </div>
+            <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
+              <div class="w-10 h-10 rounded-lg bg-[#003366] text-[#38BDF8] flex items-center justify-center font-bold mb-3">03</div>
+              <h3 class="font-bold text-slate-900 text-sm mb-1.5">Fomentar la Coevaluación Ética</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Desarrollar habilidades blandas, empatía y revisión constructiva entre pares mediante <em>Fork</em>, <em>Issues</em> y <em>Pull Requests</em>.
+              </p>
+            </div>
+            <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
+              <div class="w-10 h-10 rounded-lg bg-[#003366] text-[#38BDF8] flex items-center justify-center font-bold mb-3">04</div>
+              <h3 class="font-bold text-slate-900 text-sm mb-1.5">Garantizar Inclusión Multimodal (DUA)</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Ofrecer múltiples formas de representación (texto, animación 2D, audio TTS, video y asistente conversacional) con uso ético de IA.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mapa Conceptual y Sitemap Navegable Interactivo -->
+        <div class="bg-slate-900 text-white rounded-3xl p-6 sm:p-10 border border-slate-800 shadow-xl">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-8 border-b border-slate-800">
+            <div>
+              <span class="text-xs font-mono uppercase tracking-wider text-[#38BDF8]">
+                Arquitectura de Información y Sitemap Interactivo
+              </span>
+              <h3 id="titulo-mapa" class="text-xl sm:text-2xl font-bold mt-1">
+                Mapa Conceptual Navegable del Espacio Digital
+              </h3>
+            </div>
+            <span class="text-xs text-slate-400">
+              Hacé clic en cualquier nodo para navegar directamente a la sección correspondiente
+            </span>
+          </div>
+
+          <!-- Diagrama de Nodos Interconectados -->
+          <div class="mt-8 space-y-8">
+            <!-- Nodo Raíz -->
+            <div class="flex justify-center">
+              <a href="index.html" class="px-6 py-4 rounded-2xl bg-gradient-to-r from-[#003366] to-[#0284C7] border-2 border-[#38BDF8] text-center shadow-lg hover:scale-[1.02] transition max-w-xl w-full">
+                <span class="text-[11px] font-mono uppercase tracking-widest text-sky-200 block">Nodo Central · index.html</span>
+                <span class="font-extrabold text-base sm:text-lg block mt-0.5">
+                  e-Portfolios en Git y GitHub · Programación I (UTN-FRGP)
+                </span>
+                <span class="text-xs text-sky-100 block mt-1">
+                  Transición Secundaria-Universidad y Evaluación Transparente de Proceso
+                </span>
+              </a>
+            </div>
+
+            <!-- Conector visual -->
+            <div class="hidden md:flex justify-center items-center">
+              <div class="w-0.5 h-6 bg-[#38BDF8]/50"></div>
+            </div>
+
+            <!-- Los 4 Nodos de Recursos Multimediales (Unidades 2, 3, 4 y 5) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              
+              <a href="texto-introductorio.html" class="group p-4 rounded-xl bg-slate-800/90 hover:bg-slate-800 border border-slate-700 hover:border-[#38BDF8] transition flex flex-col justify-between">
+                <div>
+                  <span class="text-[11px] font-mono text-[#38BDF8] block">01 · texto-introductorio.html</span>
+                  <h4 class="font-bold text-sm mt-1 group-hover:text-[#38BDF8] transition">Unidad 2: Texto con IA</h4>
+                  <p class="text-xs text-slate-400 mt-1.5">
+                    Conceptualización de Git vs GitHub, commits como evidencia y Prompt Engineering en ChatGPT.
+                  </p>
+                </div>
+                <span class="text-[11px] text-sky-300 font-mono mt-3 inline-block">Ir a página →</span>
+              </a>
+
+              <a href="animacion-coevaluacion.html" class="group p-4 rounded-xl bg-slate-800/90 hover:bg-slate-800 border border-slate-700 hover:border-[#38BDF8] transition flex flex-col justify-between">
+                <div>
+                  <span class="text-[11px] font-mono text-amber-400 block">02 · animacion-coevaluacion.html</span>
+                  <h4 class="font-bold text-sm mt-1 group-hover:text-amber-300 transition">Unidad 3: Animación 2D</h4>
+                  <p class="text-xs text-slate-400 mt-1.5">
+                    Ética colaborativa, Social Coding (Fork, Issues, Pull Requests) con estética <em>Night in the Woods</em>.
+                  </p>
+                </div>
+                <span class="text-[11px] text-amber-300 font-mono mt-3 inline-block">Ir a página →</span>
+              </a>
+
+              <a href="podcast-sonoro.html" class="group p-4 rounded-xl bg-slate-800/90 hover:bg-slate-800 border border-slate-700 hover:border-[#38BDF8] transition flex flex-col justify-between">
+                <div>
+                  <span class="text-[11px] font-mono text-emerald-400 block">03 · podcast-sonoro.html</span>
+                  <h4 class="font-bold text-sm mt-1 group-hover:text-emerald-300 transition">Unidad 4: Podcast Sonoro</h4>
+                  <p class="text-xs text-slate-400 mt-1.5">
+                    Cápsula auditiva TTS (ElevenLabs v3), accesibilidad DUA y cultura del error en el <code>README</code>.
+                  </p>
+                </div>
+                <span class="text-[11px] text-emerald-300 font-mono mt-3 inline-block">Ir a página →</span>
+              </a>
+
+              <a href="video-trazabilidad.html" class="group p-4 rounded-xl bg-slate-800/90 hover:bg-slate-800 border border-slate-700 hover:border-[#38BDF8] transition flex flex-col justify-between">
+                <div>
+                  <span class="text-[11px] font-mono text-purple-400 block">04 · video-trazabilidad.html</span>
+                  <h4 class="font-bold text-sm mt-1 group-hover:text-purple-300 transition">Unidad 5: Video Retro 90s</h4>
+                  <p class="text-xs text-slate-400 mt-1.5">
+                    Flujo auditable: 1. Issue → 2. Commits → 3. Pull Request → 4. Merge Docente (Google Flow / Veo).
+                  </p>
+                </div>
+                <span class="text-[11px] text-purple-300 font-mono mt-3 inline-block">Ir a página →</span>
+              </a>
+
+            </div>
+
+            <!-- Nivel Transversal Inferior: Unidad 6 Chatbot + Créditos y Marco Ético -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+              <div class="p-4 rounded-xl bg-[#003366]/60 border border-[#38BDF8]/40 flex items-center justify-between gap-4">
+                <div>
+                  <span class="text-[11px] font-mono text-[#38BDF8] block">Componente Transversal · Unidad 6</span>
+                  <h4 class="font-bold text-sm">Asistente Virtual Flotante (Chatbot 24/7)</h4>
+                  <p class="text-xs text-slate-300 mt-1">Integrado en las 6 páginas para resolver consultas frecuentes sobre Git, entregas y navegación.</p>
+                </div>
+                <button type="button" onclick="document.getElementById('chatbot-toggle').click()" class="shrink-0 px-3.5 py-2 rounded-lg bg-[#0284C7] hover:bg-sky-500 text-xs font-bold text-white transition">
+                  Probar Bot
+                </button>
+              </div>
+
+              <a href="creditos-etica.html" class="p-4 rounded-xl bg-slate-800/90 hover:bg-slate-800 border border-slate-700 hover:border-[#38BDF8] transition flex items-center justify-between gap-4">
+                <div>
+                  <span class="text-[11px] font-mono text-sky-300 block">05 · creditos-etica.html</span>
+                  <h4 class="font-bold text-sm">Créditos Grupo 6, Matriz APA 7ma Ed. y Ética IA</h4>
+                  <p class="text-xs text-slate-300 mt-1">Declaración de transparencia, curaduría docente y formulario de contacto institucional.</p>
+                </div>
+                <span class="shrink-0 px-3.5 py-2 rounded-lg bg-slate-700 text-xs font-bold text-sky-300">
+                  Ver Créditos →
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       PIE DE PÁGINA INSTITUCIONAL UNIFICADO (FOOTER)
+       ======================================================================== -->
+  <footer class="bg-[#0F172A] text-slate-300 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-8 border-b border-slate-800">
+        
+        <!-- Columna 1: Identidad Institucional -->
+        <div class="md:col-span-5 space-y-3">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-lg bg-[#003366] border border-[#38BDF8]/40 flex items-center justify-center font-mono font-bold text-white text-sm">
+              UTN
+            </div>
+            <div>
+              <p class="font-bold text-white text-sm">Universidad Tecnológica Nacional</p>
+              <p class="text-xs text-slate-400">Facultad Regional General Pacheco (UTN-FRGP)</p>
+            </div>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed max-w-md">
+            Espacio digital desarrollado en el marco del Trabajo Integrador Final (TIF) de la asignatura <strong>Gestión de Recursos Digitales con IA Generativa</strong> (Licenciatura en Tecnología Educativa), aplicado a <strong>Programación I</strong> (Tecnicatura Universitaria en Programación).
+          </p>
+        </div>
+
+        <!-- Columna 2: Mapa Rápido del Sitio -->
+        <div class="md:col-span-4 space-y-2">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-[#38BDF8]">Accesos Rápidos (Sitemap)</h3>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs">
+            <li><a href="index.html" class="hover:text-[#38BDF8] transition">1. Inicio / Planteo</a></li>
+            <li><a href="texto-introductorio.html" class="hover:text-[#38BDF8] transition">2. Texto con IA (U2)</a></li>
+            <li><a href="animacion-coevaluacion.html" class="hover:text-[#38BDF8] transition">3. Animación 2D (U3)</a></li>
+            <li><a href="podcast-sonoro.html" class="hover:text-[#38BDF8] transition">4. Podcast DUA (U4)</a></li>
+            <li><a href="video-trazabilidad.html" class="hover:text-[#38BDF8] transition">5. Video Retro (U5)</a></li>
+            <li><a href="creditos-etica.html" class="hover:text-[#38BDF8] transition">6. Créditos y Ética</a></li>
+          </ul>
+        </div>
+
+        <!-- Columna 3: Equipo Autor Grupo 6 -->
+        <div class="md:col-span-3 space-y-2">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-[#38BDF8]">Equipo Autor · Grupo 6</h3>
+          <ul class="text-xs space-y-1 text-slate-300">
+            <li>• Alejandro Gómez Nieto</li>
+            <li>• Javier Agustín Larroca</li>
+            <li>• Ignacio Olmos</li>
+            <li>• José Alberto Rodríguez</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Aviso Legal y Académico -->
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+        <p>© 2026 Grupo 6 · UTN-FRGP. Uso educativo sin fines de lucro bajo principios de transparencia ética de IA (UNESCO) y Normas APA 7ma edición.</p>
+        <a href="creditos-etica.html" class="text-[#38BDF8] hover:underline font-medium">Ver Declaración Ética y Créditos APA →</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       COMPONENTE TRANSVERSAL OBLIGATORIO: WIDGET CHATBOT FLOTANTE (UNIDAD 6)
+       Insertado antes de cerrar el </body> en las 6 páginas del sitio
+       ======================================================================== -->
+  <div class="fixed bottom-5 right-5 z-50 flex flex-col items-end">
+    
+    <!-- Ventana Desplegable del Chat (Modal / Drawer) -->
+    <section id="chatbot-window" aria-label="Asistente Virtual Programación I - UTN" class="chatbot-window hidden-chat mb-3 w-[340px] sm:w-[380px] bg-slate-50 rounded-2xl shadow-2xl border border-slate-300 overflow-hidden flex flex-col max-h-[540px]">
+      
+      <!-- Cabecera del Chatbot -->
+      <header class="bg-gradient-to-r from-[#003366] to-[#0F172A] text-white px-4 py-3.5 flex items-center justify-between border-b border-slate-700">
+        <div class="flex items-center gap-2.5">
+          <div class="relative">
+            <div class="w-9 h-9 rounded-full bg-[#0284C7] flex items-center justify-center font-bold text-xs border border-[#38BDF8]">
+              BOT
+            </div>
+            <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-[#0F172A]"></span>
+          </div>
+          <div>
+            <h2 class="font-bold text-xs sm:text-sm leading-tight">Asistente Virtual Programación I - UTN</h2>
+            <p class="text-[11px] text-sky-300">Tutor de e-Portfolios Git/GitHub · Unidad 6</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-1">
+          <button id="chatbot-reset" type="button" title="Reiniciar conversación" aria-label="Reiniciar conversación" class="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+            </svg>
+          </button>
+          <button id="chatbot-close" type="button" title="Cerrar asistente" aria-label="Cerrar ventana de chat" class="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Área de Mensajes Conversacionales -->
+      <div id="chatbot-messages" class="p-3.5 space-y-3 overflow-y-auto custom-scrollbar flex-1 min-h-[260px] max-h-[320px] bg-slate-100/80" aria-live="polite">
+        <!-- Los mensajes se inyectan dinámicamente desde js/main.js -->
+      </div>
+
+      <!-- Botones de Consultas Frecuentes Rápidas (Chips) -->
+      <div class="px-3 py-2 bg-white border-t border-slate-200 flex items-center gap-1.5 overflow-x-auto custom-scrollbar">
+        <button type="button" data-question="¿Cuál es la diferencia entre Git y GitHub?" class="chatbot-chip shrink-0 text-[11px] font-medium px-2.5 py-1 rounded-full bg-sky-50 text-[#0284C7] hover:bg-[#0284C7] hover:text-white border border-sky-200 transition">
+          ¿Git vs GitHub?
+        </button>
+        <button type="button" data-question="¿Cómo se evalúan las entregas en Programación I?" class="chatbot-chip shrink-0 text-[11px] font-medium px-2.5 py-1 rounded-full bg-sky-50 text-[#0284C7] hover:bg-[#0284C7] hover:text-white border border-sky-200 transition">
+          ¿Cómo se evalúa?
+        </button>
+        <button type="button" data-question="¿Qué son Fork, Issues y Pull Requests?" class="chatbot-chip shrink-0 text-[11px] font-medium px-2.5 py-1 rounded-full bg-sky-50 text-[#0284C7] hover:bg-[#0284C7] hover:text-white border border-sky-200 transition">
+          Fork / Issues / PR
+        </button>
+        <button type="button" data-question="¿Cómo está estructurado este sitio web?" class="chatbot-chip shrink-0 text-[11px] font-medium px-2.5 py-1 rounded-full bg-sky-50 text-[#0284C7] hover:bg-[#0284C7] hover:text-white border border-sky-200 transition">
+          Mapa del Sitio
+        </button>
+      </div>
+
+      <!-- Caja de Entrada de Texto (Input + Botón Enviar) -->
+      <form id="chatbot-form" class="p-2.5 bg-white border-t border-slate-200 flex items-center gap-2">
+        <label for="chatbot-input" class="sr-only">Escribí tu consulta sobre Programación I o Git/GitHub</label>
+        <input id="chatbot-input" type="text" placeholder="Consultá sobre Git, commits, entregas..." autocomplete="off" class="flex-1 text-xs sm:text-sm px-3 py-2 rounded-xl border border-slate-300 focus:outline-none focus:border-[#0284C7] bg-slate-50 text-slate-900" />
+        <button type="submit" aria-label="Enviar consulta" class="px-3.5 py-2 rounded-xl bg-[#0284C7] hover:bg-[#003366] text-white font-semibold text-xs sm:text-sm transition flex items-center gap-1 shadow-sm">
+          <span>Enviar</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+          </svg>
+        </button>
+      </form>
+    </section>
+
+    <!-- Botón Circular Flotante con Icono de Bot y Notificación Badge -->
+    <button id="chatbot-toggle" type="button" aria-expanded="false" aria-controls="chatbot-window" aria-label="Abrir Asistente Virtual de Programación I" class="chatbot-pulse relative w-14 h-14 rounded-full bg-gradient-to-br from-[#003366] to-[#0284C7] text-white shadow-xl hover:scale-105 transition flex items-center justify-center border-2 border-[#38BDF8]">
+      <!-- Badge de Notificación -->
+      <span id="chatbot-badge" class="absolute -top-1 -right-1 px-1.5 py-0.5 text-[10px] font-extrabold bg-rose-500 text-white rounded-full border-2 border-white shadow">
+        1
+      </span>
+      <!-- Icono de Robot / Asistente -->
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Script modular principal -->
+  <script src="js/main.js"></script>
+</body>
+</html>
