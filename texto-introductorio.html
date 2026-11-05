@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/jpeg" href="assets/images/favicon.jpeg">
 
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -47,7 +48,7 @@
   <!-- ========================================================================
        BARRA DE NAVEGACIÓN FIJA E IDÉNTICA EN TODAS LAS PÁGINAS (NAVBAR)
        ======================================================================== -->
-  <header class="sticky top-0 z-40 bg-[#0F172A]/95 backdrop-blur-md border-b border-slate-800 text-white shadow-lg">
+  <header class="sticky top-0 z-50 bg-[#0F172A]/95 backdrop-blur-md border-b border-slate-800 text-white shadow-lg">
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Navegación Principal">
       <div class="flex items-center justify-between h-20">
         
@@ -512,60 +513,7 @@
   <!-- ========================================================================
        COMPONENTE TRANSVERSAL OBLIGATORIO: WIDGET CHATBOT FLOTANTE (UNIDAD 6)
        ======================================================================== -->
-  <div class="fixed bottom-5 right-5 z-50 flex flex-col items-end">
-    <section id="chatbot-window" aria-label="Asistente Virtual Programación I - UTN" class="chatbot-window hidden-chat mb-3 w-[340px] sm:w-[380px] bg-slate-50 rounded-2xl shadow-2xl border border-slate-300 overflow-hidden flex flex-col max-h-[540px]">
-      <header class="bg-gradient-to-r from-[#003366] to-[#0F172A] text-white px-4 py-3.5 flex items-center justify-between border-b border-slate-700">
-        <div class="flex items-center gap-2.5">
-          <div class="relative">
-            <div class="w-9 h-9 rounded-full bg-[#0284C7] flex items-center justify-center font-bold text-xs border border-[#38BDF8]">BOT</div>
-            <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-[#0F172A]"></span>
-          </div>
-          <div>
-            <h2 class="font-bold text-xs sm:text-sm leading-tight">Asistente Virtual Programación I - UTN</h2>
-            <p class="text-[11px] text-sky-300">Tutor de e-Portfolios Git/GitHub · Unidad 6</p>
-          </div>
-        </div>
-        <div class="flex items-center gap-1">
-          <button id="chatbot-reset" type="button" title="Reiniciar conversación" aria-label="Reiniciar conversación" class="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
-          </button>
-          <button id="chatbot-close" type="button" title="Cerrar asistente" aria-label="Cerrar ventana de chat" class="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-          </button>
-        </div>
-      </header>
-
-      <div id="chatbot-messages" class="p-3.5 space-y-3 overflow-y-auto custom-scrollbar flex-1 min-h-[260px] max-h-[320px] bg-slate-100/80" aria-live="polite"></div>
-
-      <div class="px-3 py-2 bg-white border-t border-slate-200 flex items-center gap-1.5 overflow-x-auto custom-scrollbar">
-        <button type="button" data-question="¿Cuál es la diferencia entre Git y GitHub?" class="chatbot-chip shrink-0 text-[11px] font-medium px-2.5 py-1 rounded-full bg-sky-50 text-[#0284C7] hover:bg-[#0284C7] hover:text-white border border-sky-200 transition">
-          ¿Git vs GitHub?
-        </button>
-        <button type="button" data-question="¿Por qué los commits son evidencia de aprendizaje?" class="chatbot-chip shrink-0 text-[11px] font-medium px-2.5 py-1 rounded-full bg-sky-50 text-[#0284C7] hover:bg-[#0284C7] hover:text-white border border-sky-200 transition">
-          Commits y README
-        </button>
-        <button type="button" data-question="¿Cómo se evalúan las entregas en Programación I?" class="chatbot-chip shrink-0 text-[11px] font-medium px-2.5 py-1 rounded-full bg-sky-50 text-[#0284C7] hover:bg-[#0284C7] hover:text-white border border-sky-200 transition">
-          Evaluación
-        </button>
-      </div>
-
-      <form id="chatbot-form" class="p-2.5 bg-white border-t border-slate-200 flex items-center gap-2">
-        <label for="chatbot-input" class="sr-only">Escribí tu consulta</label>
-        <input id="chatbot-input" type="text" placeholder="Consultá sobre Git, commits, entregas..." autocomplete="off" class="flex-1 text-xs sm:text-sm px-3 py-2 rounded-xl border border-slate-300 focus:outline-none focus:border-[#0284C7] bg-slate-50 text-slate-900" />
-        <button type="submit" aria-label="Enviar consulta" class="px-3.5 py-2 rounded-xl bg-[#0284C7] hover:bg-[#003366] text-white font-semibold text-xs sm:text-sm transition flex items-center gap-1 shadow-sm">
-          <span>Enviar</span>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
-        </button>
-      </form>
-    </section>
-
-    <button id="chatbot-toggle" type="button" aria-expanded="false" aria-controls="chatbot-window" aria-label="Abrir Asistente Virtual de Programación I" class="chatbot-pulse relative w-14 h-14 rounded-full bg-gradient-to-br from-[#003366] to-[#0284C7] text-white shadow-xl hover:scale-105 transition flex items-center justify-center border-2 border-[#38BDF8]">
-      <span id="chatbot-badge" class="absolute -top-1 -right-1 px-1.5 py-0.5 text-[10px] font-extrabold bg-rose-500 text-white rounded-full border-2 border-white shadow">1</span>
-      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-      </svg>
-    </button>
-  </div>
+  <script src="//code.tidio.co/o4xugjdcwxunnav5awfafnrbhe25rrbj.js" async></script>
 
   <script src="js/main.js"></script>
 </body>

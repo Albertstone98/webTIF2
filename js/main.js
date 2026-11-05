@@ -28,26 +28,54 @@ function initMobileNavigation() {
 
   if (!menuBtn || !mobileMenu) return;
 
-  menuBtn.addEventListener('click', () => {
-    const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
-    menuBtn.setAttribute('aria-expanded', String(!isExpanded));
-    mobileMenu.classList.toggle('hidden');
+  function setMenuState(open) {
+    menuBtn.setAttribute('aria-expanded', String(open));
+    mobileMenu.classList.toggle('hidden', !open);
 
     if (iconOpen && iconClose) {
-      iconOpen.classList.toggle('hidden');
-      iconClose.classList.toggle('hidden');
+      iconOpen.classList.toggle('hidden', open);
+      iconClose.classList.toggle('hidden', !open);
+    }
+
+    // Si se abre el menú móvil, cerramos la ventana del chatbot para evitar superposiciones
+    if (open) {
+      const chatWindow = document.getElementById('chatbot-window');
+      const chatToggle = document.getElementById('chatbot-toggle');
+      if (chatWindow && chatWindow.classList.contains('visible-chat')) {
+        chatWindow.classList.add('hidden-chat');
+        chatWindow.classList.remove('visible-chat');
+        chatToggle?.setAttribute('aria-expanded', 'false');
+      }
+    }
+  }
+
+  menuBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = !mobileMenu.classList.contains('hidden');
+    setMenuState(!isOpen);
+  });
+
+  // Cerrar el menú móvil al hacer clic en cualquiera de sus enlaces de navegación
+  mobileMenu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      setMenuState(false);
+    });
+  });
+
+  // Cerrar menú móvil al hacer clic fuera del header
+  document.addEventListener('click', (e) => {
+    if (!mobileMenu.classList.contains('hidden')) {
+      const header = menuBtn.closest('header');
+      if (header && !header.contains(e.target)) {
+        setMenuState(false);
+      }
     }
   });
 
   // Cerrar menú móvil con tecla Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
-      mobileMenu.classList.add('hidden');
-      menuBtn.setAttribute('aria-expanded', 'false');
-      if (iconOpen && iconClose) {
-        iconOpen.classList.remove('hidden');
-        iconClose.classList.add('hidden');
-      }
+      setMenuState(false);
       menuBtn.focus();
     }
   });
