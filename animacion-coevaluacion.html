@@ -460,15 +460,93 @@
           </div>
         </div>
 
-        <!-- Navegación secuencial -->
-        <div class="pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <a href="texto-introductorio.html" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-[#003366] transition">
-            <span>← Anterior: Unidad 2 · Guía Introductoria (Texto con IA)</span>
-          </a>
-          <a href="podcast-sonoro.html" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#0284C7] hover:bg-[#003366] text-white text-sm font-bold shadow-sm transition">
-            <span>Siguiente Recurso: Unidad 4 · Podcast Sonoro DUA →</span>
-          </a>
+        <!-- ==================================================================
+             A. CONSIGNA DE APRENDIZAJE / ACTIVIDAD PRÁCTICA DE LA CÁTEDRA (FASE 2)
+             ================================================================== -->
+        <div id="actividad-practica" class="mt-12 rounded-3xl bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#003366] text-white p-6 sm:p-8 lg:p-10 border-2 border-amber-400/60 shadow-xl space-y-6">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-700/80 pb-5">
+            <div class="space-y-1.5">
+              <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-amber-400 text-slate-950">
+                <span>FASE 2 DE LA RUTA FORMATIVA · CONSIGNA DE APRENDIZAJE</span>
+              </span>
+              <h2 class="text-xl sm:text-2xl font-extrabold text-white">
+                Actividad 2: Realiza un Fork al repositorio de un compañero y deja una devolución empática mediante un Issue
+              </h2>
+            </div>
+            <span class="shrink-0 px-3.5 py-2 rounded-xl bg-slate-900/90 border border-slate-700 text-xs font-mono text-amber-300">
+              Coevaluación entre Pares · Social Coding
+            </span>
+          </div>
+
+          <p class="text-sm sm:text-base text-slate-200 leading-relaxed">
+            Como vimos en la animación 2D, programar en la universidad no es un acto solitario: tu <strong>e-portfolio en GitHub</strong> crece cuando interactuás constructivamente con tu comunidad de aprendizaje. Completá esta práctica de coevaluación en 3 pasos:
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="p-4 rounded-2xl bg-slate-900/90 border border-slate-700/90 space-y-2">
+              <span class="text-xs font-mono font-bold text-amber-300 block">Paso 1 · Bifurcación (Fork)</span>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Ingresá al repositorio público de un compañero de comisión en GitHub y presioná el botón <strong>Fork</strong> para crear una copia vinculada en tu cuenta y explorar su solución.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-slate-900/90 border border-slate-700/90 space-y-2">
+              <span class="text-xs font-mono font-bold text-amber-300 block">Paso 2 · Lectura Empática del Proceso</span>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Revisá su historial de <em>commits</em> y su código buscando comprender su lógica de resolución antes de emitir cualquier juicio de valor.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-slate-900/90 border border-slate-700/90 space-y-2">
+              <span class="text-xs font-mono font-bold text-amber-300 block">Paso 3 · Apertura de Issue Constructivo</span>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                En la pestaña <strong>Issues → New Issue</strong> del repositorio de tu par, redactá un mensaje que destaque al menos una fortaleza de su código y proponga una sugerencia respetuosa de mejora.
+              </p>
+            </div>
+          </div>
+
+          <!-- C. LLAMADO A LA ACCIÓN SUTIL PARA GITBOT -->
+          <div class="p-4 rounded-2xl bg-emerald-950/60 border border-emerald-400/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <span class="w-9 h-9 rounded-xl bg-emerald-500/20 border border-emerald-400/50 text-emerald-300 flex items-center justify-center shrink-0 font-mono font-bold text-xs">
+                BOT
+              </span>
+              <p class="text-xs sm:text-sm text-emerald-100 leading-snug">
+                <strong>¿Dudas con esta actividad?</strong> Hacé clic en el widget de <strong>GitBot</strong> en la esquina inferior para consultar preguntas frecuentes sobre cómo hacer un <em>Fork</em> o redactar un <em>Issue</em>.
+              </p>
+            </div>
+            <button type="button" onclick="if (window.tidioChatApi) { window.tidioChatApi.show(); window.tidioChatApi.open(); }" class="shrink-0 px-3.5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition shadow">
+              Consultar a GitBot
+            </button>
+          </div>
         </div>
+
+        <!-- ==================================================================
+             B. RECORRIDO DE NAVEGACIÓN EXPLÍCITO (BARRA INFERIOR DE CONTINUIDAD)
+             ================================================================== -->
+        <nav aria-label="Navegación secuencial de la Ruta Formativa" class="mt-10 pt-8 border-t-2 border-slate-200">
+          <div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
+            <a href="texto-introductorio.html" class="group flex items-center gap-3 px-6 py-4 rounded-2xl bg-white hover:bg-slate-100 border-2 border-slate-300 hover:border-[#003366] text-slate-800 transition shadow-sm">
+              <span class="w-9 h-9 rounded-xl bg-slate-100 group-hover:bg-[#003366] group-hover:text-white flex items-center justify-center transition font-bold">←</span>
+              <div class="text-left">
+                <span class="text-[11px] font-mono uppercase tracking-wider text-slate-500 block">[ ← Recurso Anterior ]</span>
+                <span class="text-sm sm:text-base font-bold text-[#0F172A] group-hover:text-[#003366]">Fase 1: Guía Introductoria (Texto con IA)</span>
+              </div>
+            </a>
+
+            <div class="text-center px-4 py-2 rounded-xl bg-amber-50 border border-amber-200 self-center">
+              <span class="text-xs font-mono font-bold text-amber-900">Progreso: Fase 2 de 4</span>
+            </div>
+
+            <a href="podcast-sonoro.html" class="group flex items-center justify-between lg:justify-end gap-3 px-6 py-4 rounded-2xl bg-[#003366] hover:bg-[#0284C7] text-white border-2 border-[#003366] hover:border-[#0284C7] transition shadow-md">
+              <div class="text-left lg:text-right">
+                <span class="text-[11px] font-mono uppercase tracking-wider text-sky-200 block">[ Siguiente Recurso en la Ruta Formativa → ]</span>
+                <span class="text-sm sm:text-base font-extrabold">Fase 3: Cápsula Sonora (Podcast DUA)</span>
+              </div>
+              <span class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-white/20 flex items-center justify-center transition font-bold">→</span>
+            </a>
+          </div>
+        </nav>
 
       </div>
     </section>

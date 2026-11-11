@@ -431,15 +431,32 @@
           <footer class="not-italic font-bold text-[#003366] mt-2 text-xs sm:text-sm">— Grupo 6 (Gómez Nieto, Larroca, Olmos y Rodríguez, 2026)</footer>
         </blockquote>
 
-        <!-- Navegación inferior -->
-        <div class="pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <a href="video-trazabilidad.html" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-[#003366] transition">
-            <span>← Anterior: Unidad 5 · Video Trazabilidad Formativa</span>
-          </a>
-          <a href="index.html" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#003366] hover:bg-[#0284C7] text-white text-sm font-bold shadow-sm transition">
-            <span>Volver a la Página de Inicio (Homepage) ↺</span>
-          </a>
-        </div>
+        <!-- ==================================================================
+             RECORRIDO DE NAVEGACIÓN EXPLÍCITO (BARRA INFERIOR DE CONTINUIDAD)
+             ================================================================== -->
+        <nav aria-label="Navegación secuencial de la Ruta Formativa" class="pt-8 border-t-2 border-slate-200">
+          <div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
+            <a href="video-trazabilidad.html" class="group flex items-center gap-3 px-6 py-4 rounded-2xl bg-white hover:bg-slate-100 border-2 border-slate-300 hover:border-[#003366] text-slate-800 transition shadow-sm">
+              <span class="w-9 h-9 rounded-xl bg-slate-100 group-hover:bg-[#003366] group-hover:text-white flex items-center justify-center transition font-bold">←</span>
+              <div class="text-left">
+                <span class="text-[11px] font-mono uppercase tracking-wider text-slate-500 block">[ ← Recurso Anterior ]</span>
+                <span class="text-sm sm:text-base font-bold text-[#0F172A] group-hover:text-[#003366]">Fase 4: Video Trazabilidad (CRT '90s)</span>
+              </div>
+            </a>
+
+            <div class="text-center px-4 py-2 rounded-xl bg-slate-100 border border-slate-300 self-center">
+              <span class="text-xs font-mono font-bold text-slate-700">Cierre Institucional y Ético</span>
+            </div>
+
+            <a href="index.html#ruta-formativa" class="group flex items-center justify-between lg:justify-end gap-3 px-6 py-4 rounded-2xl bg-[#003366] hover:bg-[#0284C7] text-white border-2 border-[#003366] hover:border-[#0284C7] transition shadow-md">
+              <div class="text-left lg:text-right">
+                <span class="text-[11px] font-mono uppercase tracking-wider text-sky-200 block">[ Volver al Inicio de la Ruta Formativa ↺ ]</span>
+                <span class="text-sm sm:text-base font-extrabold">Página de Inicio y Mapa Visual</span>
+              </div>
+              <span class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-white/20 flex items-center justify-center transition font-bold">↺</span>
+            </a>
+          </div>
+        </nav>
       </div>
     </section>
 
