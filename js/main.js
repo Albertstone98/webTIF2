@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCustomAudioPlayer();
   initFeedbackForm();
   initChatbotWidget();
+  initTidioMobileOffset();
 });
 
 /* ==========================================================================
@@ -614,3 +615,52 @@ function escapeHTML(str) {
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
 }
+
+/* ==========================================================================
+   7. AJUSTE DINÁMICO DE POSICIÓN MÓVIL PARA WIDGET DE TIDIO
+   Evita que el botón flotante de Tidio quede oculto detrás del badge fijo
+   inferior ("Powered by Netlify") en pantallas móviles.
+   ========================================================================== */
+function initTidioMobileOffset() {
+  const MOBILE_OFFSET = '58px';
+
+  function adjustTidioPosition() {
+    const iframe = document.getElementById('tidio-chat-iframe');
+    if (!iframe) return;
+
+    const isMobile = window.innerWidth <= 1024;
+    const inlineHeight = iframe.style.height || '';
+    const isExpanded =
+      inlineHeight.includes('100%') ||
+      inlineHeight.includes('100vh') ||
+      inlineHeight.includes('100dvh') ||
+      iframe.offsetHeight >= 300;
+
+    if (isMobile && !isExpanded) {
+      if (iframe.style.getPropertyValue('bottom') !== MOBILE_OFFSET) {
+        iframe.style.setProperty('bottom', MOBILE_OFFSET, 'important');
+      }
+    } else if (iframe.style.getPropertyValue('bottom') === MOBILE_OFFSET) {
+      iframe.style.setProperty('bottom', '0px', 'important');
+    }
+  }
+
+  // Observar cambios en el DOM y en el atributo style del iframe de Tidio
+  const observer = new MutationObserver(() => {
+    adjustTidioPosition();
+  });
+
+  if (document.body) {
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['style']
+    });
+  }
+
+  window.addEventListener('resize', adjustTidioPosition);
+  document.addEventListener('tidioChat-ready', adjustTidioPosition);
+  adjustTidioPosition();
+}
+

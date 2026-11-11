@@ -236,3 +236,15 @@ input[type="range"].audio-slider::-webkit-slider-thumb:hover {
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #64748B;
 }
+
+/* ==========================================================================
+   AJUSTE RESPONSIVE PARA WIDGET DE TIDIO EN DISPOSITIVOS MÓVILES
+   Eleva el icono flotante del Chatbot para que no quede tapado por el
+   cartel fijo inferior ("Powered by Netlify") en vista mobile.
+   ========================================================================== */
+@media (max-width: 1024px) {
+  #tidio-chat-iframe:not([style*="100%"]):not([style*="100vh"]):not([style*="100dvh"]) {
+    bottom: 58px !important;
+  }
+}
+
