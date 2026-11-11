@@ -617,24 +617,58 @@ function escapeHTML(str) {
 }
 
 /* ==========================================================================
-   7. AJUSTE DINÁMICO DE POSICIÓN MÓVIL PARA WIDGET DE TIDIO
-   Evita que el botón flotante de Tidio quede oculto detrás del badge fijo
-   inferior ("Powered by Netlify") en pantallas móviles.
+   7. AJUSTE DINÁMICO DE POSICIÓN MÓVIL PARA WIDGET DE TIDIO Y BADGE NETLIFY
+   1. Oculta automáticamente el cartel flotante "Powered by Netlify" si existe.
+   2. Eleva el botón flotante de Tidio en pantallas móviles (65px).
    ========================================================================== */
 function initTidioMobileOffset() {
-  const MOBILE_OFFSET = '58px';
+  const MOBILE_OFFSET = '65px';
+
+  function hideNetlifyBadge() {
+    // Buscar posibles contenedores/iframes/links inyectados por el badge de Netlify
+    const candidates = document.querySelectorAll(
+      '#netlify-badge, [data-netlify-deploy-badge], iframe[src*="netlify"], a[href*="netlify.com"]'
+    );
+    candidates.forEach((el) => {
+      const text = (el.textContent || '').toLowerCase();
+      const href = (el.getAttribute('href') || '').toLowerCase();
+      if (
+        el.id === 'netlify-badge' ||
+        el.hasAttribute('data-netlify-deploy-badge') ||
+        el.tagName === 'IFRAME' ||
+        text.includes('powered by netlify') ||
+        href.includes('utm_source=se_badge') ||
+        href.includes('netlify')
+      ) {
+        const fixedParent = el.closest('div[style*="fixed"], aside[style*="fixed"]') || el;
+        fixedParent.style.setProperty('display', 'none', 'important');
+        fixedParent.style.setProperty('visibility', 'hidden', 'important');
+        fixedParent.style.setProperty('pointer-events', 'none', 'important');
+      }
+    });
+
+    // También revisar elementos con Shadow DOM en body (si Netlify inyecta un Web Component)
+    document.querySelectorAll('body > *').forEach((el) => {
+      if (el.id === 'tidio-chat') return;
+      const style = window.getComputedStyle(el);
+      if (style.position === 'fixed' && parseInt(style.bottom, 10) <= 30 && parseInt(style.right, 10) <= 30) {
+        const html = (el.innerHTML || '').toLowerCase();
+        if (html.includes('netlify') || el.shadowRoot) {
+          el.style.setProperty('display', 'none', 'important');
+        }
+      }
+    });
+  }
 
   function adjustTidioPosition() {
+    hideNetlifyBadge();
+
     const iframe = document.getElementById('tidio-chat-iframe');
     if (!iframe) return;
 
     const isMobile = window.innerWidth <= 1024;
-    const inlineHeight = iframe.style.height || '';
-    const isExpanded =
-      inlineHeight.includes('100%') ||
-      inlineHeight.includes('100vh') ||
-      inlineHeight.includes('100dvh') ||
-      iframe.offsetHeight >= 300;
+    const inlineTop = iframe.style.top || '';
+    const isExpanded = inlineTop === '0px' || inlineTop === '0' || iframe.offsetHeight >= 300;
 
     if (isMobile && !isExpanded) {
       if (iframe.style.getPropertyValue('bottom') !== MOBILE_OFFSET) {
@@ -645,7 +679,6 @@ function initTidioMobileOffset() {
     }
   }
 
-  // Observar cambios en el DOM y en el atributo style del iframe de Tidio
   const observer = new MutationObserver(() => {
     adjustTidioPosition();
   });
